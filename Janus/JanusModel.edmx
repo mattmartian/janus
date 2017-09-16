@@ -1,0 +1,1078 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JanusModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="JanusModelStoreContainer">
+    <EntitySet Name="Employees" EntityType="JanusModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="JanusModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Availibilities" EntityType="JanusModel.Store.Availibilities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shifts" EntityType="JanusModel.Store.Shifts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Companies" EntityType="JanusModel.Store.Companies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AbsenceClaims" EntityType="JanusModel.Store.AbsenceClaims" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shiftRequests" EntityType="JanusModel.Store.shiftRequests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Messages" EntityType="JanusModel.Store.Messages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recoveries" EntityType="JanusModel.Store.Recoveries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="JanusModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Questions" EntityType="JanusModel.Store.Questions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Addresses" EntityType="JanusModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactInfoes" EntityType="JanusModel.Store.ContactInfoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Managers" EntityType="JanusModel.Store.Managers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsersRole" Association="JanusModel.Store.UsersRole">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeesAvailibility" Association="JanusModel.Store.EmployeesAvailibility">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Availibility" EntitySet="Availibilities" />
+    </AssociationSet>
+    <AssociationSet Name="UsersRecovery" Association="JanusModel.Store.UsersRecovery">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Recovery" EntitySet="Recoveries" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionsRecovery" Association="JanusModel.Store.QuestionsRecovery">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Recovery" EntitySet="Recoveries" />
+    </AssociationSet>
+    <AssociationSet Name="UsersEmployees" Association="JanusModel.Store.UsersEmployees">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="MessagesUsers" Association="JanusModel.Store.MessagesUsers">
+      <End Role="Messages" EntitySet="Messages" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="shiftRequestsEmployees" Association="JanusModel.Store.shiftRequestsEmployees">
+      <End Role="shiftRequests" EntitySet="shiftRequests" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyEmployees" Association="JanusModel.Store.CompanyEmployees">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyManager" Association="JanusModel.Store.CompanyManager">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Manager" EntitySet="Managers" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeesShifts" Association="JanusModel.Store.EmployeesShifts">
+      <End Role="Shifts" EntitySet="Shifts" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerEmployees" Association="JanusModel.Store.ManagerEmployees">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="AbsenceClaimsEmployees" Association="JanusModel.Store.AbsenceClaimsEmployees">
+      <End Role="AbsenceClaims" EntitySet="AbsenceClaims" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="AddressesEmployees" Association="JanusModel.Store.AddressesEmployees">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="AddressesCompany" Association="JanusModel.Store.AddressesCompany">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyContactInfo" Association="JanusModel.Store.CompanyContactInfo">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="ContactInfo" EntitySet="ContactInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="ContactInfoUsers" Association="JanusModel.Store.ContactInfoUsers">
+      <End Role="ContactInfo" EntitySet="ContactInfoes" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="employeeID" />
+    </Key>
+    <Property Name="employeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="availibilityID" Type="int" Nullable="false" />
+    <Property Name="hireDate" Type="datetime" Nullable="false" />
+    <Property Name="fireDate" Type="datetime" Nullable="false" />
+    <Property Name="position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="section" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="manager" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="employmentStatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Availibility_availibilityID" Type="int" Nullable="false" />
+    <Property Name="Company_companyID" Type="int" Nullable="false" />
+    <Property Name="Address_addressID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="addressID" Type="int" Nullable="false" />
+    <Property Name="contactID" Type="int" Nullable="false" />
+    <Property Name="companyID" Type="int" Nullable="false" />
+    <Property Name="roleID" Type="int" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="birthDate" Type="datetime" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role_roleID" Type="int" Nullable="false" />
+    <Property Name="Recovery_recoveryID" Type="int" Nullable="false" />
+    <Property Name="Employee_employeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Availibilities">
+    <Key>
+      <PropertyRef Name="availibilityID" />
+    </Key>
+    <Property Name="availibilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeeID" Type="int" Nullable="false" />
+    <Property Name="startTime" Type="datetime" Nullable="false" />
+    <Property Name="endTime" Type="datetime" Nullable="false" />
+    <Property Name="day" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shifts">
+    <Key>
+      <PropertyRef Name="shiftID" />
+    </Key>
+    <Property Name="shiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeeID" Type="int" Nullable="false" />
+    <Property Name="shiftStart" Type="datetime" Nullable="false" />
+    <Property Name="shiftEnd" Type="datetime" Nullable="false" />
+    <Property Name="position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_employeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="companyID" />
+    </Key>
+    <Property Name="companyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contactID" Type="int" Nullable="false" />
+    <Property Name="managerID" Type="bigint" Nullable="false" />
+    <Property Name="companyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="hours" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="day" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="companyOwner" Type="int" Nullable="false" />
+    <Property Name="ContactInfo_contactID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AbsenceClaims">
+    <Key>
+      <PropertyRef Name="claimID" />
+    </Key>
+    <Property Name="claimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeeID" Type="int" Nullable="false" />
+    <Property Name="managerID" Type="int" Nullable="false" />
+    <Property Name="startTime" Type="datetime" Nullable="false" />
+    <Property Name="endTime" Type="datetime" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="claimType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isApproved" Type="bit" Nullable="false" />
+    <Property Name="Employee_employeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="shiftRequests">
+    <Key>
+      <PropertyRef Name="shiftRequestID" />
+    </Key>
+    <Property Name="shiftRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="managerID" Type="int" Nullable="false" />
+    <Property Name="requestor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="requestWith" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="requestConfirmed" Type="bit" Nullable="false" />
+    <Property Name="requestStatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_employeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="messageID" />
+    </Key>
+    <Property Name="messageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mailFromUserID" Type="int" Nullable="false" />
+    <Property Name="mailToUserID" Type="int" Nullable="false" />
+    <Property Name="User_userID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recoveries">
+    <Key>
+      <PropertyRef Name="recoveryID" />
+    </Key>
+    <Property Name="recoveryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="questionID" Type="int" Nullable="false" />
+    <Property Name="userAnswer" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="role" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="questionID" />
+    </Key>
+    <Property Name="questionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Recovery_recoveryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="addressID" />
+    </Key>
+    <Property Name="addressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="streetAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="postalCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Company_companyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactInfoes">
+    <Key>
+      <PropertyRef Name="contactID" />
+    </Key>
+    <Property Name="contactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_userID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="managerID" />
+    </Key>
+    <Property Name="managerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeeID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isAdmin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Company_companyID" Type="int" Nullable="false" />
+    <Property Name="Employee_employeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UsersRole">
+    <End Role="Users" Type="JanusModel.Store.Users" Multiplicity="*" />
+    <End Role="Role" Type="JanusModel.Store.Roles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role_roleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeesAvailibility">
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="*" />
+    <End Role="Availibility" Type="JanusModel.Store.Availibilities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Availibility">
+        <PropertyRef Name="availibilityID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="Availibility_availibilityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersRecovery">
+    <End Role="Users" Type="JanusModel.Store.Users" Multiplicity="*" />
+    <End Role="Recovery" Type="JanusModel.Store.Recoveries" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recovery">
+        <PropertyRef Name="recoveryID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Recovery_recoveryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuestionsRecovery">
+    <End Role="Questions" Type="JanusModel.Store.Questions" Multiplicity="*" />
+    <End Role="Recovery" Type="JanusModel.Store.Recoveries" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recovery">
+        <PropertyRef Name="recoveryID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="Recovery_recoveryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersEmployees">
+    <End Role="Users" Type="JanusModel.Store.Users" Multiplicity="*" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Employee_employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MessagesUsers">
+    <End Role="Messages" Type="JanusModel.Store.Messages" Multiplicity="*" />
+    <End Role="Users" Type="JanusModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="User_userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="shiftRequestsEmployees">
+    <End Role="shiftRequests" Type="JanusModel.Store.shiftRequests" Multiplicity="*" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="shiftRequests">
+        <PropertyRef Name="Employee_employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyEmployees">
+    <End Role="Company" Type="JanusModel.Store.Companies" Multiplicity="1" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="Company_companyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyManager">
+    <End Role="Company" Type="JanusModel.Store.Companies" Multiplicity="1" />
+    <End Role="Manager" Type="JanusModel.Store.Managers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyID" />
+      </Principal>
+      <Dependent Role="Manager">
+        <PropertyRef Name="Company_companyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeesShifts">
+    <End Role="Shifts" Type="JanusModel.Store.Shifts" Multiplicity="*" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="Shifts">
+        <PropertyRef Name="Employee_employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManagerEmployees">
+    <End Role="Manager" Type="JanusModel.Store.Managers" Multiplicity="*" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="Manager">
+        <PropertyRef Name="Employee_employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AbsenceClaimsEmployees">
+    <End Role="AbsenceClaims" Type="JanusModel.Store.AbsenceClaims" Multiplicity="*" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="AbsenceClaims">
+        <PropertyRef Name="Employee_employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressesEmployees">
+    <End Role="Addresses" Type="JanusModel.Store.Addresses" Multiplicity="1" />
+    <End Role="Employees" Type="JanusModel.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="addressID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="Address_addressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressesCompany">
+    <End Role="Addresses" Type="JanusModel.Store.Addresses" Multiplicity="*" />
+    <End Role="Company" Type="JanusModel.Store.Companies" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyID" />
+      </Principal>
+      <Dependent Role="Addresses">
+        <PropertyRef Name="Company_companyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyContactInfo">
+    <End Role="Company" Type="JanusModel.Store.Companies" Multiplicity="*" />
+    <End Role="ContactInfo" Type="JanusModel.Store.ContactInfoes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ContactInfo">
+        <PropertyRef Name="contactID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ContactInfo_contactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContactInfoUsers">
+    <End Role="ContactInfo" Type="JanusModel.Store.ContactInfoes" Multiplicity="*" />
+    <End Role="Users" Type="JanusModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="ContactInfo">
+        <PropertyRef Name="User_userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="JanusModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="JanusModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="JanusModel.Employees" />
+          <EntitySet Name="Users" EntityType="JanusModel.Users" />
+          <EntitySet Name="Availibilities" EntityType="JanusModel.Availibility" />
+          <EntitySet Name="Shifts" EntityType="JanusModel.Shifts" />
+          <EntitySet Name="Companies" EntityType="JanusModel.Company" />
+          <EntitySet Name="AbsenceClaims" EntityType="JanusModel.AbsenceClaims" />
+          <EntitySet Name="shiftRequests" EntityType="JanusModel.shiftRequests" />
+          <EntitySet Name="Messages" EntityType="JanusModel.Messages" />
+          <EntitySet Name="Recoveries" EntityType="JanusModel.Recovery" />
+          <EntitySet Name="Roles" EntityType="JanusModel.Role" />
+          <EntitySet Name="Questions" EntityType="JanusModel.Questions" />
+          <EntitySet Name="Addresses" EntityType="JanusModel.Addresses" />
+          <EntitySet Name="ContactInfoes" EntityType="JanusModel.ContactInfo" />
+          <EntitySet Name="Managers" EntityType="JanusModel.Manager" />
+          <AssociationSet Name="UsersRole" Association="JanusModel.UsersRole">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeesAvailibility" Association="JanusModel.EmployeesAvailibility">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Availibility" EntitySet="Availibilities" />
+          </AssociationSet>
+          <AssociationSet Name="UsersRecovery" Association="JanusModel.UsersRecovery">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Recovery" EntitySet="Recoveries" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionsRecovery" Association="JanusModel.QuestionsRecovery">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Recovery" EntitySet="Recoveries" />
+          </AssociationSet>
+          <AssociationSet Name="UsersEmployees" Association="JanusModel.UsersEmployees">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="MessagesUsers" Association="JanusModel.MessagesUsers">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="shiftRequestsEmployees" Association="JanusModel.shiftRequestsEmployees">
+            <End Role="shiftRequests" EntitySet="shiftRequests" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyEmployees" Association="JanusModel.CompanyEmployees">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyManager" Association="JanusModel.CompanyManager">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Manager" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeesShifts" Association="JanusModel.EmployeesShifts">
+            <End Role="Shifts" EntitySet="Shifts" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="ManagerEmployees" Association="JanusModel.ManagerEmployees">
+            <End Role="Manager" EntitySet="Managers" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="AbsenceClaimsEmployees" Association="JanusModel.AbsenceClaimsEmployees">
+            <End Role="AbsenceClaims" EntitySet="AbsenceClaims" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="AddressesEmployees" Association="JanusModel.AddressesEmployees">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="AddressesCompany" Association="JanusModel.AddressesCompany">
+            <End EntitySet="Addresses" Role="Addresses" />
+            <End EntitySet="Companies" Role="Company" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyContactInfo" Association="JanusModel.CompanyContactInfo">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="ContactInfoUsers" Association="JanusModel.ContactInfoUsers">
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="availibilityID" Type="Int32" Nullable="false" />
+          <Property Name="hireDate" Type="DateTime" Nullable="false" />
+          <Property Name="fireDate" Type="DateTime" Nullable="false" />
+          <Property Name="position" Type="String" Nullable="false" />
+          <Property Name="section" Type="String" Nullable="false" />
+          <Property Name="manager" Type="String" Nullable="false" />
+          <Property Name="employmentStatus" Type="String" Nullable="false" />
+          <NavigationProperty Name="Availibility" Relationship="JanusModel.EmployeesAvailibility" FromRole="Employees" ToRole="Availibility" />
+          <NavigationProperty Name="User" Relationship="JanusModel.UsersEmployees" FromRole="Employees" ToRole="Users" />
+          <NavigationProperty Name="shiftRequests" Relationship="JanusModel.shiftRequestsEmployees" FromRole="Employees" ToRole="shiftRequests" />
+          <NavigationProperty Name="Company" Relationship="JanusModel.CompanyEmployees" FromRole="Employees" ToRole="Company" />
+          <NavigationProperty Name="Shifts" Relationship="JanusModel.EmployeesShifts" FromRole="Employees" ToRole="Shifts" />
+          <NavigationProperty Name="Manager" Relationship="JanusModel.ManagerEmployees" FromRole="Employees" ToRole="Manager" />
+          <NavigationProperty Name="AbsenceClaims" Relationship="JanusModel.AbsenceClaimsEmployees" FromRole="Employees" ToRole="AbsenceClaims" />
+          <NavigationProperty Name="Address" Relationship="JanusModel.AddressesEmployees" FromRole="Employees" ToRole="Addresses" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addressID" Type="Int32" Nullable="false" />
+          <Property Name="contactID" Type="Int32" Nullable="false" />
+          <Property Name="companyID" Type="Int32" Nullable="false" />
+          <Property Name="roleID" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" />
+          <Property Name="lastName" Type="String" Nullable="false" />
+          <Property Name="birthDate" Type="DateTime" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="JanusModel.UsersRole" FromRole="Users" ToRole="Role" />
+          <NavigationProperty Name="Recovery" Relationship="JanusModel.UsersRecovery" FromRole="Users" ToRole="Recovery" />
+          <NavigationProperty Name="Employee" Relationship="JanusModel.UsersEmployees" FromRole="Users" ToRole="Employees" />
+          <NavigationProperty Name="Messages" Relationship="JanusModel.MessagesUsers" FromRole="Users" ToRole="Messages" />
+          <NavigationProperty Name="ContactInfo" Relationship="JanusModel.ContactInfoUsers" FromRole="Users" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="Availibility">
+          <Key>
+            <PropertyRef Name="availibilityID" />
+          </Key>
+          <Property Name="availibilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="startTime" Type="DateTime" Nullable="false" />
+          <Property Name="endTime" Type="DateTime" Nullable="false" />
+          <Property Name="day" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="JanusModel.EmployeesAvailibility" FromRole="Availibility" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="shiftID" />
+          </Key>
+          <Property Name="shiftID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <Property Name="shiftStart" Type="DateTime" Nullable="false" />
+          <Property Name="shiftEnd" Type="DateTime" Nullable="false" />
+          <Property Name="position" Type="String" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="JanusModel.EmployeesShifts" FromRole="Shifts" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="companyID" />
+          </Key>
+          <Property Name="companyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactID" Type="Int32" Nullable="false" />
+          <Property Name="managerID" Type="Int64" Nullable="false" />
+          <Property Name="companyName" Type="String" Nullable="false" />
+          <Property Name="hours" Type="String" Nullable="false" />
+          <Property Name="day" Type="String" Nullable="false" />
+          <Property Name="companyOwner" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="JanusModel.CompanyEmployees" FromRole="Company" ToRole="Employees" />
+          <NavigationProperty Name="Managers" Relationship="JanusModel.CompanyManager" FromRole="Company" ToRole="Manager" />
+          <NavigationProperty Name="Address" Relationship="JanusModel.AddressesCompany" FromRole="Company" ToRole="Addresses" />
+          <NavigationProperty Name="ContactInfo" Relationship="JanusModel.CompanyContactInfo" FromRole="Company" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="AbsenceClaims">
+          <Key>
+            <PropertyRef Name="claimID" />
+          </Key>
+          <Property Name="claimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <Property Name="managerID" Type="Int32" Nullable="false" />
+          <Property Name="startTime" Type="DateTime" Nullable="false" />
+          <Property Name="endTime" Type="DateTime" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <Property Name="claimType" Type="String" Nullable="false" />
+          <Property Name="isApproved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="JanusModel.AbsenceClaimsEmployees" FromRole="AbsenceClaims" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="shiftRequests">
+          <Key>
+            <PropertyRef Name="shiftRequestID" />
+          </Key>
+          <Property Name="shiftRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="managerID" Type="Int32" Nullable="false" />
+          <Property Name="requestor" Type="String" Nullable="false" />
+          <Property Name="requestWith" Type="String" Nullable="false" />
+          <Property Name="requestConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="requestStatus" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="JanusModel.shiftRequestsEmployees" FromRole="shiftRequests" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="messageID" />
+          </Key>
+          <Property Name="messageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject" Type="String" Nullable="false" />
+          <Property Name="body" Type="String" Nullable="false" />
+          <Property Name="mailFromUserID" Nullable="false" Type="Int32" />
+          <Property Name="mailToUserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="JanusModel.MessagesUsers" FromRole="Messages" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Recovery">
+          <Key>
+            <PropertyRef Name="recoveryID" />
+          </Key>
+          <Property Name="recoveryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="questionID" Type="Int32" Nullable="false" />
+          <Property Name="userAnswer" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="JanusModel.UsersRecovery" FromRole="Recovery" ToRole="Users" />
+          <NavigationProperty Name="Question" Relationship="JanusModel.QuestionsRecovery" FromRole="Recovery" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="String" Nullable="false" />
+          <Property Name="role" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="JanusModel.UsersRole" FromRole="Role" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="questionID" />
+          </Key>
+          <Property Name="questionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question" Type="String" Nullable="false" />
+          <NavigationProperty Name="Recovery" Relationship="JanusModel.QuestionsRecovery" FromRole="Questions" ToRole="Recovery" />
+        </EntityType>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="addressID" />
+          </Key>
+          <Property Name="addressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="streetAddress" Type="String" Nullable="false" />
+          <Property Name="postalCode" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="JanusModel.AddressesEmployees" FromRole="Addresses" ToRole="Employees" />
+          <NavigationProperty Name="Company" Relationship="JanusModel.AddressesCompany" FromRole="Addresses" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="ContactInfo">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="JanusModel.CompanyContactInfo" FromRole="ContactInfo" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="JanusModel.ContactInfoUsers" FromRole="ContactInfo" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="managerID" />
+          </Key>
+          <Property Name="managerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeID" Type="String" Nullable="false" />
+          <Property Name="isAdmin" Type="String" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="JanusModel.CompanyManager" FromRole="Manager" ToRole="Company" />
+          <NavigationProperty Name="Employee" Relationship="JanusModel.ManagerEmployees" FromRole="Manager" ToRole="Employees" />
+        </EntityType>
+        <Association Name="UsersRole">
+          <End Type="JanusModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="JanusModel.Role" Role="Role" Multiplicity="1" />
+        </Association>
+        <Association Name="EmployeesAvailibility">
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="1" />
+          <End Type="JanusModel.Availibility" Role="Availibility" Multiplicity="1" />
+        </Association>
+        <Association Name="UsersRecovery">
+          <End Type="JanusModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="JanusModel.Recovery" Role="Recovery" Multiplicity="1" />
+        </Association>
+        <Association Name="QuestionsRecovery">
+          <End Type="JanusModel.Questions" Role="Questions" Multiplicity="1" />
+          <End Type="JanusModel.Recovery" Role="Recovery" Multiplicity="1" />
+        </Association>
+        <Association Name="UsersEmployees">
+          <End Type="JanusModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="1" />
+        </Association>
+        <Association Name="MessagesUsers">
+          <End Type="JanusModel.Messages" Role="Messages" Multiplicity="*" />
+          <End Type="JanusModel.Users" Role="Users" Multiplicity="1" />
+        </Association>
+        <Association Name="shiftRequestsEmployees">
+          <End Type="JanusModel.shiftRequests" Role="shiftRequests" Multiplicity="*" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="1" />
+        </Association>
+        <Association Name="CompanyEmployees">
+          <End Type="JanusModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="*" />
+        </Association>
+        <Association Name="CompanyManager">
+          <End Type="JanusModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="JanusModel.Manager" Role="Manager" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeesShifts">
+          <End Type="JanusModel.Shifts" Role="Shifts" Multiplicity="*" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="1" />
+        </Association>
+        <Association Name="ManagerEmployees">
+          <End Type="JanusModel.Manager" Role="Manager" Multiplicity="1" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="1" />
+        </Association>
+        <Association Name="AbsenceClaimsEmployees">
+          <End Type="JanusModel.AbsenceClaims" Role="AbsenceClaims" Multiplicity="*" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="1" />
+        </Association>
+        <Association Name="AddressesEmployees">
+          <End Type="JanusModel.Addresses" Role="Addresses" Multiplicity="1" />
+          <End Type="JanusModel.Employees" Role="Employees" Multiplicity="*" />
+        </Association>
+        <Association Name="AddressesCompany">
+          <End Type="JanusModel.Addresses" Multiplicity="1" Role="Addresses" />
+          <End Type="JanusModel.Company" Multiplicity="1" Role="Company" />
+        </Association>
+        <Association Name="CompanyContactInfo">
+          <End Type="JanusModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="JanusModel.ContactInfo" Role="ContactInfo" Multiplicity="1" />
+        </Association>
+        <Association Name="ContactInfoUsers">
+          <End Type="JanusModel.ContactInfo" Role="ContactInfo" Multiplicity="1" />
+          <End Type="JanusModel.Users" Role="Users" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JanusModelStoreContainer" CdmEntityContainer="JanusModelContainer">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Employees)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="availibilityID" ColumnName="availibilityID" />
+          <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+          <ScalarProperty Name="fireDate" ColumnName="fireDate" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="section" ColumnName="section" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="employmentStatus" ColumnName="employmentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="addressID" ColumnName="addressID" />
+          <ScalarProperty Name="contactID" ColumnName="contactID" />
+          <ScalarProperty Name="companyID" ColumnName="companyID" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="birthDate" ColumnName="birthDate" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Availibilities">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Availibility)">
+        <MappingFragment StoreEntitySet="Availibilities">
+          <ScalarProperty Name="availibilityID" ColumnName="availibilityID" />
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="day" ColumnName="day" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shifts">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Shifts)">
+        <MappingFragment StoreEntitySet="Shifts">
+          <ScalarProperty Name="shiftID" ColumnName="shiftID" />
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="shiftStart" ColumnName="shiftStart" />
+          <ScalarProperty Name="shiftEnd" ColumnName="shiftEnd" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Company)">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="companyID" ColumnName="companyID" />
+          <ScalarProperty Name="contactID" ColumnName="contactID" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="hours" ColumnName="hours" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="companyOwner" ColumnName="companyOwner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AbsenceClaims">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.AbsenceClaims)">
+        <MappingFragment StoreEntitySet="AbsenceClaims">
+          <ScalarProperty Name="claimID" ColumnName="claimID" />
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="claimType" ColumnName="claimType" />
+          <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shiftRequests">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.shiftRequests)">
+        <MappingFragment StoreEntitySet="shiftRequests">
+          <ScalarProperty Name="shiftRequestID" ColumnName="shiftRequestID" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+          <ScalarProperty Name="requestor" ColumnName="requestor" />
+          <ScalarProperty Name="requestWith" ColumnName="requestWith" />
+          <ScalarProperty Name="requestConfirmed" ColumnName="requestConfirmed" />
+          <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Messages)">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="messageID" ColumnName="messageID" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="mailFromUserID" ColumnName="mailFromUserID" />
+          <ScalarProperty Name="mailToUserID" ColumnName="mailToUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recoveries">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Recovery)">
+        <MappingFragment StoreEntitySet="Recoveries">
+          <ScalarProperty Name="recoveryID" ColumnName="recoveryID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="userAnswer" ColumnName="userAnswer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Questions)">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="question" ColumnName="question" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Addresses)">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="addressID" ColumnName="addressID" />
+          <ScalarProperty Name="streetAddress" ColumnName="streetAddress" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactInfoes">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.ContactInfo)">
+        <MappingFragment StoreEntitySet="ContactInfoes">
+          <ScalarProperty Name="contactID" ColumnName="contactID" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="IsTypeOf(JanusModel.Manager)">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UsersRole" TypeName="JanusModel.UsersRole" StoreEntitySet="Users">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="roleID" ColumnName="Role_roleID" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeesAvailibility" TypeName="JanusModel.EmployeesAvailibility" StoreEntitySet="Employees">
+      <EndProperty Name="Availibility">
+        <ScalarProperty Name="availibilityID" ColumnName="Availibility_availibilityID" />
+      </EndProperty>
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UsersRecovery" TypeName="JanusModel.UsersRecovery" StoreEntitySet="Users">
+      <EndProperty Name="Recovery">
+        <ScalarProperty Name="recoveryID" ColumnName="Recovery_recoveryID" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="QuestionsRecovery" TypeName="JanusModel.QuestionsRecovery" StoreEntitySet="Questions">
+      <EndProperty Name="Recovery">
+        <ScalarProperty Name="recoveryID" ColumnName="Recovery_recoveryID" />
+      </EndProperty>
+      <EndProperty Name="Questions">
+        <ScalarProperty Name="questionID" ColumnName="questionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UsersEmployees" TypeName="JanusModel.UsersEmployees" StoreEntitySet="Users">
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="Employee_employeeID" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MessagesUsers" TypeName="JanusModel.MessagesUsers" StoreEntitySet="Messages">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="User_userID" />
+      </EndProperty>
+      <EndProperty Name="Messages">
+        <ScalarProperty Name="messageID" ColumnName="messageID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="shiftRequestsEmployees" TypeName="JanusModel.shiftRequestsEmployees" StoreEntitySet="shiftRequests">
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="Employee_employeeID" />
+      </EndProperty>
+      <EndProperty Name="shiftRequests">
+        <ScalarProperty Name="shiftRequestID" ColumnName="shiftRequestID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompanyEmployees" TypeName="JanusModel.CompanyEmployees" StoreEntitySet="Employees">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="companyID" ColumnName="Company_companyID" />
+      </EndProperty>
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompanyManager" TypeName="JanusModel.CompanyManager" StoreEntitySet="Managers">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="companyID" ColumnName="Company_companyID" />
+      </EndProperty>
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="managerID" ColumnName="managerID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeesShifts" TypeName="JanusModel.EmployeesShifts" StoreEntitySet="Shifts">
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="Employee_employeeID" />
+      </EndProperty>
+      <EndProperty Name="Shifts">
+        <ScalarProperty Name="shiftID" ColumnName="shiftID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerEmployees" TypeName="JanusModel.ManagerEmployees" StoreEntitySet="Managers">
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="Employee_employeeID" />
+      </EndProperty>
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="managerID" ColumnName="managerID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AbsenceClaimsEmployees" TypeName="JanusModel.AbsenceClaimsEmployees" StoreEntitySet="AbsenceClaims">
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="Employee_employeeID" />
+      </EndProperty>
+      <EndProperty Name="AbsenceClaims">
+        <ScalarProperty Name="claimID" ColumnName="claimID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressesEmployees" TypeName="JanusModel.AddressesEmployees" StoreEntitySet="Employees">
+      <EndProperty Name="Addresses">
+        <ScalarProperty Name="addressID" ColumnName="Address_addressID" />
+      </EndProperty>
+      <EndProperty Name="Employees">
+        <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressesCompany" TypeName="JanusModel.AddressesCompany" StoreEntitySet="Addresses">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="companyID" ColumnName="Company_companyID" />
+      </EndProperty>
+      <EndProperty Name="Addresses">
+        <ScalarProperty Name="addressID" ColumnName="addressID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompanyContactInfo" TypeName="JanusModel.CompanyContactInfo" StoreEntitySet="Companies">
+      <EndProperty Name="ContactInfo">
+        <ScalarProperty Name="contactID" ColumnName="ContactInfo_contactID" />
+      </EndProperty>
+      <EndProperty Name="Company">
+        <ScalarProperty Name="companyID" ColumnName="companyID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContactInfoUsers" TypeName="JanusModel.ContactInfoUsers" StoreEntitySet="ContactInfoes">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="User_userID" />
+      </EndProperty>
+      <EndProperty Name="ContactInfo">
+        <ScalarProperty Name="contactID" ColumnName="contactID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

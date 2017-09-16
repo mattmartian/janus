@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="04afb3173b42429a9fa599bd7bd25c5b" Name="Diagram1" ZoomLevel="99" >
+        <EntityTypeShape EntityType="JanusModel.Employees" Width="1.5" PointX="2.875" PointY="0.5" />
+        <EntityTypeShape EntityType="JanusModel.Users" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="JanusModel.Availibility" Width="1.5" PointX="5" PointY="0.5" />
+        <EntityTypeShape EntityType="JanusModel.Shifts" Width="1.5" PointX="6.875" PointY="6.125" />
+        <EntityTypeShape EntityType="JanusModel.Company" Width="1.5" PointX="4.875" PointY="7" />
+        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="8.75" PointY="4.375" />
+        <EntityTypeShape EntityType="JanusModel.shiftRequests" Width="1.5" PointX="0.625" PointY="4.75" />
+        <EntityTypeShape EntityType="JanusModel.Messages" Width="1.5" PointX="4.75" PointY="2.875" />
+        <EntityTypeShape EntityType="JanusModel.Recovery" Width="1.5" PointX="8.625" PointY="0.5" />
+        <EntityTypeShape EntityType="JanusModel.Role" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="JanusModel.Questions" Width="1.5" PointX="7" PointY="2.875" />
+        <EntityTypeShape EntityType="JanusModel.Addresses" Width="1.5" PointX="6.875" PointY="0.5" />
+        <EntityTypeShape EntityType="JanusModel.ContactInfo" Width="1.5" PointX="2.875" PointY="9.25" />
+        <EntityTypeShape EntityType="JanusModel.Manager" Width="1.5" PointX="0.875" PointY="7.375" />
+        <AssociationConnector Association="JanusModel.UsersRole" />
+        <AssociationConnector Association="JanusModel.EmployeesAvailibility" />
+        <AssociationConnector Association="JanusModel.UsersRecovery" />
+        <AssociationConnector Association="JanusModel.QuestionsRecovery" />
+        <AssociationConnector Association="JanusModel.UsersEmployees" />
+        <AssociationConnector Association="JanusModel.MessagesUsers" />
+        <AssociationConnector Association="JanusModel.shiftRequestsEmployees" />
+        <AssociationConnector Association="JanusModel.CompanyEmployees" />
+        <AssociationConnector Association="JanusModel.CompanyManager" />
+        <AssociationConnector Association="JanusModel.EmployeesShifts" />
+        <AssociationConnector Association="JanusModel.ManagerEmployees" />
+        <AssociationConnector Association="JanusModel.AbsenceClaimsEmployees" />
+        <AssociationConnector Association="JanusModel.AddressesEmployees" />
+        <AssociationConnector Association="JanusModel.AddressesCompany" />
+        <AssociationConnector Association="JanusModel.CompanyContactInfo" />
+        <AssociationConnector Association="JanusModel.ContactInfoUsers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
