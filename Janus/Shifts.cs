@@ -22,6 +22,6 @@ namespace Janus
         public string description { get; set; }
         public string status { get; set; }
     
-        public virtual Employees Employee { get; set; }
+        public virtual Employees Employees { get; set; }
     }
 }

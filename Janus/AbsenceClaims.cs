@@ -23,6 +23,7 @@ namespace Janus
         public string claimType { get; set; }
         public bool isApproved { get; set; }
     
-        public virtual Employees Employee { get; set; }
+        public virtual Employees Employees { get; set; }
+        public virtual Managers Managers { get; set; }
     }
 }

@@ -14,9 +14,16 @@ namespace Janus
     
     public partial class Questions
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Questions()
+        {
+            this.Recoveries = new HashSet<Recoveries>();
+        }
+    
         public int questionID { get; set; }
         public string question { get; set; }
     
-        public virtual Recovery Recovery { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Recoveries> Recoveries { get; set; }
     }
 }

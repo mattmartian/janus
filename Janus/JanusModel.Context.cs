@@ -13,10 +13,10 @@ namespace Janus
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JanusModelContainer : DbContext
+    public partial class JanusEntities : DbContext
     {
-        public JanusModelContainer()
-            : base("name=JanusModelContainer")
+        public JanusEntities()
+            : base("name=JanusEntities")
         {
         }
     
@@ -25,19 +25,19 @@ namespace Janus
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employees> Employees { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Availibility> Availibilities { get; set; }
-        public virtual DbSet<Shifts> Shifts { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<AbsenceClaims> AbsenceClaims { get; set; }
-        public virtual DbSet<shiftRequests> shiftRequests { get; set; }
-        public virtual DbSet<Messages> Messages { get; set; }
-        public virtual DbSet<Recovery> Recoveries { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Addresses> Addresses { get; set; }
-        public virtual DbSet<ContactInfo> ContactInfoes { get; set; }
-        public virtual DbSet<Manager> Managers { get; set; }
+        public virtual DbSet<Availibility> Availibility { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<ContactInfo> ContactInfo { get; set; }
+        public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Managers> Managers { get; set; }
+        public virtual DbSet<Messages> Messages { get; set; }
+        public virtual DbSet<Questions> Questions { get; set; }
+        public virtual DbSet<Recoveries> Recoveries { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<shiftRequests> shiftRequests { get; set; }
+        public virtual DbSet<Shifts> Shifts { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

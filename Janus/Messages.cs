@@ -15,11 +15,12 @@ namespace Janus
     public partial class Messages
     {
         public int messageID { get; set; }
-        public string subject { get; set; }
-        public string body { get; set; }
         public int mailFromUserID { get; set; }
         public int mailToUserID { get; set; }
+        public string subject { get; set; }
+        public string body { get; set; }
     
-        public virtual Users User { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

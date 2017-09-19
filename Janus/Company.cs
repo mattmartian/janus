@@ -17,23 +17,20 @@ namespace Janus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company()
         {
-            this.Employees = new HashSet<Employees>();
-            this.Managers = new HashSet<Manager>();
+            this.Users = new HashSet<Users>();
         }
     
         public int companyID { get; set; }
         public int contactID { get; set; }
-        public long managerID { get; set; }
+        public int managerID { get; set; }
         public string companyName { get; set; }
         public string hours { get; set; }
         public string day { get; set; }
-        public int companyOwner { get; set; }
+        public string companyOwner { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Manager> Managers { get; set; }
-        public virtual Addresses Address { get; set; }
         public virtual ContactInfo ContactInfo { get; set; }
+        public virtual Managers Managers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

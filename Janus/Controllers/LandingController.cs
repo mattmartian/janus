@@ -14,14 +14,6 @@ namespace Janus.Controllers
             return View();
         }
 
-        public ActionResult CreateAccount()
-        {
-            return View();
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
+      
     }
 }

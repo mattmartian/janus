@@ -17,7 +17,7 @@ namespace Janus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Addresses()
         {
-            this.Employees = new HashSet<Employees>();
+            this.Users = new HashSet<Users>();
         }
     
         public int addressID { get; set; }
@@ -25,7 +25,6 @@ namespace Janus
         public string postalCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
-        public virtual Company Company { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

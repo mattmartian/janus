@@ -17,31 +17,32 @@ namespace Janus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employees()
         {
-            this.shiftRequests = new HashSet<shiftRequests>();
-            this.Shifts = new HashSet<Shifts>();
             this.AbsenceClaims = new HashSet<AbsenceClaims>();
+            this.Availibility1 = new HashSet<Availibility>();
+            this.Shifts = new HashSet<Shifts>();
+            this.Managers1 = new HashSet<Managers>();
         }
     
         public int employeeID { get; set; }
         public int userID { get; set; }
         public int availibilityID { get; set; }
+        public int managerID { get; set; }
         public System.DateTime hireDate { get; set; }
         public System.DateTime fireDate { get; set; }
         public string position { get; set; }
         public string section { get; set; }
-        public string manager { get; set; }
         public string employmentStatus { get; set; }
     
-        public virtual Availibility Availibility { get; set; }
-        public virtual Users User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<shiftRequests> shiftRequests { get; set; }
-        public virtual Company Company { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shifts> Shifts { get; set; }
-        public virtual Manager Manager { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AbsenceClaims> AbsenceClaims { get; set; }
-        public virtual Addresses Address { get; set; }
+        public virtual Availibility Availibility { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Availibility> Availibility1 { get; set; }
+        public virtual Managers Managers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Shifts> Shifts { get; set; }
+        public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Managers> Managers1 { get; set; }
     }
 }

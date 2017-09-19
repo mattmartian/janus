@@ -16,11 +16,13 @@ namespace Janus
     {
         public int shiftRequestID { get; set; }
         public int managerID { get; set; }
-        public string requestor { get; set; }
-        public string requestWith { get; set; }
+        public int requestor { get; set; }
+        public int requestWith { get; set; }
         public bool requestConfirmed { get; set; }
         public string requestStatus { get; set; }
     
-        public virtual Employees Employee { get; set; }
+        public virtual Managers Managers { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

@@ -12,12 +12,20 @@ namespace Janus
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Roles
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Roles()
+        {
+            this.Users = new HashSet<Users>();
+        }
+    
         public int roleID { get; set; }
-        public string userID { get; set; }
+        public int userID { get; set; }
         public string role { get; set; }
     
-        public virtual Users User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

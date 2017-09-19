@@ -12,14 +12,14 @@ namespace Janus
     using System;
     using System.Collections.Generic;
     
-    public partial class Recovery
+    public partial class Recoveries
     {
         public int recoveryID { get; set; }
         public int userID { get; set; }
         public int questionID { get; set; }
         public string userAnswer { get; set; }
     
-        public virtual Users User { get; set; }
-        public virtual Questions Question { get; set; }
+        public virtual Questions Questions { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
