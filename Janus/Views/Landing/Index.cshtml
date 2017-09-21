@@ -2,13 +2,14 @@
     ViewBag.Title = "Landing Page";
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
+
 <div class="container">
     <div class="row">
         <div class="col-xs-4 col-md-4">   
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" />
-            <a href="@Url.Action("CreateAccount", "Landing")" class="btn btn-default">
+            <a href="@Url.Action("Register", "Register")" class="btn btn-default">
                 <span>Create Account</span>
             </a>
             <a href="@Url.Action("Login", "Landing")" class="btn btn-default">

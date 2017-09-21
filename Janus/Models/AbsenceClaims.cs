@@ -7,22 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus
+namespace Janus.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class shiftRequests
+    public partial class AbsenceClaims
     {
-        public int shiftRequestID { get; set; }
+        public int claimID { get; set; }
+        public int employeeID { get; set; }
         public int managerID { get; set; }
-        public int requestor { get; set; }
-        public int requestWith { get; set; }
-        public bool requestConfirmed { get; set; }
-        public string requestStatus { get; set; }
+        public System.DateTime startTime { get; set; }
+        public System.DateTime endTime { get; set; }
+        public string description { get; set; }
+        public string claimType { get; set; }
+        public bool isApproved { get; set; }
     
+        public virtual Employees Employees { get; set; }
         public virtual Managers Managers { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual Users Users1 { get; set; }
     }
 }

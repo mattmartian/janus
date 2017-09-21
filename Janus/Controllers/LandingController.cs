@@ -8,7 +8,7 @@ namespace Janus.Controllers
 {
     public class LandingController : Controller
     {
-        // GET: CreateAccount
+        // GET: Landing Page
         public ActionResult Index()
         {
             return View();

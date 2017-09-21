@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus
+namespace Janus.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ContactInfo
+    public partial class Addresses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ContactInfo()
+        public Addresses()
         {
-            this.Company = new HashSet<Company>();
             this.Users = new HashSet<Users>();
         }
     
-        public int contactID { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
+        public int addressID { get; set; }
+        public string streetAddress { get; set; }
+        public string postalCode { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company> Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
     }

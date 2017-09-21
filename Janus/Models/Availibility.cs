@@ -7,30 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus
+namespace Janus.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Company
+    public partial class Availibility
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Company()
+        public Availibility()
         {
-            this.Users = new HashSet<Users>();
+            this.Employees = new HashSet<Employees>();
         }
     
-        public int companyID { get; set; }
-        public int contactID { get; set; }
-        public int managerID { get; set; }
-        public string companyName { get; set; }
-        public string hours { get; set; }
+        public int availibilityID { get; set; }
+        public int employeeID { get; set; }
+        public System.DateTime startTime { get; set; }
+        public System.DateTime endTime { get; set; }
         public string day { get; set; }
-        public string companyOwner { get; set; }
     
-        public virtual ContactInfo ContactInfo { get; set; }
-        public virtual Managers Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Employees> Employees { get; set; }
+        public virtual Employees Employees1 { get; set; }
     }
 }

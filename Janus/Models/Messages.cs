@@ -7,19 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus
+namespace Janus.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Recoveries
+    public partial class Messages
     {
-        public int recoveryID { get; set; }
-        public int userID { get; set; }
-        public int questionID { get; set; }
-        public string userAnswer { get; set; }
+        public int messageID { get; set; }
+        public int mailFromUserID { get; set; }
+        public int mailToUserID { get; set; }
+        public string subject { get; set; }
+        public string body { get; set; }
     
-        public virtual Questions Questions { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

@@ -7,27 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus
+namespace Janus.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Availibility
+    public partial class Managers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Availibility()
+        public Managers()
         {
+            this.AbsenceClaims = new HashSet<AbsenceClaims>();
+            this.Company = new HashSet<Company>();
             this.Employees = new HashSet<Employees>();
+            this.shiftRequests = new HashSet<shiftRequests>();
         }
     
-        public int availibilityID { get; set; }
+        public int managerID { get; set; }
         public int employeeID { get; set; }
-        public System.DateTime startTime { get; set; }
-        public System.DateTime endTime { get; set; }
-        public string day { get; set; }
+        public bool isAdmin { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AbsenceClaims> AbsenceClaims { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Company> Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees { get; set; }
         public virtual Employees Employees1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<shiftRequests> shiftRequests { get; set; }
     }
 }
