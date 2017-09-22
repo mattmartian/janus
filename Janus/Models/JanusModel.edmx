@@ -66,8 +66,6 @@
           <Property Name="managerID" Type="int" Nullable="false" />
           <Property Name="hireDate" Type="datetime" Nullable="false" />
           <Property Name="fireDate" Type="datetime" Nullable="false" />
-          <Property Name="position" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="section" Type="nvarchar(max)" Nullable="false" />
           <Property Name="employmentStatus" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Managers">
@@ -149,7 +147,7 @@
           <Property Name="birthDate" Type="datetime" Nullable="false" />
           <Property Name="password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK__AbsenceCl__emplo__2156DE01">
+        <Association Name="FK_AbsenceClaims_employeeID">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="AbsenceClaims" Type="Self.AbsenceClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -161,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AbsenceCl__manag__224B023A">
+        <Association Name="FK_AbsenceClaims_managerID">
           <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
           <End Role="AbsenceClaims" Type="Self.AbsenceClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,174 +168,6 @@
             </Principal>
             <Dependent Role="AbsenceClaims">
               <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Company__contact__1308BEAA">
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
-          <End Role="Company" Type="Self.Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContactInfo">
-              <PropertyRef Name="contactID" />
-            </Principal>
-            <Dependent Role="Company">
-              <PropertyRef Name="contactID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Company__manager__13FCE2E3">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="Company" Type="Self.Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="Company">
-              <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Employees__avail__0F382DC6">
-          <End Role="Availibility" Type="Self.Availibility" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Availibility">
-              <PropertyRef Name="availibilityID" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="availibilityID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Employees__manag__102C51FF">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Recoverie__quest__2AE0483B">
-          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
-          <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Questions">
-              <PropertyRef Name="questionID" />
-            </Principal>
-            <Dependent Role="Recoveries">
-              <PropertyRef Name="questionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Recoverie__userI__29EC2402">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Recoveries">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__shiftRequ__manag__25276EE5">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="shiftRequests">
-              <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__shiftRequ__reque__261B931E">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="shiftRequests">
-              <PropertyRef Name="requestor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__shiftRequ__reque__270FB757">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="shiftRequests">
-              <PropertyRef Name="requestWith" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Shifts__employee__1E7A7156">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="employeeID" />
-            </Principal>
-            <Dependent Role="Shifts">
-              <PropertyRef Name="employeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__addressID__18C19800">
-          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Addresses">
-              <PropertyRef Name="addressID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="addressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__companyID__1AA9E072">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="companyID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="companyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__contactID__19B5BC39">
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContactInfo">
-              <PropertyRef Name="contactID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="contactID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__roleID__1B9E04AB">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="roleID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -350,6 +180,54 @@
             </Principal>
             <Dependent Role="Availibility">
               <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_contactID">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_managerID">
+          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Managers">
+              <PropertyRef Name="managerID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_availibilityID">
+          <End Role="Availibility" Type="Self.Availibility" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Availibility">
+              <PropertyRef Name="availibilityID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="availibilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_managerID">
+          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Managers">
+              <PropertyRef Name="managerID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="managerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -401,6 +279,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Recoveries_questionID">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="questionID" />
+            </Principal>
+            <Dependent Role="Recoveries">
+              <PropertyRef Name="questionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recoveries_userID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Recoveries">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Roles_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
@@ -410,6 +312,102 @@
             </Principal>
             <Dependent Role="Roles">
               <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRequests_managerID">
+          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
+          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Managers">
+              <PropertyRef Name="managerID" />
+            </Principal>
+            <Dependent Role="shiftRequests">
+              <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRequestsRequestor_userID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="shiftRequests">
+              <PropertyRef Name="requestor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRequestsRequestwith_userID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="shiftRequests">
+              <PropertyRef Name="requestWith" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_employeeID">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_addressID">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="addressID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="addressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_companyID">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="companyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_contactID">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_roleID">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -428,73 +426,33 @@
           <EntitySet Name="shiftRequests" EntityType="Self.shiftRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AbsenceCl__emplo__2156DE01" Association="Self.FK__AbsenceCl__emplo__2156DE01">
+          <AssociationSet Name="FK_AbsenceClaims_employeeID" Association="Self.FK_AbsenceClaims_employeeID">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="AbsenceClaims" EntitySet="AbsenceClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK__AbsenceCl__manag__224B023A" Association="Self.FK__AbsenceCl__manag__224B023A">
+          <AssociationSet Name="FK_AbsenceClaims_managerID" Association="Self.FK_AbsenceClaims_managerID">
             <End Role="Managers" EntitySet="Managers" />
             <End Role="AbsenceClaims" EntitySet="AbsenceClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Company__contact__1308BEAA" Association="Self.FK__Company__contact__1308BEAA">
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-            <End Role="Company" EntitySet="Company" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Company__manager__13FCE2E3" Association="Self.FK__Company__manager__13FCE2E3">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="Company" EntitySet="Company" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employees__avail__0F382DC6" Association="Self.FK__Employees__avail__0F382DC6">
-            <End Role="Availibility" EntitySet="Availibility" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employees__manag__102C51FF" Association="Self.FK__Employees__manag__102C51FF">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Recoverie__quest__2AE0483B" Association="Self.FK__Recoverie__quest__2AE0483B">
-            <End Role="Questions" EntitySet="Questions" />
-            <End Role="Recoveries" EntitySet="Recoveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Recoverie__userI__29EC2402" Association="Self.FK__Recoverie__userI__29EC2402">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Recoveries" EntitySet="Recoveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__shiftRequ__manag__25276EE5" Association="Self.FK__shiftRequ__manag__25276EE5">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="shiftRequests" EntitySet="shiftRequests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__shiftRequ__reque__261B931E" Association="Self.FK__shiftRequ__reque__261B931E">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="shiftRequests" EntitySet="shiftRequests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__shiftRequ__reque__270FB757" Association="Self.FK__shiftRequ__reque__270FB757">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="shiftRequests" EntitySet="shiftRequests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Shifts__employee__1E7A7156" Association="Self.FK__Shifts__employee__1E7A7156">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Shifts" EntitySet="Shifts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__addressID__18C19800" Association="Self.FK__Users__addressID__18C19800">
-            <End Role="Addresses" EntitySet="Addresses" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__companyID__1AA9E072" Association="Self.FK__Users__companyID__1AA9E072">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__contactID__19B5BC39" Association="Self.FK__Users__contactID__19B5BC39">
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__roleID__1B9E04AB" Association="Self.FK__Users__roleID__1B9E04AB">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Availibility_employeeID" Association="Self.FK_Availibility_employeeID">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Availibility" EntitySet="Availibility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_contactID" Association="Self.FK_Company_contactID">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_managerID" Association="Self.FK_Company_managerID">
+            <End Role="Managers" EntitySet="Managers" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_availibilityID" Association="Self.FK_Employees_availibilityID">
+            <End Role="Availibility" EntitySet="Availibility" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_managerID" Association="Self.FK_Employees_managerID">
+            <End Role="Managers" EntitySet="Managers" />
+            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="FK_Employees_userID" Association="Self.FK_Employees_userID">
             <End Role="Users" EntitySet="Users" />
@@ -512,9 +470,49 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
+          <AssociationSet Name="FK_Recoveries_questionID" Association="Self.FK_Recoveries_questionID">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Recoveries" EntitySet="Recoveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recoveries_userID" Association="Self.FK_Recoveries_userID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Recoveries" EntitySet="Recoveries" />
+          </AssociationSet>
           <AssociationSet Name="FK_Roles_userID" Association="Self.FK_Roles_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRequests_managerID" Association="Self.FK_ShiftRequests_managerID">
+            <End Role="Managers" EntitySet="Managers" />
+            <End Role="shiftRequests" EntitySet="shiftRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRequestsRequestor_userID" Association="Self.FK_ShiftRequestsRequestor_userID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="shiftRequests" EntitySet="shiftRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRequestsRequestwith_userID" Association="Self.FK_ShiftRequestsRequestwith_userID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="shiftRequests" EntitySet="shiftRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_employeeID" Association="Self.FK_Shifts_employeeID">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_addressID" Association="Self.FK_Users_addressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_companyID" Association="Self.FK_Users_companyID">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_contactID" Association="Self.FK_Users_contactID">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_roleID" Association="Self.FK_Users_roleID">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -534,8 +532,8 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="claimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="isApproved" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__AbsenceCl__emplo__2156DE01" FromRole="AbsenceClaims" ToRole="Employees" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK__AbsenceCl__manag__224B023A" FromRole="AbsenceClaims" ToRole="Managers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_AbsenceClaims_employeeID" FromRole="AbsenceClaims" ToRole="Employees" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_AbsenceClaims_managerID" FromRole="AbsenceClaims" ToRole="Managers" />
         </EntityType>
         <EntityType Name="Addresses">
           <Key>
@@ -544,7 +542,7 @@
           <Property Name="addressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="streetAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="postalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__addressID__18C19800" FromRole="Addresses" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_addressID" FromRole="Addresses" ToRole="Users" />
         </EntityType>
         <EntityType Name="Availibility">
           <Key>
@@ -555,8 +553,8 @@
           <Property Name="startTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="endTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__avail__0F382DC6" FromRole="Availibility" ToRole="Employees" />
-          <NavigationProperty Name="Employees1" Relationship="Self.FK_Availibility_employeeID" FromRole="Availibility" ToRole="Employees" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Availibility_employeeID" FromRole="Availibility" ToRole="Employees" />
+          <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_availibilityID" FromRole="Availibility" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -569,9 +567,9 @@
           <Property Name="hours" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="companyOwner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ContactInfo" Relationship="Self.FK__Company__contact__1308BEAA" FromRole="Company" ToRole="ContactInfo" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK__Company__manager__13FCE2E3" FromRole="Company" ToRole="Managers" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__companyID__1AA9E072" FromRole="Company" ToRole="Users" />
+          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_Company_contactID" FromRole="Company" ToRole="ContactInfo" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_Company_managerID" FromRole="Company" ToRole="Managers" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_companyID" FromRole="Company" ToRole="Users" />
         </EntityType>
         <EntityType Name="ContactInfo">
           <Key>
@@ -580,8 +578,8 @@
           <Property Name="contactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="Self.FK__Company__contact__1308BEAA" FromRole="ContactInfo" ToRole="Company" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__contactID__19B5BC39" FromRole="ContactInfo" ToRole="Users" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Company_contactID" FromRole="ContactInfo" ToRole="Company" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_contactID" FromRole="ContactInfo" ToRole="Users" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -593,16 +591,14 @@
           <Property Name="managerID" Type="Int32" Nullable="false" />
           <Property Name="hireDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fireDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="section" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="employmentStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AbsenceClaims" Relationship="Self.FK__AbsenceCl__emplo__2156DE01" FromRole="Employees" ToRole="AbsenceClaims" />
-          <NavigationProperty Name="Availibility" Relationship="Self.FK__Employees__avail__0F382DC6" FromRole="Employees" ToRole="Availibility" />
-          <NavigationProperty Name="Availibility1" Relationship="Self.FK_Availibility_employeeID" FromRole="Employees" ToRole="Availibility" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK__Employees__manag__102C51FF" FromRole="Employees" ToRole="Managers" />
-          <NavigationProperty Name="Shifts" Relationship="Self.FK__Shifts__employee__1E7A7156" FromRole="Employees" ToRole="Shifts" />
+          <NavigationProperty Name="AbsenceClaims" Relationship="Self.FK_AbsenceClaims_employeeID" FromRole="Employees" ToRole="AbsenceClaims" />
+          <NavigationProperty Name="Availibility" Relationship="Self.FK_Availibility_employeeID" FromRole="Employees" ToRole="Availibility" />
+          <NavigationProperty Name="Availibility1" Relationship="Self.FK_Employees_availibilityID" FromRole="Employees" ToRole="Availibility" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_Employees_managerID" FromRole="Employees" ToRole="Managers" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Employees_userID" FromRole="Employees" ToRole="Users" />
           <NavigationProperty Name="Managers1" Relationship="Self.FK_Managers_employeeID" FromRole="Employees" ToRole="Managers" />
+          <NavigationProperty Name="Shifts" Relationship="Self.FK_Shifts_employeeID" FromRole="Employees" ToRole="Shifts" />
         </EntityType>
         <EntityType Name="Managers">
           <Key>
@@ -611,11 +607,11 @@
           <Property Name="managerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="employeeID" Type="Int32" Nullable="false" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AbsenceClaims" Relationship="Self.FK__AbsenceCl__manag__224B023A" FromRole="Managers" ToRole="AbsenceClaims" />
-          <NavigationProperty Name="Company" Relationship="Self.FK__Company__manager__13FCE2E3" FromRole="Managers" ToRole="Company" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__manag__102C51FF" FromRole="Managers" ToRole="Employees" />
+          <NavigationProperty Name="AbsenceClaims" Relationship="Self.FK_AbsenceClaims_managerID" FromRole="Managers" ToRole="AbsenceClaims" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Company_managerID" FromRole="Managers" ToRole="Company" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_managerID" FromRole="Managers" ToRole="Employees" />
           <NavigationProperty Name="Employees1" Relationship="Self.FK_Managers_employeeID" FromRole="Managers" ToRole="Employees" />
-          <NavigationProperty Name="shiftRequests" Relationship="Self.FK__shiftRequ__manag__25276EE5" FromRole="Managers" ToRole="shiftRequests" />
+          <NavigationProperty Name="shiftRequests" Relationship="Self.FK_ShiftRequests_managerID" FromRole="Managers" ToRole="shiftRequests" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -635,7 +631,7 @@
           </Key>
           <Property Name="questionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Recoveries" Relationship="Self.FK__Recoverie__quest__2AE0483B" FromRole="Questions" ToRole="Recoveries" />
+          <NavigationProperty Name="Recoveries" Relationship="Self.FK_Recoveries_questionID" FromRole="Questions" ToRole="Recoveries" />
         </EntityType>
         <EntityType Name="Recoveries">
           <Key>
@@ -645,8 +641,8 @@
           <Property Name="userID" Type="Int32" Nullable="false" />
           <Property Name="questionID" Type="Int32" Nullable="false" />
           <Property Name="userAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK__Recoverie__quest__2AE0483B" FromRole="Recoveries" ToRole="Questions" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Recoverie__userI__29EC2402" FromRole="Recoveries" ToRole="Users" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Recoveries_questionID" FromRole="Recoveries" ToRole="Questions" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Recoveries_userID" FromRole="Recoveries" ToRole="Users" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -655,8 +651,8 @@
           <Property Name="roleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userID" Type="Int32" Nullable="false" />
           <Property Name="role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__roleID__1B9E04AB" FromRole="Roles" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK_Roles_userID" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Roles_userID" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Users_roleID" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="shiftRequests">
           <Key>
@@ -668,9 +664,9 @@
           <Property Name="requestWith" Type="Int32" Nullable="false" />
           <Property Name="requestConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="requestStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK__shiftRequ__manag__25276EE5" FromRole="shiftRequests" ToRole="Managers" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__shiftRequ__reque__261B931E" FromRole="shiftRequests" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK__shiftRequ__reque__270FB757" FromRole="shiftRequests" ToRole="Users" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_ShiftRequests_managerID" FromRole="shiftRequests" ToRole="Managers" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_ShiftRequestsRequestor_userID" FromRole="shiftRequests" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_ShiftRequestsRequestwith_userID" FromRole="shiftRequests" ToRole="Users" />
         </EntityType>
         <EntityType Name="Shifts">
           <Key>
@@ -683,7 +679,7 @@
           <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Shifts__employee__1E7A7156" FromRole="Shifts" ToRole="Employees" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Shifts_employeeID" FromRole="Shifts" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -698,19 +694,19 @@
           <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="birthDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Addresses" Relationship="Self.FK__Users__addressID__18C19800" FromRole="Users" ToRole="Addresses" />
-          <NavigationProperty Name="Company" Relationship="Self.FK__Users__companyID__1AA9E072" FromRole="Users" ToRole="Company" />
-          <NavigationProperty Name="ContactInfo" Relationship="Self.FK__Users__contactID__19B5BC39" FromRole="Users" ToRole="ContactInfo" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Users_addressID" FromRole="Users" ToRole="Addresses" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Users_companyID" FromRole="Users" ToRole="Company" />
+          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_Users_contactID" FromRole="Users" ToRole="ContactInfo" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_userID" FromRole="Users" ToRole="Employees" />
           <NavigationProperty Name="Messages" Relationship="Self.FK_MessagesFrom_userID" FromRole="Users" ToRole="Messages" />
           <NavigationProperty Name="Messages1" Relationship="Self.FK_MessagesTo_userID" FromRole="Users" ToRole="Messages" />
-          <NavigationProperty Name="Recoveries" Relationship="Self.FK__Recoverie__userI__29EC2402" FromRole="Users" ToRole="Recoveries" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK__Users__roleID__1B9E04AB" FromRole="Users" ToRole="Roles" />
-          <NavigationProperty Name="Roles1" Relationship="Self.FK_Roles_userID" FromRole="Users" ToRole="Roles" />
-          <NavigationProperty Name="shiftRequests" Relationship="Self.FK__shiftRequ__reque__261B931E" FromRole="Users" ToRole="shiftRequests" />
-          <NavigationProperty Name="shiftRequests1" Relationship="Self.FK__shiftRequ__reque__270FB757" FromRole="Users" ToRole="shiftRequests" />
+          <NavigationProperty Name="Recoveries" Relationship="Self.FK_Recoveries_userID" FromRole="Users" ToRole="Recoveries" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_userID" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Roles1" Relationship="Self.FK_Users_roleID" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="shiftRequests" Relationship="Self.FK_ShiftRequestsRequestor_userID" FromRole="Users" ToRole="shiftRequests" />
+          <NavigationProperty Name="shiftRequests1" Relationship="Self.FK_ShiftRequestsRequestwith_userID" FromRole="Users" ToRole="shiftRequests" />
         </EntityType>
-        <Association Name="FK__AbsenceCl__emplo__2156DE01">
+        <Association Name="FK_AbsenceClaims_employeeID">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="AbsenceClaims" Type="Self.AbsenceClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -722,7 +718,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AbsenceCl__manag__224B023A">
+        <Association Name="FK_AbsenceClaims_managerID">
           <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
           <End Role="AbsenceClaims" Type="Self.AbsenceClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -734,7 +730,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__addressID__18C19800">
+        <Association Name="FK_Users_addressID">
           <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,18 +739,6 @@
             </Principal>
             <Dependent Role="Users">
               <PropertyRef Name="addressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Employees__avail__0F382DC6">
-          <End Role="Availibility" Type="Self.Availibility" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Availibility">
-              <PropertyRef Name="availibilityID" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="availibilityID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -770,7 +754,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Company__contact__1308BEAA">
+        <Association Name="FK_Employees_availibilityID">
+          <End Role="Availibility" Type="Self.Availibility" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Availibility">
+              <PropertyRef Name="availibilityID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="availibilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_contactID">
           <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
           <End Role="Company" Type="Self.Company" Multiplicity="*" />
           <ReferentialConstraint>
@@ -782,7 +778,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Company__manager__13FCE2E3">
+        <Association Name="FK_Company_managerID">
           <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
           <End Role="Company" Type="Self.Company" Multiplicity="*" />
           <ReferentialConstraint>
@@ -794,7 +790,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__companyID__1AA9E072">
+        <Association Name="FK_Users_companyID">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -806,7 +802,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__contactID__19B5BC39">
+        <Association Name="FK_Users_contactID">
           <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -818,7 +814,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__manag__102C51FF">
+        <Association Name="FK_Employees_managerID">
           <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -827,18 +823,6 @@
             </Principal>
             <Dependent Role="Employees">
               <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Shifts__employee__1E7A7156">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="employeeID" />
-            </Principal>
-            <Dependent Role="Shifts">
-              <PropertyRef Name="employeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -866,7 +850,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__shiftRequ__manag__25276EE5">
+        <Association Name="FK_Shifts_employeeID">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRequests_managerID">
           <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
           <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
           <ReferentialConstraint>
@@ -902,7 +898,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recoverie__quest__2AE0483B">
+        <Association Name="FK_Recoveries_questionID">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
           <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -914,7 +910,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recoverie__userI__29EC2402">
+        <Association Name="FK_Recoveries_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -923,18 +919,6 @@
             </Principal>
             <Dependent Role="Recoveries">
               <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__roleID__1B9E04AB">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="roleID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -950,7 +934,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__shiftRequ__reque__261B931E">
+        <Association Name="FK_Users_roleID">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="roleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRequestsRequestor_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
           <ReferentialConstraint>
@@ -962,7 +958,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__shiftRequ__reque__270FB757">
+        <Association Name="FK_ShiftRequestsRequestwith_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
           <ReferentialConstraint>
@@ -989,49 +985,45 @@
           <EntitySet Name="shiftRequests" EntityType="Self.shiftRequests" />
           <EntitySet Name="Shifts" EntityType="Self.Shifts" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__AbsenceCl__emplo__2156DE01" Association="Self.FK__AbsenceCl__emplo__2156DE01">
+          <AssociationSet Name="FK_AbsenceClaims_employeeID" Association="Self.FK_AbsenceClaims_employeeID">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="AbsenceClaims" EntitySet="AbsenceClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK__AbsenceCl__manag__224B023A" Association="Self.FK__AbsenceCl__manag__224B023A">
+          <AssociationSet Name="FK_AbsenceClaims_managerID" Association="Self.FK_AbsenceClaims_managerID">
             <End Role="Managers" EntitySet="Managers" />
             <End Role="AbsenceClaims" EntitySet="AbsenceClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__addressID__18C19800" Association="Self.FK__Users__addressID__18C19800">
+          <AssociationSet Name="FK_Users_addressID" Association="Self.FK_Users_addressID">
             <End Role="Addresses" EntitySet="Addresses" />
             <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employees__avail__0F382DC6" Association="Self.FK__Employees__avail__0F382DC6">
-            <End Role="Availibility" EntitySet="Availibility" />
-            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="FK_Availibility_employeeID" Association="Self.FK_Availibility_employeeID">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Availibility" EntitySet="Availibility" />
           </AssociationSet>
-          <AssociationSet Name="FK__Company__contact__1308BEAA" Association="Self.FK__Company__contact__1308BEAA">
+          <AssociationSet Name="FK_Employees_availibilityID" Association="Self.FK_Employees_availibilityID">
+            <End Role="Availibility" EntitySet="Availibility" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_contactID" Association="Self.FK_Company_contactID">
             <End Role="ContactInfo" EntitySet="ContactInfo" />
             <End Role="Company" EntitySet="Company" />
           </AssociationSet>
-          <AssociationSet Name="FK__Company__manager__13FCE2E3" Association="Self.FK__Company__manager__13FCE2E3">
+          <AssociationSet Name="FK_Company_managerID" Association="Self.FK_Company_managerID">
             <End Role="Managers" EntitySet="Managers" />
             <End Role="Company" EntitySet="Company" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__companyID__1AA9E072" Association="Self.FK__Users__companyID__1AA9E072">
+          <AssociationSet Name="FK_Users_companyID" Association="Self.FK_Users_companyID">
             <End Role="Company" EntitySet="Company" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__contactID__19B5BC39" Association="Self.FK__Users__contactID__19B5BC39">
+          <AssociationSet Name="FK_Users_contactID" Association="Self.FK_Users_contactID">
             <End Role="ContactInfo" EntitySet="ContactInfo" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__manag__102C51FF" Association="Self.FK__Employees__manag__102C51FF">
+          <AssociationSet Name="FK_Employees_managerID" Association="Self.FK_Employees_managerID">
             <End Role="Managers" EntitySet="Managers" />
             <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Shifts__employee__1E7A7156" Association="Self.FK__Shifts__employee__1E7A7156">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
           <AssociationSet Name="FK_Employees_userID" Association="Self.FK_Employees_userID">
             <End Role="Users" EntitySet="Users" />
@@ -1041,7 +1033,11 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Managers" EntitySet="Managers" />
           </AssociationSet>
-          <AssociationSet Name="FK__shiftRequ__manag__25276EE5" Association="Self.FK__shiftRequ__manag__25276EE5">
+          <AssociationSet Name="FK_Shifts_employeeID" Association="Self.FK_Shifts_employeeID">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRequests_managerID" Association="Self.FK_ShiftRequests_managerID">
             <End Role="Managers" EntitySet="Managers" />
             <End Role="shiftRequests" EntitySet="shiftRequests" />
           </AssociationSet>
@@ -1053,27 +1049,27 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recoverie__quest__2AE0483B" Association="Self.FK__Recoverie__quest__2AE0483B">
+          <AssociationSet Name="FK_Recoveries_questionID" Association="Self.FK_Recoveries_questionID">
             <End Role="Questions" EntitySet="Questions" />
             <End Role="Recoveries" EntitySet="Recoveries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recoverie__userI__29EC2402" Association="Self.FK__Recoverie__userI__29EC2402">
+          <AssociationSet Name="FK_Recoveries_userID" Association="Self.FK_Recoveries_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Recoveries" EntitySet="Recoveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__roleID__1B9E04AB" Association="Self.FK__Users__roleID__1B9E04AB">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Roles_userID" Association="Self.FK_Roles_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Roles" EntitySet="Roles" />
           </AssociationSet>
-          <AssociationSet Name="FK__shiftRequ__reque__261B931E" Association="Self.FK__shiftRequ__reque__261B931E">
+          <AssociationSet Name="FK_Users_roleID" Association="Self.FK_Users_roleID">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRequestsRequestor_userID" Association="Self.FK_ShiftRequestsRequestor_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="shiftRequests" EntitySet="shiftRequests" />
           </AssociationSet>
-          <AssociationSet Name="FK__shiftRequ__reque__270FB757" Association="Self.FK__shiftRequ__reque__270FB757">
+          <AssociationSet Name="FK_ShiftRequestsRequestwith_userID" Association="Self.FK_ShiftRequestsRequestwith_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="shiftRequests" EntitySet="shiftRequests" />
           </AssociationSet>
@@ -1149,8 +1145,6 @@
                 <ScalarProperty Name="managerID" ColumnName="managerID" />
                 <ScalarProperty Name="hireDate" ColumnName="hireDate" />
                 <ScalarProperty Name="fireDate" ColumnName="fireDate" />
-                <ScalarProperty Name="position" ColumnName="position" />
-                <ScalarProperty Name="section" ColumnName="section" />
                 <ScalarProperty Name="employmentStatus" ColumnName="employmentStatus" />
               </MappingFragment>
             </EntityTypeMapping>

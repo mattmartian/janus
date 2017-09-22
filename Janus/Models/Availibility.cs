@@ -17,7 +17,7 @@ namespace Janus.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Availibility()
         {
-            this.Employees = new HashSet<Employees>();
+            this.Employees1 = new HashSet<Employees>();
         }
     
         public int availibilityID { get; set; }
@@ -26,8 +26,8 @@ namespace Janus.Models
         public System.DateTime endTime { get; set; }
         public string day { get; set; }
     
+        public virtual Employees Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
-        public virtual Employees Employees1 { get; set; }
+        public virtual ICollection<Employees> Employees1 { get; set; }
     }
 }

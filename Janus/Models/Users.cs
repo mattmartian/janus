@@ -21,7 +21,7 @@ namespace Janus.Models
             this.Messages = new HashSet<Messages>();
             this.Messages1 = new HashSet<Messages>();
             this.Recoveries = new HashSet<Recoveries>();
-            this.Roles1 = new HashSet<Roles>();
+            this.Roles = new HashSet<Roles>();
             this.shiftRequests = new HashSet<shiftRequests>();
             this.shiftRequests1 = new HashSet<shiftRequests>();
         }
@@ -47,9 +47,9 @@ namespace Janus.Models
         public virtual ICollection<Messages> Messages1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recoveries> Recoveries { get; set; }
-        public virtual Roles Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Roles> Roles1 { get; set; }
+        public virtual ICollection<Roles> Roles { get; set; }
+        public virtual Roles Roles1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<shiftRequests> shiftRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ab879ae73ef4921ba6d6936dbac0ac2" Name="Diagram1">
-        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="12" PointY="15.125" IsExpanded="true" />
+      <Diagram DiagramId="42a22a68db9c452eb16f086153fac06c" Name="Diagram1">
+        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="12" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Addresses" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Availibility" Width="1.5" PointX="9.75" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Company" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.ContactInfo" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Employees" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Employees" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Managers" Width="1.5" PointX="9.75" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Messages" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Questions" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
@@ -19,28 +19,28 @@
         <EntityTypeShape EntityType="JanusModel.shiftRequests" Width="1.5" PointX="13" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Shifts" Width="1.5" PointX="9.75" PointY="21.375" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Users" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
-        <AssociationConnector Association="JanusModel.FK__AbsenceCl__emplo__2156DE01" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__AbsenceCl__manag__224B023A" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Users__addressID__18C19800" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Employees__avail__0F382DC6" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_AbsenceClaims_employeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_AbsenceClaims_managerID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Users_addressID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Availibility_employeeID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Company__contact__1308BEAA" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Company__manager__13FCE2E3" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Users__companyID__1AA9E072" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Users__contactID__19B5BC39" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Employees__manag__102C51FF" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Shifts__employee__1E7A7156" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Employees_availibilityID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Company_contactID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Company_managerID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Users_companyID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Users_contactID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Employees_managerID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Employees_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Managers_employeeID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__shiftRequ__manag__25276EE5" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Shifts_employeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_ShiftRequests_managerID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_MessagesFrom_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_MessagesTo_userID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Recoverie__quest__2AE0483B" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Recoverie__userI__29EC2402" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__Users__roleID__1B9E04AB" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Recoveries_questionID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Recoveries_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Roles_userID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__shiftRequ__reque__261B931E" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK__shiftRequ__reque__270FB757" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Users_roleID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_ShiftRequestsRequestor_userID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_ShiftRequestsRequestwith_userID" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

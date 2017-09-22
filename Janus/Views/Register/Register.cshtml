@@ -43,7 +43,7 @@
                         <label>Company: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
                     </p>
 
-                    <!--MAKE LABEL FOR SECURITY QUESTION ALSO ADD FUNCTIONALITY TO VOERWRITE PASSWORD AND ANSWER ELEMENT ON TABLE-->
+                    <!--MAKE LABEL FOR SECURITY QUESTION ALSO ADD FUNCTIONALITY TO VOERWRITE PASSWORD-->
 
 
                     <p>
@@ -53,13 +53,22 @@
                     </p>
 
                     <p>
-                        <label for="Confirm">Postal Code:</label>
-                        @Html.TextBox("postalCode")
+                        <label for="Confirm">Confirm Password:</label>
+                        @Html.Password("*")
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
+                    </p>
+
+                    <p>
+                        <label>Security Question: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                    </p>
+
+                    <p>
+                        <label for="securityAnswer">Answer:</label>
+                        @Html.TextBox("securityAnswer")
                     </p>
                     
                     <p>
-                        <input type="submit" value="Login" />
+                        <input type="submit" value="CreateAccount" />
                     </p>
                 </fieldset>
             }

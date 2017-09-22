@@ -17,15 +17,15 @@ namespace Janus.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Roles()
         {
-            this.Users = new HashSet<Users>();
+            this.Users1 = new HashSet<Users>();
         }
     
         public int roleID { get; set; }
         public int userID { get; set; }
         public string role { get; set; }
     
+        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
-        public virtual Users Users1 { get; set; }
+        public virtual ICollection<Users> Users1 { get; set; }
     }
 }
