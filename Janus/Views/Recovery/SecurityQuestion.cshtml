@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "SecurityQuestion";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-4">
+        </div>
+        <div class="col-xs-4 col-md-4 text-center">
+            <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <fieldset style="width: 400px">
+                    <legend>Answer Security Question</legend>
+                  
+                    <p>
+                        <label>Security Question: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                    </p>
+
+                    <p>
+                        <label for="securityAnswer">Answer:</label>
+                        @Html.TextBox("securityAnswer")
+                    </p>
+
+                    <p>
+                        <input type="submit" value="Next" />
+                    </p>
+                </fieldset>
+            }
+
+
+        </div>
+        <div class="col-xs-4 col-md-4 text-right">
+        </div>
+    </div>
+</div>

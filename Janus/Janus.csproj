@@ -171,24 +171,24 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\JanusModel.Context.tt">
+    <Content Include="Janus.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>JanusModel.Context.cs</LastGenOutput>
-      <DependentUpon>JanusModel.edmx</DependentUpon>
+      <DependentUpon>Janus.edmx</DependentUpon>
+      <LastGenOutput>Janus.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\JanusModel.tt">
+    <Content Include="Janus.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JanusModel.edmx</DependentUpon>
-      <LastGenOutput>JanusModel.cs</LastGenOutput>
+      <DependentUpon>Janus.edmx</DependentUpon>
+      <LastGenOutput>Janus.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\JanusModel.edmx">
+    <EntityDeploy Include="Janus.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JanusModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Janus.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\JanusModel.edmx.diagram">
-      <DependentUpon>JanusModel.edmx</DependentUpon>
+    <Content Include="Janus.edmx.diagram">
+      <DependentUpon>Janus.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -204,72 +204,67 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\NewUserMgr.cs" />
-    <Compile Include="Models\AbsenceClaims.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="AbsenceClaims.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Addresses.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Addresses.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Models\Availibility.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Availibility.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Company.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ContactInfo.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Company.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RecoveryController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Models\Employees.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Employees.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\JanusModel.Context.cs">
+    <Compile Include="Janus.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JanusModel.Context.tt</DependentUpon>
+      <DependentUpon>Janus.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JanusModel.cs">
+    <Compile Include="Janus.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JanusModel.tt</DependentUpon>
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JanusModel.Designer.cs">
+    <Compile Include="Janus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JanusModel.edmx</DependentUpon>
+      <DependentUpon>Janus.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Managers.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Managers.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Messages.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Messages.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Questions.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Recoveries.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Recoveries.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Roles.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Roles.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="shiftRequests.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\shiftRequests.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Shifts.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shifts.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Users.cs">
-      <DependentUpon>JanusModel.tt</DependentUpon>
+    <Compile Include="Users.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +291,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Landing\Index.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Recovery\VerifyAccount.cshtml" />
+    <Content Include="Views\Recovery\ResetPassword.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Recovery\SecurityQuestion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -305,6 +304,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

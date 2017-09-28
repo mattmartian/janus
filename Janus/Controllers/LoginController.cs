@@ -6,15 +6,12 @@ using System.Web.Mvc;
 
 namespace Janus.Controllers
 {
-    public class LandingController : Controller
+    public class LoginController : Controller
     {
-        // GET: Landing Page
-        public ActionResult Index()
+        // GET: Login
+        public ActionResult Login()
         {
             return View();
         }
-
-
-      
     }
 }

@@ -7,30 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Company
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Company()
+        public Roles()
         {
-            this.Users = new HashSet<Users>();
+            this.Users1 = new HashSet<Users>();
         }
     
-        public int companyID { get; set; }
-        public int contactID { get; set; }
-        public int managerID { get; set; }
-        public string companyName { get; set; }
-        public string hours { get; set; }
-        public string day { get; set; }
-        public string companyOwner { get; set; }
+        public int roleID { get; set; }
+        public int userID { get; set; }
+        public string role { get; set; }
     
-        public virtual ContactInfo ContactInfo { get; set; }
-        public virtual Managers Managers { get; set; }
+        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Users> Users1 { get; set; }
     }
 }

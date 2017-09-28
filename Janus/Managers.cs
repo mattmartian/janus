@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Collections.Generic;
@@ -18,8 +18,6 @@ namespace Janus.Models
         public Managers()
         {
             this.AbsenceClaims = new HashSet<AbsenceClaims>();
-            this.Company = new HashSet<Company>();
-            this.Employees = new HashSet<Employees>();
             this.shiftRequests = new HashSet<shiftRequests>();
         }
     
@@ -29,11 +27,7 @@ namespace Janus.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AbsenceClaims> AbsenceClaims { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company> Company { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
-        public virtual Employees Employees1 { get; set; }
+        public virtual Employees Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<shiftRequests> shiftRequests { get; set; }
     }

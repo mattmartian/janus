@@ -15,38 +15,117 @@ GO
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
-ALTER TABLE [dbo].[AbsenceClaims]
-DROP CONSTRAINT FK_AbsenceClaims_employeeID, FK_AbsenceClaims_managerID;
 
-ALTER TABLE [dbo].[Availibility]
-DROP CONSTRAINT FK_Availibility_employeeID;
 
-ALTER TABLE [dbo].[Company]
-DROP CONSTRAINT FK_Company_contactID , FK_Company_managerID;
+IF (OBJECT_ID('FK_AbsenceClaims_employeeID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[AbsenceClaims] DROP CONSTRAINT FK_AbsenceClaims_employeeID
+END
 
-ALTER TABLE [dbo].[Employees]
-DROP CONSTRAINT FK_Employees_availibilityID, FK_Employees_managerID, FK_Employees_userID;
+IF (OBJECT_ID('FK_AbsenceClaims_managerID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[AbsenceClaims] DROP CONSTRAINT FK_AbsenceClaims_managerID
+END
 
-ALTER TABLE [dbo].[Managers]
-DROP CONSTRAINT FK_Managers_employeeID;
+IF (OBJECT_ID('FK_AbsenceClaims_managerID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Availibility] DROP CONSTRAINT FK_Availibility_employeeID
+END
 
-ALTER TABLE [dbo].[Messages]
-DROP CONSTRAINT FK_MessagesFrom_userID , FK_MessagesTo_userID;
+IF (OBJECT_ID('FK_Company_contactID ', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Company] DROP CONSTRAINT FK_Company_contactID
+END
 
-ALTER TABLE [dbo].[Recoveries]
-DROP CONSTRAINT FK_Recoveries_userID , FK_Recoveries_questionID;
+IF (OBJECT_ID('FK_Company_managerID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Company] DROP CONSTRAINT FK_Company_managerID
+END
 
-ALTER TABLE [dbo].[Roles]
-DROP CONSTRAINT FK_Roles_userID;
+IF (OBJECT_ID('FK_Employees_availibilityID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT FK_Employees_availibilityID
+END
 
-ALTER TABLE [dbo].[shiftRequests]
-DROP CONSTRAINT FK_ShiftRequests_managerID , FK_ShiftRequestsRequestor_userID, FK_ShiftRequestsRequestwith_userID;
+IF (OBJECT_ID('FK_Employees_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT FK_Employees_userID
+END
 
-ALTER TABLE [dbo].[Shifts]
-DROP CONSTRAINT FK_Shifts_employeeID;
+IF (OBJECT_ID('FK_Employees_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT FK_Employees_userID
+END
 
-ALTER TABLE [dbo].[Users]
-DROP CONSTRAINT FK_Users_addressID,FK_Users_contactID,FK_Users_companyID,FK_Users_roleID;
+IF (OBJECT_ID('FK_Managers_employeeID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Managers] DROP CONSTRAINT FK_Managers_employeeID
+END
+
+IF (OBJECT_ID('FK_MessagesFrom_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Messages] DROP CONSTRAINT FK_MessagesFrom_userID
+END
+
+IF (OBJECT_ID('FK_MessagesTo_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Messages] DROP CONSTRAINT FK_MessagesTo_userID
+END
+
+IF (OBJECT_ID('FK_Recoveries_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Recoveries] DROP CONSTRAINT FK_Recoveries_userID
+END
+
+IF (OBJECT_ID('FK_Recoveries_questionID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Recoveries] DROP CONSTRAINT FK_Recoveries_questionID
+END
+
+IF (OBJECT_ID('FK_Roles_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Roles] DROP CONSTRAINT FK_Roles_userID
+END
+
+IF (OBJECT_ID('FK_ShiftRequests_managerID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[ShiftRequests] DROP CONSTRAINT FK_ShiftRequests_managerID
+END
+
+IF (OBJECT_ID(' FK_ShiftRequestsRequestor_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[ShiftRequests] DROP CONSTRAINT FK_ShiftRequestsRequestor_userID
+END
+
+IF (OBJECT_ID('FK_ShiftRequestsRequestwith_userID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[ShiftRequests] DROP CONSTRAINT FK_ShiftRequestsRequestwith_userID
+END
+
+IF (OBJECT_ID('FK_Shifts_employeeID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Shifts] DROP CONSTRAINT FK_Shifts_employeeID
+END
+
+IF (OBJECT_ID('FK_Users_addressID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT FK_Users_addressID
+END
+
+IF (OBJECT_ID('FK_Users_contactID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT FK_Users_contactID
+END
+
+IF (OBJECT_ID('FK_Users_companyID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT FK_Users_companyID
+END
+
+IF (OBJECT_ID('FK_Users_roleID', 'F') IS NOT NULL)
+BEGIN
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT FK_Users_roleID
+END
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -99,26 +178,12 @@ IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'Questions'
-CREATE TABLE [dbo].[Questions] (
-    [questionID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [question] nvarchar(max)  NOT NULL
-);
-GO
 
 -- Creating table 'Addresses'
 CREATE TABLE [dbo].[Addresses] (
     [addressID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [streetAddress] nvarchar(max)  NOT NULL,
     [postalCode] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'ContactInfoes'
-CREATE TABLE [dbo].[ContactInfo] (
-    [contactID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [phone] nvarchar(max)  NOT NULL,
-    [email] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -157,7 +222,8 @@ CREATE TABLE [dbo].[Employees] (
 	employeeID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     userID int  NOT NULL,
     availibilityID int  NOT NULL,
-	managerID int  NOT NULL ,
+	[phone] nvarchar(max)  NOT NULL,
+    [email] nvarchar(max)  NOT NULL,
     hireDate datetime  NOT NULL,
     fireDate datetime  NOT NULL,
     employmentStatus nvarchar(max)  NOT NULL
@@ -167,8 +233,6 @@ GO
 -- Creating table 'Companies'
 CREATE TABLE [dbo].[Company] (
     [companyID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [contactID] int  NOT NULL,
-    [managerID] int  NOT NULL,
     [companyName] nvarchar(max)  NOT NULL,
     [hours] nvarchar(max)  NOT NULL,
     [day] nvarchar(max)  NOT NULL,
@@ -245,7 +309,7 @@ GO
 CREATE TABLE [dbo].[Recoveries] (
     [recoveryID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [userID] int  NOT NULL,
-    [questionID] int  NOT NULL,
+    [question] nvarchar(max)  NOT NULL,
     [userAnswer] nvarchar(max)  NOT NULL
 );
 GO
@@ -275,13 +339,6 @@ ADD CONSTRAINT [FK_Availibility_employeeID] FOREIGN KEY (employeeID)
 REFERENCES Employees(employeeID);
 
 -- Company Table
-ALTER TABLE [dbo].[Company]
-ADD CONSTRAINT [FK_Company_contactID] FOREIGN KEY (contactID)
-REFERENCES ContactInfo(contactID);
-
-ALTER TABLE [dbo].[Company]
-ADD CONSTRAINT [FK_Company_managerID] FOREIGN KEY (managerID)
-REFERENCES Managers(managerID);
 
 
 -- ContactInfo
@@ -291,10 +348,6 @@ REFERENCES Managers(managerID);
 ALTER TABLE [dbo].[Employees]
 ADD CONSTRAINT [FK_Employees_availibilityID] FOREIGN KEY (availibilityID)
 REFERENCES Availibility(availibilityID);
-
-ALTER TABLE [dbo].[Employees]
-ADD CONSTRAINT [FK_Employees_managerID] FOREIGN KEY (managerID)
-REFERENCES Managers(managerID);
 
 
 ALTER TABLE [dbo].[Employees]
@@ -323,10 +376,6 @@ REFERENCES Users(userID);
 ALTER TABLE [dbo].[Recoveries]
 ADD CONSTRAINT [FK_Recoveries_userID] FOREIGN KEY (userID)
 REFERENCES Users(userID);
-
-ALTER TABLE [dbo].[Recoveries]
-ADD CONSTRAINT [FK_Recoveries_questionID] FOREIGN KEY (questionID)
-REFERENCES Questions(questionID);
 
 
 
@@ -361,9 +410,6 @@ ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [FK_Users_addressID] FOREIGN KEY (addressID)
 REFERENCES Addresses(addressID);
 
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_Users_contactID] FOREIGN KEY (contactID)
-REFERENCES ContactInfo(contactID);
 
 ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [FK_Users_companyID] FOREIGN KEY (companyID)

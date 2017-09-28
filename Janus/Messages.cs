@@ -7,21 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class shiftRequests
+    public partial class Messages
     {
-        public int shiftRequestID { get; set; }
-        public int managerID { get; set; }
-        public int requestor { get; set; }
-        public int requestWith { get; set; }
-        public bool requestConfirmed { get; set; }
-        public string requestStatus { get; set; }
+        public int messageID { get; set; }
+        public int mailFromUserID { get; set; }
+        public int mailToUserID { get; set; }
+        public string subject { get; set; }
+        public string body { get; set; }
     
-        public virtual Managers Managers { get; set; }
         public virtual Users Users { get; set; }
         public virtual Users Users1 { get; set; }
     }

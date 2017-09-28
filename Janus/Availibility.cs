@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Collections.Generic;

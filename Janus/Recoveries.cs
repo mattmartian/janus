@@ -7,25 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Roles
+    public partial class Recoveries
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Roles()
-        {
-            this.Users1 = new HashSet<Users>();
-        }
-    
-        public int roleID { get; set; }
+        public int recoveryID { get; set; }
         public int userID { get; set; }
-        public string role { get; set; }
+        public string userAnswer { get; set; }
+        public string question { get; set; }
     
         public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users1 { get; set; }
     }
 }

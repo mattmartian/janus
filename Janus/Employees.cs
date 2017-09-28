@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Collections.Generic;
@@ -19,14 +19,15 @@ namespace Janus.Models
         {
             this.AbsenceClaims = new HashSet<AbsenceClaims>();
             this.Availibility = new HashSet<Availibility>();
-            this.Managers1 = new HashSet<Managers>();
+            this.Managers = new HashSet<Managers>();
             this.Shifts = new HashSet<Shifts>();
         }
     
         public int employeeID { get; set; }
         public int userID { get; set; }
         public int availibilityID { get; set; }
-        public int managerID { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
         public System.DateTime hireDate { get; set; }
         public System.DateTime fireDate { get; set; }
         public string employmentStatus { get; set; }
@@ -36,10 +37,9 @@ namespace Janus.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Availibility> Availibility { get; set; }
         public virtual Availibility Availibility1 { get; set; }
-        public virtual Managers Managers { get; set; }
         public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Managers> Managers1 { get; set; }
+        public virtual ICollection<Managers> Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shifts> Shifts { get; set; }
     }

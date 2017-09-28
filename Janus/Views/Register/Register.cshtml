@@ -10,32 +10,32 @@
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
-            @using (Html.BeginForm())
+            @using (Html.BeginForm(FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                <fieldset style="width: 400px">
+                <fieldset style="width: 500px">
                     <legend>Create Account</legend>
                     <p>
                         <label for="firstName">First Name:</label>
-                        @Html.TextBox("firstName")
+                        @Html.TextBox("firstName",new { id ="firstName" })
                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="lastName">Last Name:</label>
-                        @Html.TextBox("lastName")
+                       @Html.TextBox("lastName", new { id = "lastName" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="streetAddress">Address:</label>
-                        @Html.TextBox("streetAddress")
+                        @Html.TextBox("streetAddress", new {id = "streetAddress" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="postalCode">Postal Code:</label>
-                        @Html.TextBox("postalCode")
+                        @Html.TextBox("postalCode",new {id="postalCode" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
@@ -48,7 +48,7 @@
 
                     <p>
                         <label for="Password">Password:</label>
-                        @Html.Password("*")
+                        @Html.Password("*",)
                       
                     </p>
 
@@ -58,17 +58,21 @@
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
+
+                    <!-- MAKE THIS INTO A PARTIAL VIEW-->
                     <p>
-                        <label>Security Question: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                        <label>Security Question:@Html.DropDownList("questionList", ViewData["questionList"] as SelectList) </label>
+
+                      
                     </p>
 
                     <p>
                         <label for="securityAnswer">Answer:</label>
-                        @Html.TextBox("securityAnswer")
+                        @Html.TextBox("securityAnswer", "answer")
                     </p>
                     
                     <p>
-                        <input type="submit" value="CreateAccount" />
+                        <input type="submit" value="Create Account" />
                     </p>
                 </fieldset>
             }

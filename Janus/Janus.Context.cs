@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Janus.Models
+namespace Janus
 {
     using System;
     using System.Data.Entity;
@@ -29,11 +29,9 @@ namespace Janus.Models
         public virtual DbSet<Addresses> Addresses { get; set; }
         public virtual DbSet<Availibility> Availibility { get; set; }
         public virtual DbSet<Company> Company { get; set; }
-        public virtual DbSet<ContactInfo> ContactInfo { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Managers> Managers { get; set; }
         public virtual DbSet<Messages> Messages { get; set; }
-        public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Recoveries> Recoveries { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<shiftRequests> shiftRequests { get; set; }
