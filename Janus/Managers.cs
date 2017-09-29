@@ -22,12 +22,12 @@ namespace Janus
         }
     
         public int managerID { get; set; }
-        public int employeeID { get; set; }
+        public int userID { get; set; }
         public bool isAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AbsenceClaims> AbsenceClaims { get; set; }
-        public virtual Employees Employees { get; set; }
+        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<shiftRequests> shiftRequests { get; set; }
     }

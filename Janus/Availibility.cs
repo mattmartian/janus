@@ -14,20 +14,12 @@ namespace Janus
     
     public partial class Availibility
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Availibility()
-        {
-            this.Employees1 = new HashSet<Employees>();
-        }
-    
         public int availibilityID { get; set; }
-        public int employeeID { get; set; }
+        public int userID { get; set; }
         public System.DateTime startTime { get; set; }
         public System.DateTime endTime { get; set; }
         public string day { get; set; }
     
-        public virtual Employees Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees1 { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

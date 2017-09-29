@@ -39,22 +39,7 @@ namespace Janus.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult CreateAccount(string firstName, string lastName, string streetAddress, string postalCode, string company, string password,string question, string answer)
-
-        {
-            string fname = firstName;
-            string lname = lastName;
-            string addr = streetAddress;
-            string pcode = postalCode;
-            string comp = company;
-            string unhashedPass = password;
-            string secQuestion = question;
-            string qAnswer = answer;
-
-
-            return RedirectToAction("Login", "Login");
-        }
+      
        
 
     }

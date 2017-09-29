@@ -207,9 +207,6 @@
     <Compile Include="AbsenceClaims.cs">
       <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Addresses.cs">
-      <DependentUpon>Janus.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -223,9 +220,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RecoveryController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Employees.cs">
-      <DependentUpon>Janus.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +244,7 @@
     <Compile Include="Messages.cs">
       <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recoveries.cs">
       <DependentUpon>Janus.tt</DependentUpon>
@@ -304,7 +299,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

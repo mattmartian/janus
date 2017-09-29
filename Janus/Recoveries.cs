@@ -16,8 +16,8 @@ namespace Janus
     {
         public int recoveryID { get; set; }
         public int userID { get; set; }
-        public string userAnswer { get; set; }
         public string question { get; set; }
+        public string userAnswer { get; set; }
     
         public virtual Users Users { get; set; }
     }

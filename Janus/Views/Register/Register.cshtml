@@ -17,25 +17,25 @@
                     <legend>Create Account</legend>
                     <p>
                         <label for="firstName">First Name:</label>
-                        @Html.TextBox("firstName",new { id ="firstName" })
+                        @Html.TextBoxFor(model => model.Users.)
                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="lastName">Last Name:</label>
-                       @Html.TextBox("lastName", new { id = "lastName" })
+                       @Html.TextBox("lastName")
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="streetAddress">Address:</label>
-                        @Html.TextBox("streetAddress", new {id = "streetAddress" })
+                        @Html.TextBox("streetAddress")
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="postalCode">Postal Code:</label>
-                        @Html.TextBox("postalCode",new {id="postalCode" })
+                        @Html.TextBox("postalCode")
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
@@ -43,12 +43,15 @@
                         <label>Company: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
                     </p>
 
-                    <!--MAKE LABEL FOR SECURITY QUESTION ALSO ADD FUNCTIONALITY TO VOERWRITE PASSWORD-->
+                    <p>
+                        <label>Manager: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                    </p>
+
 
 
                     <p>
                         <label for="Password">Password:</label>
-                        @Html.Password("*",)
+                        @Html.Password("*")
                       
                     </p>
 

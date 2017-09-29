@@ -22,8 +22,8 @@ namespace Janus
     
         public int companyID { get; set; }
         public string companyName { get; set; }
-        public string hours { get; set; }
-        public string day { get; set; }
+        public string open { get; set; }
+        public string close { get; set; }
         public string companyOwner { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -15,13 +15,13 @@ namespace Janus
     public partial class Shifts
     {
         public int shiftID { get; set; }
-        public int employeeID { get; set; }
+        public int userID { get; set; }
         public System.DateTime shiftStart { get; set; }
         public System.DateTime shiftEnd { get; set; }
         public string position { get; set; }
         public string description { get; set; }
         public string status { get; set; }
     
-        public virtual Employees Employees { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

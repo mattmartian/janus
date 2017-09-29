@@ -15,7 +15,7 @@ namespace Janus
     public partial class AbsenceClaims
     {
         public int claimID { get; set; }
-        public int employeeID { get; set; }
+        public int userID { get; set; }
         public int managerID { get; set; }
         public System.DateTime startTime { get; set; }
         public System.DateTime endTime { get; set; }
@@ -23,7 +23,7 @@ namespace Janus
         public string claimType { get; set; }
         public bool isApproved { get; set; }
     
-        public virtual Employees Employees { get; set; }
         public virtual Managers Managers { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

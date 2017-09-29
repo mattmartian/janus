@@ -19,6 +19,7 @@ namespace Janus
         public int mailToUserID { get; set; }
         public string subject { get; set; }
         public string body { get; set; }
+        public bool isRead { get; set; }
     
         public virtual Users Users { get; set; }
         public virtual Users Users1 { get; set; }
