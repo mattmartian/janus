@@ -28,6 +28,7 @@ namespace Janus
         public virtual DbSet<AbsenceClaims> AbsenceClaims { get; set; }
         public virtual DbSet<Availibility> Availibility { get; set; }
         public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Managers> Managers { get; set; }
         public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Recoveries> Recoveries { get; set; }

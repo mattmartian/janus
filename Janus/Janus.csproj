@@ -220,6 +220,9 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RecoveryController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Departments.cs">
+      <DependentUpon>Janus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,7 +247,7 @@
     <Compile Include="Messages.cs">
       <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RegistrationViewModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recoveries.cs">
       <DependentUpon>Janus.tt</DependentUpon>

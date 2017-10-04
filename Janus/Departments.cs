@@ -12,23 +12,20 @@ namespace Janus
     using System;
     using System.Collections.Generic;
     
-    public partial class Managers
+    public partial class Departments
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Managers()
+        public Departments()
         {
-            this.Departments = new HashSet<Departments>();
-            this.shiftRequests = new HashSet<shiftRequests>();
+            this.Users = new HashSet<Users>();
         }
     
+        public int departmentID { get; set; }
         public int managerID { get; set; }
-        public int userID { get; set; }
-        public bool isAdmin { get; set; }
+        public string departmentName { get; set; }
     
+        public virtual Managers Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Departments> Departments { get; set; }
-        public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<shiftRequests> shiftRequests { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

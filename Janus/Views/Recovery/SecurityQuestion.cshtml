@@ -17,7 +17,7 @@
                     <legend>Answer Security Question</legend>
                   
                     <p>
-                        <label>Security Question: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                        <label>Security Question: </label>
                     </p>
 
                     <p>
@@ -26,7 +26,9 @@
                     </p>
 
                     <p>
-                        <input type="submit" value="Next" />
+                        <a href="@Url.Action("ResetPassword", "Recovery")">
+                            <span>Next</span>
+                        </a>
                     </p>
                 </fieldset>
             }

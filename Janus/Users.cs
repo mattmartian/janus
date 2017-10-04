@@ -24,16 +24,12 @@ namespace Janus
             this.Messages1 = new HashSet<Messages>();
             this.Recoveries = new HashSet<Recoveries>();
             this.Roles = new HashSet<Roles>();
-            this.shiftRequests = new HashSet<shiftRequests>();
-            this.shiftRequests1 = new HashSet<shiftRequests>();
             this.Shifts = new HashSet<Shifts>();
         }
     
         public int userID { get; set; }
         public int companyID { get; set; }
-        public Nullable<int> availibilityID { get; set; }
-        public int managerID { get; set; }
-        public int roleID { get; set; }
+        public int departmentID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public System.DateTime birthDate { get; set; }
@@ -51,6 +47,7 @@ namespace Janus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Availibility> Availibility { get; set; }
         public virtual Company Company { get; set; }
+        public virtual Departments Departments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Managers> Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -61,11 +58,6 @@ namespace Janus
         public virtual ICollection<Recoveries> Recoveries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Roles> Roles { get; set; }
-        public virtual Roles Roles1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<shiftRequests> shiftRequests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<shiftRequests> shiftRequests1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shifts> Shifts { get; set; }
     }

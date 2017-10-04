@@ -4,30 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c79b4757078c4d61b16c5bd6d0f6f26b" Name="Diagram1">
-        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Availibility" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Company" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Managers" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Messages" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Recoveries" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Roles" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.shiftRequests" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Shifts" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Users" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <AssociationConnector Association="JanusModel.FK_AbsenceClaims_managerID" ManuallyRouted="false" />
+      <Diagram DiagramId="7c1ea3a069e348eebedba08b26a8bfc9" Name="Diagram1">
+        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Availibility" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Company" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Departments" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Managers" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Messages" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Recoveries" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Roles" Width="1.5" PointX="5.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.shiftRequests" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Shifts" Width="1.5" PointX="5.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Users" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="JanusModel.FK_AbsenceClaims_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Availibility_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Users_companyID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Departments_managerID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Users_departmentID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Managers_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_ShiftRequests_managerID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK_MessagesFrom_userID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK_MessagesTo_userID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Messages_MailFromUserID" ManuallyRouted="false" />
+        <AssociationConnector Association="JanusModel.FK_Messages_MailToUserID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Recoveries_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Roles_userID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK_Users_roleID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK_ShiftRequestsRequestor_userID" ManuallyRouted="false" />
-        <AssociationConnector Association="JanusModel.FK_ShiftRequestsRequestwith_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Shifts_userID" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

@@ -10,14 +10,14 @@
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
-            @using (Html.BeginForm(FormMethod.Post))
+            @using (Html.BeginForm("CreateUser","Register"))
             {
                 @Html.AntiForgeryToken()
                 <fieldset style="width: 500px">
                     <legend>Create Account</legend>
                     <p>
                         <label for="firstName">First Name:</label>
-                        @Html.TextBoxFor(model => model.Users.)
+                        @Html.TextBox("firstName")
                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
@@ -71,7 +71,7 @@
 
                     <p>
                         <label for="securityAnswer">Answer:</label>
-                        @Html.TextBox("securityAnswer", "answer")
+                        @Html.TextBox("securityAnswer")
                     </p>
                     
                     <p>
