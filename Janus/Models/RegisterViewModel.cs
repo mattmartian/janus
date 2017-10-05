@@ -7,7 +7,6 @@ namespace Janus.Models
 {
     public class RegisterViewModel
     {
-        public string companyID { get; set; }
 
         public string departmentID { get; set; }
 
@@ -32,5 +31,9 @@ namespace Janus.Models
         public DateTime fireDate { get; set; }
 
         public string employmentStatus { get; set; }
+
+        public string question { get; set; }
+
+        public string userAnswer { get; set; }
     }
 }

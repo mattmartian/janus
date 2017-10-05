@@ -15,12 +15,10 @@ namespace Janus
     public partial class shiftRequests
     {
         public int shiftRequestID { get; set; }
-        public Nullable<int> managerID { get; set; }
+        public string managerSignOff { get; set; }
         public int requestor { get; set; }
         public int requestWith { get; set; }
         public bool requestConfirmed { get; set; }
         public string requestStatus { get; set; }
-    
-        public virtual Managers Managers { get; set; }
     }
 }

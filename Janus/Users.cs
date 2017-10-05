@@ -19,43 +19,37 @@ namespace Janus
         {
             this.AbsenceClaims = new HashSet<AbsenceClaims>();
             this.Availibility = new HashSet<Availibility>();
-            this.Managers = new HashSet<Managers>();
             this.Messages = new HashSet<Messages>();
             this.Messages1 = new HashSet<Messages>();
-            this.Recoveries = new HashSet<Recoveries>();
             this.Roles = new HashSet<Roles>();
             this.Shifts = new HashSet<Shifts>();
         }
     
         public int userID { get; set; }
-        public int companyID { get; set; }
         public int departmentID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public System.DateTime birthDate { get; set; }
+        public string birthDate { get; set; }
         public string password { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
         public string streetAddress { get; set; }
         public string postalCode { get; set; }
         public System.DateTime hireDate { get; set; }
-        public System.DateTime fireDate { get; set; }
+        public Nullable<System.DateTime> fireDate { get; set; }
         public string employmentStatus { get; set; }
+        public string question { get; set; }
+        public string userAnswer { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AbsenceClaims> AbsenceClaims { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Availibility> Availibility { get; set; }
-        public virtual Company Company { get; set; }
         public virtual Departments Departments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Managers> Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Messages> Messages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Messages> Messages1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recoveries> Recoveries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Roles> Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

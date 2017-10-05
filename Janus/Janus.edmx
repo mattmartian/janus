@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JanusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JanusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AbsenceClaims">
           <Key>
             <PropertyRef Name="claimID" />
@@ -27,31 +27,13 @@
           <Property Name="endTime" Type="datetime" Nullable="false" />
           <Property Name="day" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="companyID" />
-          </Key>
-          <Property Name="companyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="companyName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="openTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="closeTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="companyOwner" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="departmentID" />
           </Key>
           <Property Name="departmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="managerID" Type="int" Nullable="false" />
+          <Property Name="manager" Type="nvarchar(max)" />
           <Property Name="departmentName" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Managers">
-          <Key>
-            <PropertyRef Name="managerID" />
-          </Key>
-          <Property Name="managerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userID" Type="int" Nullable="false" />
-          <Property Name="isAdmin" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -63,15 +45,6 @@
           <Property Name="subject" Type="nvarchar(max)" Nullable="false" />
           <Property Name="body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="isRead" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Recoveries">
-          <Key>
-            <PropertyRef Name="recoveryID" />
-          </Key>
-          <Property Name="recoveryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userID" Type="int" Nullable="false" />
-          <Property Name="question" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="userAnswer" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -86,7 +59,7 @@
             <PropertyRef Name="shiftRequestID" />
           </Key>
           <Property Name="shiftRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="managerID" Type="int" />
+          <Property Name="managerSignOff" Type="nvarchar(max)" />
           <Property Name="requestor" Type="int" Nullable="false" />
           <Property Name="requestWith" Type="int" Nullable="false" />
           <Property Name="requestConfirmed" Type="bit" Nullable="false" />
@@ -109,19 +82,20 @@
             <PropertyRef Name="userID" />
           </Key>
           <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="companyID" Type="int" Nullable="false" />
           <Property Name="departmentID" Type="int" Nullable="false" />
           <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="birthDate" Type="date" Nullable="false" />
+          <Property Name="birthDate" Type="nvarchar(max)" Nullable="false" />
           <Property Name="password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
           <Property Name="email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="streetAddress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="postalCode" Type="nvarchar(max)" Nullable="false" />
           <Property Name="hireDate" Type="datetime" Nullable="false" />
-          <Property Name="fireDate" Type="datetime" Nullable="false" />
+          <Property Name="fireDate" Type="datetime" />
           <Property Name="employmentStatus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userAnswer" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_AbsenceClaims_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -143,30 +117,6 @@
               <PropertyRef Name="userID" />
             </Principal>
             <Dependent Role="Availibility">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Departments_managerID">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="Departments">
-              <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Managers_userID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Managers">
               <PropertyRef Name="userID" />
             </Dependent>
           </ReferentialConstraint>
@@ -195,18 +145,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recoveries_userID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Recoveries">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Roles_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
@@ -219,18 +157,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ShiftRequests_managerID">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="0..1" />
-          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="shiftRequests">
-              <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Shifts_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
@@ -240,18 +166,6 @@
             </Principal>
             <Dependent Role="Shifts">
               <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_companyID">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="companyID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="companyID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -270,11 +184,8 @@
         <EntityContainer Name="JanusModelStoreContainer">
           <EntitySet Name="AbsenceClaims" EntityType="Self.AbsenceClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Availibility" EntityType="Self.Availibility" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Recoveries" EntityType="Self.Recoveries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="shiftRequests" EntityType="Self.shiftRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
@@ -287,14 +198,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Availibility" EntitySet="Availibility" />
           </AssociationSet>
-          <AssociationSet Name="FK_Departments_managerID" Association="Self.FK_Departments_managerID">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="Departments" EntitySet="Departments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Managers_userID" Association="Self.FK_Managers_userID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Managers" EntitySet="Managers" />
-          </AssociationSet>
           <AssociationSet Name="FK_Messages_MailFromUserID" Association="Self.FK_Messages_MailFromUserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
@@ -303,32 +206,21 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recoveries_userID" Association="Self.FK_Recoveries_userID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Recoveries" EntitySet="Recoveries" />
-          </AssociationSet>
           <AssociationSet Name="FK_Roles_userID" Association="Self.FK_Roles_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Roles" EntitySet="Roles" />
           </AssociationSet>
-          <AssociationSet Name="FK_ShiftRequests_managerID" Association="Self.FK_ShiftRequests_managerID">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="shiftRequests" EntitySet="shiftRequests" />
-          </AssociationSet>
           <AssociationSet Name="FK_Shifts_userID" Association="Self.FK_Shifts_userID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Shifts" EntitySet="Shifts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_companyID" Association="Self.FK_Users_companyID">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_departmentID" Association="Self.FK_Users_departmentID">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JanusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -356,37 +248,14 @@
           <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Availibility_userID" FromRole="Availibility" ToRole="Users" />
         </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="companyID" />
-          </Key>
-          <Property Name="companyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="companyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="openTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="closeTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="companyOwner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_companyID" FromRole="Company" ToRole="Users" />
-        </EntityType>
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="departmentID" />
           </Key>
           <Property Name="departmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="managerID" Type="Int32" Nullable="false" />
+          <Property Name="manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="departmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK_Departments_managerID" FromRole="Departments" ToRole="Managers" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_departmentID" FromRole="Departments" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Managers">
-          <Key>
-            <PropertyRef Name="managerID" />
-          </Key>
-          <Property Name="managerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Departments" Relationship="Self.FK_Departments_managerID" FromRole="Managers" ToRole="Departments" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Managers_userID" FromRole="Managers" ToRole="Users" />
-          <NavigationProperty Name="shiftRequests" Relationship="Self.FK_ShiftRequests_managerID" FromRole="Managers" ToRole="shiftRequests" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -400,16 +269,6 @@
           <Property Name="isRead" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Messages_MailFromUserID" FromRole="Messages" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="Self.FK_Messages_MailToUserID" FromRole="Messages" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Recoveries">
-          <Key>
-            <PropertyRef Name="recoveryID" />
-          </Key>
-          <Property Name="recoveryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="userAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Recoveries_userID" FromRole="Recoveries" ToRole="Users" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -425,12 +284,11 @@
             <PropertyRef Name="shiftRequestID" />
           </Key>
           <Property Name="shiftRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="managerID" Type="Int32" />
+          <Property Name="managerSignOff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="requestor" Type="Int32" Nullable="false" />
           <Property Name="requestWith" Type="Int32" Nullable="false" />
           <Property Name="requestConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="requestStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK_ShiftRequests_managerID" FromRole="shiftRequests" ToRole="Managers" />
         </EntityType>
         <EntityType Name="Shifts">
           <Key>
@@ -450,27 +308,25 @@
             <PropertyRef Name="userID" />
           </Key>
           <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="companyID" Type="Int32" Nullable="false" />
           <Property Name="departmentID" Type="Int32" Nullable="false" />
           <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="birthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="birthDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="streetAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="postalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="hireDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="fireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fireDate" Type="DateTime" Precision="3" />
           <Property Name="employmentStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AbsenceClaims" Relationship="Self.FK_AbsenceClaims_userID" FromRole="Users" ToRole="AbsenceClaims" />
           <NavigationProperty Name="Availibility" Relationship="Self.FK_Availibility_userID" FromRole="Users" ToRole="Availibility" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_Users_companyID" FromRole="Users" ToRole="Company" />
           <NavigationProperty Name="Departments" Relationship="Self.FK_Users_departmentID" FromRole="Users" ToRole="Departments" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK_Managers_userID" FromRole="Users" ToRole="Managers" />
           <NavigationProperty Name="Messages" Relationship="Self.FK_Messages_MailFromUserID" FromRole="Users" ToRole="Messages" />
           <NavigationProperty Name="Messages1" Relationship="Self.FK_Messages_MailToUserID" FromRole="Users" ToRole="Messages" />
-          <NavigationProperty Name="Recoveries" Relationship="Self.FK_Recoveries_userID" FromRole="Users" ToRole="Recoveries" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_userID" FromRole="Users" ToRole="Roles" />
           <NavigationProperty Name="Shifts" Relationship="Self.FK_Shifts_userID" FromRole="Users" ToRole="Shifts" />
         </EntityType>
@@ -498,30 +354,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_companyID">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="companyID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="companyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Departments_managerID">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="Departments">
-              <PropertyRef Name="managerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Users_departmentID">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -531,30 +363,6 @@
             </Principal>
             <Dependent Role="Users">
               <PropertyRef Name="departmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Managers_userID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Managers">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ShiftRequests_managerID">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="0..1" />
-          <End Role="shiftRequests" Type="Self.shiftRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="managerID" />
-            </Principal>
-            <Dependent Role="shiftRequests">
-              <PropertyRef Name="managerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -579,18 +387,6 @@
             </Principal>
             <Dependent Role="Messages">
               <PropertyRef Name="mailToUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Recoveries_userID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Recoveries" Type="Self.Recoveries" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Recoveries">
-              <PropertyRef Name="userID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -621,11 +417,8 @@
         <EntityContainer Name="JanusEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AbsenceClaims" EntityType="Self.AbsenceClaims" />
           <EntitySet Name="Availibility" EntityType="Self.Availibility" />
-          <EntitySet Name="Company" EntityType="Self.Company" />
           <EntitySet Name="Departments" EntityType="Self.Departments" />
-          <EntitySet Name="Managers" EntityType="Self.Managers" />
           <EntitySet Name="Messages" EntityType="Self.Messages" />
-          <EntitySet Name="Recoveries" EntityType="Self.Recoveries" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="shiftRequests" EntityType="Self.shiftRequests" />
           <EntitySet Name="Shifts" EntityType="Self.Shifts" />
@@ -638,25 +431,9 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Availibility" EntitySet="Availibility" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_companyID" Association="Self.FK_Users_companyID">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Departments_managerID" Association="Self.FK_Departments_managerID">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="Departments" EntitySet="Departments" />
-          </AssociationSet>
           <AssociationSet Name="FK_Users_departmentID" Association="Self.FK_Users_departmentID">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Managers_userID" Association="Self.FK_Managers_userID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Managers" EntitySet="Managers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ShiftRequests_managerID" Association="Self.FK_ShiftRequests_managerID">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="shiftRequests" EntitySet="shiftRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_Messages_MailFromUserID" Association="Self.FK_Messages_MailFromUserID">
             <End Role="Users" EntitySet="Users" />
@@ -665,10 +442,6 @@
           <AssociationSet Name="FK_Messages_MailToUserID" Association="Self.FK_Messages_MailToUserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Recoveries_userID" Association="Self.FK_Recoveries_userID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Recoveries" EntitySet="Recoveries" />
           </AssociationSet>
           <AssociationSet Name="FK_Roles_userID" Association="Self.FK_Roles_userID">
             <End Role="Users" EntitySet="Users" />
@@ -709,32 +482,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Company">
-            <EntityTypeMapping TypeName="JanusModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="companyID" ColumnName="companyID" />
-                <ScalarProperty Name="companyName" ColumnName="companyName" />
-                <ScalarProperty Name="openTime" ColumnName="openTime" />
-                <ScalarProperty Name="closeTime" ColumnName="closeTime" />
-                <ScalarProperty Name="companyOwner" ColumnName="companyOwner" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="JanusModel.Departments">
               <MappingFragment StoreEntitySet="Departments">
                 <ScalarProperty Name="departmentID" ColumnName="departmentID" />
-                <ScalarProperty Name="managerID" ColumnName="managerID" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
                 <ScalarProperty Name="departmentName" ColumnName="departmentName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Managers">
-            <EntityTypeMapping TypeName="JanusModel.Managers">
-              <MappingFragment StoreEntitySet="Managers">
-                <ScalarProperty Name="managerID" ColumnName="managerID" />
-                <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -747,16 +500,6 @@
                 <ScalarProperty Name="subject" ColumnName="subject" />
                 <ScalarProperty Name="body" ColumnName="body" />
                 <ScalarProperty Name="isRead" ColumnName="isRead" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Recoveries">
-            <EntityTypeMapping TypeName="JanusModel.Recoveries">
-              <MappingFragment StoreEntitySet="Recoveries">
-                <ScalarProperty Name="recoveryID" ColumnName="recoveryID" />
-                <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="userAnswer" ColumnName="userAnswer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -773,7 +516,7 @@
             <EntityTypeMapping TypeName="JanusModel.shiftRequests">
               <MappingFragment StoreEntitySet="shiftRequests">
                 <ScalarProperty Name="shiftRequestID" ColumnName="shiftRequestID" />
-                <ScalarProperty Name="managerID" ColumnName="managerID" />
+                <ScalarProperty Name="managerSignOff" ColumnName="managerSignOff" />
                 <ScalarProperty Name="requestor" ColumnName="requestor" />
                 <ScalarProperty Name="requestWith" ColumnName="requestWith" />
                 <ScalarProperty Name="requestConfirmed" ColumnName="requestConfirmed" />
@@ -798,7 +541,6 @@
             <EntityTypeMapping TypeName="JanusModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="companyID" ColumnName="companyID" />
                 <ScalarProperty Name="departmentID" ColumnName="departmentID" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
@@ -811,6 +553,8 @@
                 <ScalarProperty Name="hireDate" ColumnName="hireDate" />
                 <ScalarProperty Name="fireDate" ColumnName="fireDate" />
                 <ScalarProperty Name="employmentStatus" ColumnName="employmentStatus" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="userAnswer" ColumnName="userAnswer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
@@ -10,7 +11,7 @@
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
-            @using (Html.BeginForm("CreateUser","Register"))
+            @using (Html.BeginForm("CreateUser","Register", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <fieldset style="width: 500px">
@@ -40,18 +41,32 @@
                     </p>
 
                     <p>
-                        <label>Company: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                        <label for="phone">Phone Number:</label>
+                        @Html.TextBox("phone")
+                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
+                    </p>
+
+
+                    <p>
+                        <label for="birthDate">Birth Date:</label>
+                        @Html.TextBox("birthDate")
+                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
-                        <label>Manager: @Html.DropDownList("companylist", ViewData["comapnylist"] as SelectList) </label>
+                        <label>Department: @Html.DropDownList("departmentList", ViewData["departmentList"] as SelectList) </label>
                     </p>
 
+                    <p>
+                        <label for="email">Email:</label>
+                        @Html.TextBox("email")
+                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
+                    </p>
 
 
                     <p>
                         <label for="Password">Password:</label>
-                        @Html.Password("*")
+                        @Html.Password("password")
                       
                     </p>
 

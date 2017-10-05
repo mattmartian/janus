@@ -153,18 +153,9 @@ IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL
 
 
 -- Creating table 'Recoveries'
-CREATE TABLE [dbo].[Recoveries] (
-    [recoveryID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [userID] int  NOT NULL,
-    [question] nvarchar(max)  NOT NULL,
-    [userAnswer] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'Recoveries'
 CREATE TABLE [dbo].[Departments] (
     [departmentID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [managerID] int  NOT NULL,
+    [manager] nvarchar(max)  NULL,
     departmentName nvarchar(max)  NOT NULL
 );
 GO
@@ -195,62 +186,28 @@ CREATE TABLE [dbo].[Availibility] (
 );
 GO
 
--- Creating table 'Managers'
-CREATE TABLE [dbo].[Managers] (
-    [managerID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [userID] int NOT NULL,
-    [isAdmin] bit NOT NULL
-);
-GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
     userID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	companyID int  NOT NULL,
 	departmentID int  NOT NULL,
     firstName nvarchar(max)  NOT NULL,
     lastName nvarchar(max)  NOT NULL,
-    birthDate date  NOT NULL,
+    birthDate nvarchar(max)  NOT NULL,
     [password] nvarchar(max)  NOT NULL,
     [phone] nvarchar(max)  NOT NULL,
     [email] nvarchar(max)  NOT NULL,
 	[streetAddress] nvarchar(max)  NOT NULL,
     [postalCode] nvarchar(max)  NOT NULL,
     hireDate datetime  NOT NULL,
-    fireDate datetime  NOT NULL,
-    employmentStatus nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'Users'
-CREATE TABLE [dbo].[Employees] (
-    userID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-   
-    firstName nvarchar(max)  NOT NULL,
-    lastName nvarchar(max)  NOT NULL,
-    birthDate date  NOT NULL,
-    [password] nvarchar(max)  NOT NULL,
-    [phone] nvarchar(max)  NOT NULL,
-    [email] nvarchar(max)  NOT NULL,
-	[streetAddress] nvarchar(max)  NOT NULL,
-    [postalCode] nvarchar(max)  NOT NULL,
-    hireDate datetime  NOT NULL,
-    fireDate datetime  NOT NULL,
-    employmentStatus nvarchar(max)  NOT NULL
+    fireDate datetime  NULL,
+    employmentStatus nvarchar(max)  NOT NULL,
+	   [question] nvarchar(max)  NOT NULL,
+    [userAnswer] nvarchar(max)  NOT NULL
 );
 GO
 
 
-
--- Creating table 'Companies'
-CREATE TABLE [dbo].[Company] (
-    [companyID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [companyName] nvarchar(max)  NOT NULL,
-    [openTime] nvarchar(max)  NOT NULL,
-    [closeTime] nvarchar(max)  NOT NULL,
-    [companyOwner] nvarchar(max)  NOT NULL
-);
-GO
 
 -- Creating table 'Roles'
 CREATE TABLE [dbo].[Roles] (
@@ -293,7 +250,7 @@ GO
 -- Creating table 'shiftRequests'
 CREATE TABLE [dbo].[shiftRequests] (
     [shiftRequestID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [managerID] int  NULL,
+    [managerSignOff] nvarchar(max)  NULL,
     [requestor] int  NOT NULL,
     [requestWith] int  NOT NULL,
     [requestConfirmed] bit  NOT NULL,
@@ -314,10 +271,6 @@ GO
 --Users Table
 
 ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_Users_companyID] FOREIGN KEY (companyID)
-REFERENCES Company(companyID);
-
-ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [FK_Users_departmentID] FOREIGN KEY (departmentID)
 REFERENCES Departments(departmentID);
 
@@ -332,15 +285,8 @@ ALTER TABLE [dbo].[Availibility]
 ADD CONSTRAINT [FK_Availibility_userID] FOREIGN KEY (userID)
 REFERENCES Users(userID);
 
--- Managers
-ALTER TABLE [dbo].[Managers]
-ADD CONSTRAINT [FK_Managers_userID] FOREIGN KEY (userID)
-REFERENCES Users(userID);
 
--- Department Table
-ALTER TABLE [dbo].[Departments]
-ADD CONSTRAINT [FK_Departments_managerID] FOREIGN KEY (managerID)
-REFERENCES Managers(managerID);
+
 
 --Messages
 
@@ -358,10 +304,6 @@ ALTER TABLE [dbo].[Shifts]
 ADD CONSTRAINT [FK_Shifts_userID] FOREIGN KEY (userID)
 REFERENCES Users(userID);
 
---Recoveries Table
-ALTER TABLE [dbo].[Recoveries]
-ADD CONSTRAINT [FK_Recoveries_userID] FOREIGN KEY (userID)
-REFERENCES Users(userID);
 
 --Roles Table
 
@@ -371,10 +313,6 @@ REFERENCES Users(userID);
 
 
 --Shift Requests Table
-
-ALTER TABLE [dbo].[ShiftRequests]
-ADD CONSTRAINT [FK_ShiftRequests_managerID] FOREIGN KEY (managerID)
-REFERENCES Managers(managerID);
 
 
 -- --------------------------------------------------
