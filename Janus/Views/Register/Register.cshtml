@@ -11,6 +11,11 @@
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
+
+            <div>
+                <p>@ViewBag.Error</p>
+            </div>
+
             @using (Html.BeginForm("CreateUser","Register", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
@@ -54,7 +59,12 @@
                     </p>
 
                     <p>
-                        <label>Department: @Html.DropDownList("departmentList", ViewData["departmentList"] as SelectList) </label>
+                        <label>Department: </label>
+                        <select name="departmentList">
+                            <option value="6" selected>Sales Floor</option>
+                            <option value="2">Music Lessons</option>
+                        
+                        </select>
                     </p>
 
                     <p>
@@ -72,14 +82,25 @@
 
                     <p>
                         <label for="Confirm">Confirm Password:</label>
-                        @Html.Password("*")
+                        @Html.Password("confirmpassword")
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
 
                     <!-- MAKE THIS INTO A PARTIAL VIEW-->
                     <p>
-                        <label>Security Question:@Html.DropDownList("questionList", ViewData["questionList"] as SelectList) </label>
+                        <label>Security Question: </label>
+                        <select name="questionList">
+                            <option value="1" selected>What was your favorite Elementary School Teacher's Name?</option>
+                            <option value="2">In What city did your mother and father meet?</option>
+                            <option value="3">What is your youngest sibling's birthday?</option>
+                            <option value="4">What is the first name of the boy or girl that you first kissed?</option>
+                            <option value="5">What was the name of your first pet?</option>
+                            <option value="6">What was your childhood nickname?</option>
+
+      
+
+                        </select>
 
                       
                     </p>

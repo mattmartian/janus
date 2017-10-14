@@ -10,7 +10,7 @@
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("LoginUser","Login", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <fieldset style="width: 400px">
@@ -22,7 +22,7 @@
                     </p>
                     <p>
                         <label for="Password">Password:</label>
-                        @Html.Password("*")
+                        @Html.Password("password")
 
                     </p>
 
@@ -31,7 +31,7 @@
                     </p>
                 </fieldset>
             }
-
+            
 
         </div>
         <div class="col-xs-4 col-md-4 text-right">
