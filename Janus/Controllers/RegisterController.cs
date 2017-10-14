@@ -22,7 +22,38 @@ namespace Janus.Controllers
 
         public ActionResult Register()
         {
+<<<<<<< HEAD
   
+=======
+            var departmentList = new SelectList(new[]
+              {
+                new { ID = "1", Name = "Sales Floor" },
+                new { ID = "2", Name = "Music Lessons" }
+
+
+            },
+              "ID", "Name", 1);
+
+           ViewData["departmentList"] = departmentList;
+
+            var questionList = new SelectList(new[]
+              {
+                new { ID = "1", Name = "What was your favorite Elementary School Teacher's Name?" },
+                new { ID = "2", Name = "In What city did your mother and father meet?" },
+                new { ID = "3", Name = "What is your youngest sibling's birthday?" },
+                new { ID = "4", Name = "What is the first name of the boy or girl that you first kissed?" },
+                new { ID = "5", Name = "What was the name of your first pet?" },
+                new { ID = "6", Name = "What was your childhood nickname?" }
+
+            },
+              "ID", "Name", 1);
+
+            ViewData["questionList"] = questionList;
+
+            
+
+
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
             return View();
         }
 
@@ -51,17 +82,30 @@ namespace Janus.Controllers
             string userQuestion = Request["questionList"];
             string userAnswer = Request["securityAnswer"];
 
+<<<<<<< HEAD
 
             if (!unhasedConfirmedPass.Equals(unhashedPass))
             {
                 formValidationErrors += "/nPasswords Do Not Match";
                 formHasErrors = true;
 
+=======
+            
+            if (!unhasedConfirmedPass.Equals(unhashedPass))
+            {
+                formValidationErrors += "Passwords Do Not Match";
+                formHasErrors = true;
+                
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
             }
 
             if (!email.Contains("@"))
             {
+<<<<<<< HEAD
                 formValidationErrors += "/nEmail is Invalid";
+=======
+                formValidationErrors += "Email is Invalid";
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
                 formHasErrors = true;
             }
 
@@ -71,7 +115,11 @@ namespace Janus.Controllers
 
             if (!postalMatch.Success)
             {
+<<<<<<< HEAD
                 formValidationErrors += "/nPostal Code Invalid";
+=======
+                formValidationErrors += "Postal Code Invalid";
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
                 formHasErrors = true;
             }
 
@@ -81,28 +129,46 @@ namespace Janus.Controllers
 
             if (!phoneMatch.Success)
             {
+<<<<<<< HEAD
                 formValidationErrors += "/nPhone is Invalid";
                 formHasErrors = true;
             }
 
             string birthdayRegex = @"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$";
+=======
+                formValidationErrors += "Phone is Invalid";
+                formHasErrors = true;
+            }
+
+            string birthdayRegex = @"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
 
 
             var birthdayMatch = Regex.Match(bday, birthdayRegex, RegexOptions.IgnoreCase);
 
             if (!birthdayMatch.Success)
             {
+<<<<<<< HEAD
                 formValidationErrors += "/nBirthday is not in format dd/mm/yyyy";
+=======
+                formValidationErrors += "Birthday is not in format dd/mm/yyyy";
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
                 formHasErrors = true;
             }
 
 
             if (formHasErrors == true)
             {
+<<<<<<< HEAD
                 ViewBag.Error = formValidationErrors;
                 return View("Register");
             }
             else
+=======
+                ViewBag.error = formValidationErrors;
+                return View();
+            } else
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
             {
                 byte[] salt;
                 new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
@@ -153,14 +219,26 @@ namespace Janus.Controllers
                 });
 
 
+<<<<<<< HEAD
 
                 _context.SaveChanges();
 
 
                 return RedirectToAction("Login", "Login");
             }
+=======
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
 
+                _context.SaveChanges();
 
+<<<<<<< HEAD
+=======
+
+                return RedirectToAction("Login", "Login");
+            }
+
+           
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
         }
 
     }

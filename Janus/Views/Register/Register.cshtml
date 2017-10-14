@@ -12,49 +12,58 @@
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
 
+<<<<<<< HEAD
             <div>
                 <p>@ViewBag.Error</p>
             </div>
 
+=======
+
+            <div>
+                <p>@ViewBag.error</p>
+            </div>
+
+
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
             @using (Html.BeginForm("CreateUser","Register", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
+               
                 <fieldset style="width: 500px">
                     <legend>Create Account</legend>
                     <p>
                         <label for="firstName">First Name:</label>
-                        @Html.TextBox("firstName")
-                       <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
+                        @Html.TextBox("firstName", new { @class = "form-control", placeholder = "First Name", required = "required" })
                     </p>
 
                     <p>
                         <label for="lastName">Last Name:</label>
-                       @Html.TextBox("lastName")
+                       @Html.TextBox("lastName", new {placeholder = "Last Name", required = "required"})
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="streetAddress">Address:</label>
-                        @Html.TextBox("streetAddress")
+                        @Html.TextBox("streetAddress", new {placeholder = "Street Address", required = "required"})
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="postalCode">Postal Code:</label>
-                        @Html.TextBox("postalCode")
+                        @Html.TextBox("postalCode", new { placeholder = "Postal Code", required = "required" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                     <p>
                         <label for="phone">Phone Number:</label>
-                        @Html.TextBox("phone")
+                        @Html.TextBox("phone", new { placeholder = "Phone Number", required = "required" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
 
                     <p>
                         <label for="birthDate">Birth Date:</label>
-                        @Html.TextBox("birthDate")
+                        @Html.TextBox("birthDate", new { placeholder = "Birth Date", required = "required" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
@@ -69,25 +78,29 @@
 
                     <p>
                         <label for="email">Email:</label>
-                        @Html.TextBox("email")
+                        @Html.TextBox("email", new { placeholder = "Email Address", required = "required" })
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
 
                     <p>
                         <label for="Password">Password:</label>
-                        @Html.Password("password")
+                        @Html.Password("password", new { placeholder = "Password", required = "required" })
                       
                     </p>
 
                     <p>
                         <label for="Confirm">Confirm Password:</label>
+<<<<<<< HEAD
                         @Html.Password("confirmpassword")
+=======
+                        @Html.Password("confirmpassword", new { placeholder = "Confirm Password", required = "required" })
+>>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
 
-                    <!-- MAKE THIS INTO A PARTIAL VIEW-->
+      
                     <p>
                         <label>Security Question: </label>
                         <select name="questionList">
@@ -107,7 +120,7 @@
 
                     <p>
                         <label for="securityAnswer">Answer:</label>
-                        @Html.TextBox("securityAnswer")
+                        @Html.TextBox("securityAnswer", new { placeholder = "Answer to Security Question", required = "required" })
                     </p>
                     
                     <p>
