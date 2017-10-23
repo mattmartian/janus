@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
 
 <div class="container">
@@ -12,121 +12,113 @@
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
 
-<<<<<<< HEAD
+
             <div>
                 <p>@ViewBag.Error</p>
             </div>
 
-=======
-
-            <div>
-                <p>@ViewBag.error</p>
-            </div>
-
-
->>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
             @using (Html.BeginForm("CreateUser","Register", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-               
-                <fieldset style="width: 500px">
-                    <legend>Create Account</legend>
-                    <p>
-                        <label for="firstName">First Name:</label>
-                        @Html.TextBox("firstName", new { @class = "form-control", placeholder = "First Name", required = "required" })
-                    </p>
-
-                    <p>
-                        <label for="lastName">Last Name:</label>
-                       @Html.TextBox("lastName", new {placeholder = "Last Name", required = "required"})
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
-
-                    <p>
-                        <label for="streetAddress">Address:</label>
-                        @Html.TextBox("streetAddress", new {placeholder = "Street Address", required = "required"})
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
-
-                    <p>
-                        <label for="postalCode">Postal Code:</label>
-                        @Html.TextBox("postalCode", new { placeholder = "Postal Code", required = "required" })
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
-
-                    <p>
-                        <label for="phone">Phone Number:</label>
-                        @Html.TextBox("phone", new { placeholder = "Phone Number", required = "required" })
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
 
 
-                    <p>
-                        <label for="birthDate">Birth Date:</label>
-                        @Html.TextBox("birthDate", new { placeholder = "Birth Date", required = "required" })
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
+                <form id="contact">
 
-                    <p>
+
+
+                    <h3>Create Account</h3>
+
+
+
+
+                    <fieldset>
+                        <input placeholder="Your First Name" type="text" id="firstName" name="firstName" required/>
+                    </fieldset>
+
+                    <fieldset>
+                        <input placeholder="Your Last Name" type="text"id="lastName" name="lastName" required/>
+                    </fieldset>
+
+                    <fieldset>
+                        <input placeholder="Street Address" type="text" id="streetAddress" name="streetAddress" required />
+                    </fieldset>
+
+                    <fieldset>
+                        <input placeholder="Postal Code" type="text" id="postalCode" name="postalCode" required/>
+                    </fieldset>
+
+                    <fieldset>
+                        <input placeholder="Phone" type="tel" id="phone" name="phone"  required />
+                    </fieldset>
+
+                    <fieldset>
+                        <input placeholder="Birthday" type="text"  id="birthDate" name="birthDate" required/>
+                    </fieldset>
+
+                    <fieldset>
                         <label>Department: </label>
                         <select name="departmentList">
-                            <option value="6" selected>Sales Floor</option>
+                            <option value="1" selected>Sales Floor</option>
                             <option value="2">Music Lessons</option>
-                        
+
                         </select>
-                    </p>
+                    </fieldset>
 
-                    <p>
-                        <label for="email">Email:</label>
-                        @Html.TextBox("email", new { placeholder = "Email Address", required = "required" })
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
+                    <fieldset>
+                        <input placeholder="Your Email" type="email" id="email" name="email" required />
+                    </fieldset>
 
+                    <fieldset>
+                        <input placeholder="Password" type="password" id="password" name="password" required/>
+                    </fieldset>
 
-                    <p>
-                        <label for="Password">Password:</label>
-                        @Html.Password("password", new { placeholder = "Password", required = "required" })
-                      
-                    </p>
-
-                    <p>
-                        <label for="Confirm">Confirm Password:</label>
-<<<<<<< HEAD
-                        @Html.Password("confirmpassword")
-=======
-                        @Html.Password("confirmpassword", new { placeholder = "Confirm Password", required = "required" })
->>>>>>> 5cec28e86c3b3d38aec42b69aad4862d91c49c01
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
+                    <fieldset>
+                        <input placeholder="Confirm Password" type="password" id="confirmpassword" name="confirmpassword" required />
+                    </fieldset>
 
 
-      
-                    <p>
+
+
+                    <fieldset>
+                        <label for="role">Role Type:</label>
+                        <select name="roles">
+                            <option value="Employee" selected>Employee</option>
+                            <option value="Manager">Manager</option>
+
+                        </select>
+
+                    </fieldset>
+
+
+
+                    <feildset>
                         <label>Security Question: </label>
                         <select name="questionList">
-                            <option value="1" selected>What was your favorite Elementary School Teacher's Name?</option>
-                            <option value="2">In What city did your mother and father meet?</option>
-                            <option value="3">What is your youngest sibling's birthday?</option>
-                            <option value="4">What is the first name of the boy or girl that you first kissed?</option>
-                            <option value="5">What was the name of your first pet?</option>
-                            <option value="6">What was your childhood nickname?</option>
-
-      
+                            <option value="What was your favorite Elementary School Teacher's Name?" selected>What was your favorite Elementary School Teacher's Name?</option>
+                            <option value="In What city did your mother and father meet?">In What city did your mother and father meet?</option>
+                            <option value="What is your youngest sibling's birthday?">What is your youngest sibling's birthday?</option>
+                            <option value="What is the first name of the boy or girl that you first kissed?">What is the first name of the boy or girl that you first kissed?</option>
+                            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                            <option value="What was your childhood nickname?">What was your childhood nickname?</option>
 
                         </select>
 
-                      
-                    </p>
 
-                    <p>
-                        <label for="securityAnswer">Answer:</label>
-                        @Html.TextBox("securityAnswer", new { placeholder = "Answer to Security Question", required = "required" })
-                    </p>
-                    
-                    <p>
-                        <input type="submit" value="Create Account" />
-                    </p>
-                </fieldset>
+                    </feildset>
+
+                    <fieldset>
+                        <input placeholder="Security Answer" type="text" id="securityAnswer" name="securityAnswer" required/>
+                    </fieldset>
+
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit">Create Account</button>
+                    </fieldset>
+
+             
+
+                </form>
+
+
             }
 
         

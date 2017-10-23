@@ -217,6 +217,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RecoveryController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Departments.cs">
       <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
@@ -284,6 +285,8 @@
     <Content Include="Views\Recovery\ResetPassword.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Recovery\SecurityQuestion.cshtml" />
+    <Content Include="Views\Shared\_AccountFormLayout.cshtml" />
+    <Content Include="Views\Welcome\Welcome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

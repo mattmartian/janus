@@ -35,7 +35,6 @@ namespace Janus.Controllers
             string result = "";
             string retrievedEmail = "";
             string retrievedPassword = "";
-
             var query = from u in _context.Users
                        where u.email.Contains(email)
                        orderby u.email
@@ -47,9 +46,16 @@ namespace Janus.Controllers
                 retrievedPassword = user.password;
             }
 
+            if(string.IsNullOrEmpty(retrievedEmail))
+            {
+                ViewBag.Error = "Cannot Find an Account with email: " + email;
+                return View("Login");
+            }
+
 
             if (email.Equals(retrievedEmail))
             {
+
                 // Fetch the stored value 
                 string savedPasswordHash = retrievedPassword;
                 /// Extract the bytes 
@@ -65,24 +71,22 @@ namespace Janus.Controllers
                 {
                     if (hashBytes[i + 16] != hash[i])
                     {
-                        result = "WRONG PASSWORD";
+                        ViewBag.Error = "Incorrect Password";
+                        return View("Login");
                     }
                     else
                     {
                         result = "CORRECT PASSWORD";
                     }
                 }
-                  
-                   
-
+            }
+            else
+            {
+                ViewBag.Error = "Email is Incorrect";
+                return View("Login");
             }
           
-          
-
-            Console.WriteLine(result);
-
-
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Welcome", "Welcome");
         }
     }
 }

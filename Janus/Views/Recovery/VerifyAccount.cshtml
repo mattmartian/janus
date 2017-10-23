@@ -10,25 +10,22 @@
         </div>
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("VerifyEmail", "Recovery", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                   <fieldset style="width: 400px">
                     <legend>Enter Your Email</legend>
                     <p>
                         <label for="email">Email:</label>
-                        @Html.TextBox("email")
+                        <input placeholder="Your Email" type="email" id="email" name="email" required />
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
                
-                    <!--MAKE LABEL FOR SECURITY QUESTION ALSO ADD FUNCTIONALITY TO VOERWRITE PASSWORD-->
 
 
                
-                      <a href="@Url.Action("SecurityQuestion", "Recovery")">
-                          <span>Next</span>
-                      </a>
+                      <button name="submit" type="submit" id="contact-submit">Verify Email</button>
                 </fieldset>
             }
 

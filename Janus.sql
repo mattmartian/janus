@@ -202,7 +202,7 @@ CREATE TABLE [dbo].[Users] (
     hireDate datetime  NOT NULL,
     fireDate datetime  NULL,
     employmentStatus nvarchar(max)  NOT NULL,
-	   [question] nvarchar(max)  NOT NULL,
+	[question] nvarchar(max)  NOT NULL,
     [userAnswer] nvarchar(max)  NOT NULL
 );
 GO
@@ -314,6 +314,17 @@ REFERENCES Users(userID);
 
 --Shift Requests Table
 
+
+
+-----------------------------------------------------
+-- INSERTS
+-----------------------------------------------------
+INSERT INTO Departments VALUES ('Oliver Miller',' Sales Floor')
+INSERT INTO Departments VALUES ('Hans Zimmer',' Music Lessons')
+
+
+Select * From Roles
+SELECT * FROM Users
 
 -- --------------------------------------------------
 -- Script has ended
