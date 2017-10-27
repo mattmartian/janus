@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "VerifyAccount";
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
 
 <div class="container">
@@ -12,16 +12,18 @@
             @using (Html.BeginForm("VerifyEmail", "Recovery", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                <fieldset style="width: 400px">
-                    <legend>Enter Your Email</legend>
-                    <p>
-                        <label for="email">Email:</label>
-                        <input placeholder="Your Email" type="email" id="email" name="email" required />
-                        <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
-                    </p>
+                <form>
 
-                    <button name="submit" type="submit" id="contact-submit">Verify Email</button>
-                </fieldset>
+                    <h1>Verify Account</h1>
+
+                    <fieldset>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required />
+                    </fieldset>
+
+                    <button name="submit" type="submit">Verify Email</button>
+                </form>
             }
         </div>
         <div class="col-xs-4 col-md-4 text-right">

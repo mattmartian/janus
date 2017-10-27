@@ -23,6 +23,11 @@ namespace Janus.Controllers
             return View();
         }
 
+        public ActionResult ReigstrationConfirmed()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult CreateUser()
         {
@@ -215,7 +220,7 @@ namespace Janus.Controllers
                 });
                 _context.SaveChanges();
             }
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("ReigstrationConfirmed", "Register");
         }
     }
 }

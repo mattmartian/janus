@@ -181,7 +181,7 @@ CREATE TABLE [dbo].[Availibility] (
     [availibilityID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [userID] int  NOT NULL,
     [startTime] int NULL,
-    [endTime] int  NULL,
+    [endTime]int NULL,
     [day] nvarchar(max)  NOT NULL
 );
 GO
@@ -323,9 +323,7 @@ INSERT INTO Departments VALUES ('Oliver Miller',' Sales Floor')
 INSERT INTO Departments VALUES ('Hans Zimmer',' Music Lessons')
 
 
-Select * From Roles
-SELECT * FROM Users
-SELECT * From Availibility
+Select * From Users
 
 -- --------------------------------------------------
 -- Script has ended

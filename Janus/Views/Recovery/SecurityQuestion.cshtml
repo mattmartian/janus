@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "SecurityQuestion";
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
 
 <div class="container">
@@ -12,21 +12,22 @@
             @using (Html.BeginForm("VerifyAnswer", "Recovery", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                <fieldset style="width: 400px">
-                    <legend>Answer Security Question</legend>
 
-                    <p>
-                        <label>Security Question: </label>
-                    <p>@ViewBag.Question</p>
-                    </p>
+                <form>
 
-                    <p>
+                    <h1>Answer Security Question</h1>
+
+                    <fieldset>
+
+                        <label for="questionList">Security Question:</label>
+                        <label>@ViewBag.Question</label>
+
                         <label for="securityAnswer">Answer:</label>
-                        @Html.TextBox("securityAnswer")
-                    </p>
+                        <input placeholder="Security Answer" type="text" id="securityAnswer" name="securityAnswer" required />
+                    </fieldset>
 
-                    <button name="submit" type="submit" id="contact-submit">Verify Answer</button>
-                </fieldset>
+                    <button name="submit" type="submit">Verify Answer</button>
+                </form>
             }
         </div>
         <div class="col-xs-4 col-md-4 text-right">

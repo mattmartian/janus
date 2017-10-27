@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "ReigstrationConfirmed";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
+}
+
+<div class="alert alert-success">
+    <strong>Success!</strong> You Have Successfully Registered.
+</div>
+
+@using (Html.BeginForm("Login", "Login"))
+{
+    <button type="submit" name="returntologin">Click Here To Login</button>
+}
