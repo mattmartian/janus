@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "SecurityQuestion";
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
@@ -15,10 +14,10 @@
                 @Html.AntiForgeryToken()
                 <fieldset style="width: 400px">
                     <legend>Answer Security Question</legend>
-                  
+
                     <p>
                         <label>Security Question: </label>
-                        <p>@ViewBag.Question</p>
+                    <p>@ViewBag.Question</p>
                     </p>
 
                     <p>
@@ -26,11 +25,9 @@
                         @Html.TextBox("securityAnswer")
                     </p>
 
-                   <button name="submit" type="submit" id="contact-submit">Verify Answer</button>
+                    <button name="submit" type="submit" id="contact-submit">Verify Answer</button>
                 </fieldset>
             }
-
-
         </div>
         <div class="col-xs-4 col-md-4 text-right">
         </div>

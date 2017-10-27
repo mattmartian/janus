@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
@@ -11,29 +10,24 @@
         <div class="col-xs-4 col-md-4 text-center">
             <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
 
-
             <div>
                 <p>@ViewBag.Error</p>
             </div>
 
-            @using (Html.BeginForm("LoginUser","Login", FormMethod.Post))
+            @using (Html.BeginForm("LoginUser", "Login", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <fieldset style="width: 400px">
                     <legend>Login</legend>
 
-                   
-          
                     <p>
                         <label for="email">Email:</label>
-              
+
                         <input placeholder="Your Email" type="email" id="email" name="email" required />
                     </p>
                     <p>
                         <label for="Password">Password:</label>
                         <input placeholder="Password" type="password" id="password" name="password" required />
-
-
                     </p>
 
                     <p>
@@ -41,8 +35,6 @@
                     </p>
                 </fieldset>
             }
-            
-
         </div>
         <div class="col-xs-4 col-md-4 text-right">
             <a href="@Url.Action("VerifyAccount", "Recovery")">
@@ -51,4 +43,3 @@
         </div>
     </div>
 </div>
-

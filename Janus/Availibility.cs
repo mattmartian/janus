@@ -16,8 +16,8 @@ namespace Janus
     {
         public int availibilityID { get; set; }
         public int userID { get; set; }
-        public System.DateTime startTime { get; set; }
-        public System.DateTime endTime { get; set; }
+        public Nullable<int> startTime { get; set; }
+        public Nullable<int> endTime { get; set; }
         public string day { get; set; }
     
         public virtual Users Users { get; set; }

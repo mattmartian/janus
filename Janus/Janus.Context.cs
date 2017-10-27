@@ -24,12 +24,7 @@ namespace Janus
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        internal object GetUser(Func<object, bool> p)
-        {
-            throw new NotImplementedException();
-        }
-
+    
         public virtual DbSet<AbsenceClaims> AbsenceClaims { get; set; }
         public virtual DbSet<Availibility> Availibility { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }

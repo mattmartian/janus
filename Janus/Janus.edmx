@@ -23,8 +23,8 @@
           </Key>
           <Property Name="availibilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userID" Type="int" Nullable="false" />
-          <Property Name="startTime" Type="datetime" Nullable="false" />
-          <Property Name="endTime" Type="datetime" Nullable="false" />
+          <Property Name="startTime" Type="int" />
+          <Property Name="endTime" Type="int" />
           <Property Name="day" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Departments">
@@ -243,8 +243,8 @@
           </Key>
           <Property Name="availibilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="startTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="endTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="startTime" Type="Int32" />
+          <Property Name="endTime" Type="Int32" />
           <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Availibility_userID" FromRole="Availibility" ToRole="Users" />
         </EntityType>

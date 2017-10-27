@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "VerifyAccount";
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
@@ -13,7 +12,7 @@
             @using (Html.BeginForm("VerifyEmail", "Recovery", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                  <fieldset style="width: 400px">
+                <fieldset style="width: 400px">
                     <legend>Enter Your Email</legend>
                     <p>
                         <label for="email">Email:</label>
@@ -21,14 +20,9 @@
                         <!-- <%= Html.ValidationMessage("firstName", "*")%>-->
                     </p>
 
-               
-
-
-               
-                      <button name="submit" type="submit" id="contact-submit">Verify Email</button>
+                    <button name="submit" type="submit" id="contact-submit">Verify Email</button>
                 </fieldset>
             }
-
         </div>
         <div class="col-xs-4 col-md-4 text-right">
         </div>
