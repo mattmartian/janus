@@ -8,7 +8,7 @@
         <div class="col-xs-4 col-md-4">
         </div>
         <div class="col-xs-4 col-md-4 text-center">
-            <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
+            <img src="/Content/Images/logo.png" height="225" width="250" />
 
             <div>
                 <p>@ViewBag.Error</p>
@@ -18,32 +18,31 @@
             {
                 @Html.AntiForgeryToken()
 
-
                 <form>
 
                     <h1>Login</h1>
 
                     <fieldset>
-                 
 
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required />
 
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required />
-
-                        
                     </fieldset>
 
-                    
                     <button name="submit" type="submit" id="login">Login</button>
+                    <a href="@Url.Action("VerifyAccount", "Recovery")">
+                        <span>Forgot Password?</span>
+                    </a>
+                    <br /><br /><br />
+                    <a href="@Url.Action("Register", "Register")">
+                        <span>I Need An Account</span>
+                    </a>
                 </form>
             }
         </div>
         <div class="col-xs-4 col-md-4 text-right">
-            <a href="@Url.Action("VerifyAccount", "Recovery")">
-                <span>Forgot Password?</span>
-            </a>
         </div>
     </div>
 </div>

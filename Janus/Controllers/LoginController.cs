@@ -22,6 +22,17 @@ namespace Janus.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session["userID"] = "";
+            Session["email"] = "";
+            Session["FirstName"] = "";
+            Session["LastName"] = "";
+            Session["accessLevel"] = "";
+
+            return RedirectToAction("Login", "Login");
+        }
+
         public ActionResult LoginUser()
         {
             //For login password https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
@@ -114,7 +125,7 @@ namespace Janus.Controllers
             Session["LastName"] = userLastName;
             Session["accessLevel"] = userRole;
 
-            return RedirectToAction("Welcome", "Dashboard");
+            return RedirectToAction("Welcome", "UserDashboard");
         }
     }
 }

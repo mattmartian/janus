@@ -6,13 +6,11 @@ using System.Web.Mvc;
 
 namespace Janus.Controllers
 {
-    public class DashboardController : Controller
+    public class AdminDashboardController : Controller
     {
-        // GET: Welcome
-        public ActionResult Welcome()
+        // GET: AdminDashboard
+        public ActionResult AdminDashboard()
         {
-            ViewBag.User = Session["FirstName"];
-
             return View();
         }
     }

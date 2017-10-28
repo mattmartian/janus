@@ -214,11 +214,12 @@
     <Compile Include="Availibility.cs">
       <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminDashboardController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RecoveryController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\WelcomeController.cs" />
+    <Compile Include="Controllers\UserDashboardController.cs" />
     <Compile Include="Departments.cs">
       <DependentUpon>Janus.tt</DependentUpon>
     </Compile>
@@ -287,9 +288,14 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Recovery\SecurityQuestion.cshtml" />
     <Content Include="Views\Shared\_AccountFormLayout.cshtml" />
-    <Content Include="Views\Dashboard\Welcome.cshtml" />
+    <Content Include="Views\UserDashboard\Welcome.cshtml" />
     <Content Include="Views\Register\ReigstrationConfirmed.cshtml" />
     <Content Include="Views\Recovery\PasswordChangedConfirmation.cshtml" />
+    <Content Include="Views\Shared\_MainNavigationLayout.cshtml" />
+    <Content Include="Views\UserDashboard\Schedule.cshtml" />
+    <Content Include="Views\UserDashboard\MakeRequest.cshtml" />
+    <Content Include="Views\UserDashboard\Mail.cshtml" />
+    <Content Include="Views\AdminDashboard\AdminDashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
