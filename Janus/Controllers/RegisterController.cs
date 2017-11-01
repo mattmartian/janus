@@ -39,7 +39,7 @@ namespace Janus.Controllers
             string lastName = Request["lastName"];
             string streetAddress = Request["streetAddress"];
             string postalCode = Request["postalCode"];
-            int department = Int32.Parse(Request["departmentList"]);
+            string department = Request["departmentList"];
             string unhashedPass = Request["password"];
             string unhasedConfirmedPass = Request["confirmpassword"];
             string bday = Request["birthDate"];
@@ -128,7 +128,7 @@ namespace Janus.Controllers
 
                 _context.Users.Add(new Users
                 {
-                    departmentID = department,
+                    departmentName = department,
                     firstName = firstName,
                     lastName = lastName,
                     birthDate = bday,
@@ -137,6 +137,7 @@ namespace Janus.Controllers
                     email = email,
                     streetAddress = streetAddress,
                     postalCode = postalCode,
+                    role = role,
                     hireDate = System.DateTime.Now,
                     employmentStatus = "Active",
                     question = userQuestion,
@@ -153,14 +154,6 @@ namespace Janus.Controllers
                 {
                     retrievedID = user.userID;
                 }
-
-                _context.Roles.Add(new Roles
-                {
-                    userID = retrievedID,
-                    role = role,
-                });
-
-                _context.SaveChanges();
 
                 _context.Availibility.Add(new Availibility
                 {

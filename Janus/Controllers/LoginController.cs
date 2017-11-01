@@ -107,16 +107,7 @@ namespace Janus.Controllers
                 userID = user.userID;
                 userFirstName = user.firstName;
                 userLastName = user.lastName;
-            }
-
-            var accessDetails = from u in _context.Roles
-                                where u.userID == userID
-                                orderby u.userID
-                                select u;
-
-            foreach (var role in accessDetails)
-            {
-                userRole = role.role;
+                userRole = user.role;
             }
 
             Session["userID"] = userID.ToString();

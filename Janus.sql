@@ -5,11 +5,54 @@
 -- Description: Databse for Janus Capstone Project
 /****************************************************************/
 
-SET QUOTED_IDENTIFIER OFF;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 USE [Janus];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
+GO
+
+
+-- --------------------------------------------------
+-- PROCEDURES
+-- --------------------------------------------------
+--Select Employees
+CREATE PROCEDURE SelectEmployee
+as  
+Begin 
+Select * from Users; 
+End
+GO
+--Insert and Update Employee
+CREATE PROCEDURE InsertUpdateEmployee
+( 
+@ID integer,
+@firstName nvarchar(50), 
+@lastName nvarchar(50), 
+@role nvarchar(50),  
+@departmentName nvarchar(50),  
+@Action varchar(10)
+) 
+As 
+Begin 
+if @Action='Update' 
+Begin 
+ Update Users set firstName = @firstName, lastName = @lastName, [role] = @role, departmentName=@departmentName where userID=@ID; 
+End   
+End
+GO
+
+--Delete Employee
+Create PROCEDURE DeleteEmployee
+( 
+ @ID integer 
+) 
+as  
+Begin 
+ Delete Users where userID =@ID; 
+End
 GO
 
 -- --------------------------------------------------
@@ -151,17 +194,6 @@ IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL
 -- Creating all tables
 -- --------------------------------------------------
 
-
--- Creating table 'Recoveries'
-CREATE TABLE [dbo].[Departments] (
-    [departmentID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [manager] nvarchar(max)  NULL,
-    departmentName nvarchar(max)  NOT NULL
-);
-GO
-
-
-
 -- Creating table 'Messages'
 CREATE TABLE [dbo].[Messages] (
     [messageID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -190,7 +222,6 @@ GO
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
     userID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	departmentID int  NOT NULL,
     firstName nvarchar(max)  NOT NULL,
     lastName nvarchar(max)  NOT NULL,
     birthDate nvarchar(max)  NOT NULL,
@@ -199,6 +230,8 @@ CREATE TABLE [dbo].[Users] (
     [email] nvarchar(max)  NOT NULL,
 	[streetAddress] nvarchar(max)  NOT NULL,
     [postalCode] nvarchar(max)  NOT NULL,
+	[role] nvarchar(max)  NOT NULL,
+	departmentName nvarchar(max)  NOT NULL,
     hireDate datetime  NOT NULL,
     fireDate datetime  NULL,
     employmentStatus nvarchar(max)  NOT NULL,
@@ -206,18 +239,6 @@ CREATE TABLE [dbo].[Users] (
     [userAnswer] nvarchar(max)  NOT NULL
 );
 GO
-
-
-
--- Creating table 'Roles'
-CREATE TABLE [dbo].[Roles] (
-    [roleID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    [userID] int NOT NULL,
-    [role] nvarchar(max)  NOT NULL
-);
-GO
-
-
 
 
 -- Creating table 'Shifts'
@@ -270,9 +291,6 @@ GO
 
 --Users Table
 
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_Users_departmentID] FOREIGN KEY (departmentID)
-REFERENCES Departments(departmentID);
 
 -- Absence Claims Table
 ALTER TABLE [dbo].[AbsenceClaims]
@@ -305,25 +323,20 @@ ADD CONSTRAINT [FK_Shifts_userID] FOREIGN KEY (userID)
 REFERENCES Users(userID);
 
 
---Roles Table
-
-ALTER TABLE [dbo].[Roles]
-ADD CONSTRAINT [FK_Roles_userID] FOREIGN KEY (userID)
-REFERENCES Users(userID);
-
-
---Shift Requests Table
 
 
 
------------------------------------------------------
--- INSERTS
------------------------------------------------------
-INSERT INTO Departments VALUES ('Oliver Miller',' Sales Floor')
-INSERT INTO Departments VALUES ('Hans Zimmer',' Music Lessons')
 
 
-Select * From Users
+
+
+Use Janus
+EXEC dbo.SelectEmployee;
+GO
+
+
+
+
 
 -- --------------------------------------------------
 -- Script has ended

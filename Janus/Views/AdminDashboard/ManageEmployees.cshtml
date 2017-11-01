@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "ManageEmployees";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Area | Pages</title>
+</head>
+
+<style>
+    body {
+        background: #f4f4f4;
+    }
+
+    /* Custom */
+    .main-color-bg {
+        background-color: #e74c3c !important;
+        border-color: #c0392b !important;
+        color: #ffffff !important;
+    }
+
+    /* Header */
+    #header {
+        background: #333333;
+        color: #ffffff;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+        #header .create {
+            padding-top: 20px;
+        }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        background: #cccccc;
+        color: #333333;
+    }
+
+        .breadcrumb a {
+            color: #333333;
+        }
+
+    /* Progress Bars */
+    .progress-bar {
+        background: #333333;
+        color: #ffffff;
+    }
+
+    .dash-box {
+        text-align: center;
+    }
+
+    #login {
+        margin-top: 30px;
+    }
+</style>
+
+<body>
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a href="/AdminDashboard/AdminDashboard" class="list-group-item active main-color-bg">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+                        </a>
+                        <a href="/AdminDashboard/ManageEmployees/" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Manage Employees </a>
+                        <a href="/AdminDashboard/MakeSchedule/" class="list-group-item"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Make Schedule </a>
+                        <a href="/AdminDashboard/ManageRequests/" class="list-group-item"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Manage Requests </a>
+                        <a href="/AdminDashboard/ShiftManagement/" class="list-group-item"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Shift Management </a>
+                        <a href="/AdminDashboard/DownloadSchedule/" class="list-group-item"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> View/Download Schedule </a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title">Employees</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <br>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Emp#</th>
+                                        <th>Role</th>
+                                        <th>Department</th>
+                                        <th>Hire Date</th>
+                                        <th>Fire Date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">&times;</span></button>*@
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Add Employee</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="userID">ID</label>
+                                            <input type="text" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="role">Role</label>
+                                            <input type="text" class="form-control" id="role" placeholder="Role" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="departmentName">Department</label>
+                                            <input type="text" class="form-control" id="departmentName" placeholder="Department" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
