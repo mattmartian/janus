@@ -1,0 +1,30 @@
+﻿@model Janus.Users
+
+<h2>Delete Employee</h2>
+@using (Html.BeginForm("delete", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.HiddenFor(a => a.userID)
+    <div class="form-group">
+        <label>First Name</label>
+        <p>@Model.firstName</p>
+    </div>
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <p>@Model.lastName</p>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <p>@Model.role</p>
+    </div>
+
+    <div class="form-group">
+        <label>City</label>
+        <p>@Model.departmentName</p>
+    </div>
+
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}
