@@ -21,7 +21,5 @@ namespace Janus
         public string position { get; set; }
         public string description { get; set; }
         public string status { get; set; }
-    
-        public virtual Users Users { get; set; }
     }
 }

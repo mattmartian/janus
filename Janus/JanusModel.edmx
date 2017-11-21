@@ -44,8 +44,10 @@
           </Key>
           <Property Name="shiftRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="managerSignOff" Type="nvarchar(max)" />
-          <Property Name="requestor" Type="int" Nullable="false" />
-          <Property Name="requestWith" Type="int" Nullable="false" />
+          <Property Name="requestor" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="requestorShift" Type="int" Nullable="false" />
+          <Property Name="requestWith" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="requestWithShift" Type="int" Nullable="false" />
           <Property Name="requestConfirmed" Type="bit" />
           <Property Name="requestStatus" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -130,18 +132,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shifts_userID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Shifts">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="JanusModelStoreContainer">
           <EntitySet Name="AbsenceClaims" EntityType="Self.AbsenceClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Availibility" EntityType="Self.Availibility" Schema="dbo" store:Type="Tables" />
@@ -164,10 +154,6 @@
           <AssociationSet Name="FK_Messages_MailToUserID" Association="Self.FK_Messages_MailToUserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Shifts_userID" Association="Self.FK_Shifts_userID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -218,8 +204,10 @@
           </Key>
           <Property Name="shiftRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="managerSignOff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="requestor" Type="Int32" Nullable="false" />
-          <Property Name="requestWith" Type="Int32" Nullable="false" />
+          <Property Name="requestor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="requestorShift" Type="Int32" Nullable="false" />
+          <Property Name="requestWith" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="requestWithShift" Type="Int32" Nullable="false" />
           <Property Name="requestConfirmed" Type="Boolean" />
           <Property Name="requestStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
@@ -234,7 +222,6 @@
           <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Shifts_userID" FromRole="Shifts" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -260,7 +247,6 @@
           <NavigationProperty Name="Availibility" Relationship="Self.FK_Availibility_userID" FromRole="Users" ToRole="Availibility" />
           <NavigationProperty Name="Messages" Relationship="Self.FK_Messages_MailFromUserID" FromRole="Users" ToRole="Messages" />
           <NavigationProperty Name="Messages1" Relationship="Self.FK_Messages_MailToUserID" FromRole="Users" ToRole="Messages" />
-          <NavigationProperty Name="Shifts" Relationship="Self.FK_Shifts_userID" FromRole="Users" ToRole="Shifts" />
         </EntityType>
         <Association Name="FK_AbsenceClaims_userID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -310,18 +296,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shifts_userID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Shifts">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="JanusEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AbsenceClaims" EntityType="Self.AbsenceClaims" />
           <EntitySet Name="Availibility" EntityType="Self.Availibility" />
@@ -344,10 +318,6 @@
           <AssociationSet Name="FK_Messages_MailToUserID" Association="Self.FK_Messages_MailToUserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Shifts_userID" Association="Self.FK_Shifts_userID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -398,7 +368,9 @@
                 <ScalarProperty Name="shiftRequestID" ColumnName="shiftRequestID" />
                 <ScalarProperty Name="managerSignOff" ColumnName="managerSignOff" />
                 <ScalarProperty Name="requestor" ColumnName="requestor" />
+                <ScalarProperty Name="requestorShift" ColumnName="requestorShift" />
                 <ScalarProperty Name="requestWith" ColumnName="requestWith" />
+                <ScalarProperty Name="requestWithShift" ColumnName="requestWithShift" />
                 <ScalarProperty Name="requestConfirmed" ColumnName="requestConfirmed" />
                 <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
               </MappingFragment>

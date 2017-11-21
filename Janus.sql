@@ -235,7 +235,11 @@ CREATE TABLE [dbo].[shiftRequests] (
     [shiftRequestID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [managerSignOff] nvarchar(max)  NULL,
     [requestor] nvarchar(max)  NOT NULL,
+	[requestorID] int  NOT NULL,
+	[requestorShift] int  NOT NULL,
     [requestWith] nvarchar(max)  NOT NULL,
+	[requestWithShift] int  NOT NULL,
+	[requestWithID] int NOT NULL,
     [requestConfirmed] bit  NULL,
     [requestStatus] nvarchar(max)  NOT NULL
 );

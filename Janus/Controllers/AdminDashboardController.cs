@@ -141,13 +141,12 @@ namespace Janus.Controllers
                             v.isApproved = true;
                         }
                     }
-                    else
 
-                        _context.SaveChanges();
+                    _context.SaveChanges();
                     status = true;
                 }
             }
-            return RedirectToAction("ManageEmployees", "AdminDashboard");
+            return RedirectToAction("ManageRequests", "AdminDashboard");
         }
 
         [HttpGet]
@@ -174,13 +173,12 @@ namespace Janus.Controllers
                             v.isApproved = false;
                         }
                     }
-                    else
 
-                        _context.SaveChanges();
+                    _context.SaveChanges();
                     status = true;
                 }
             }
-            return RedirectToAction("ManageEmployees", "AdminDashboard");
+            return RedirectToAction("ManageRequests", "AdminDashboard");
         }
 
         public ActionResult MakeSchedule()
@@ -195,7 +193,86 @@ namespace Janus.Controllers
 
         public ActionResult ShiftManagement()
         {
+            var shiftSwitchData = (from b in _context.shiftRequests where b.requestStatus == "Pending Approval" select new Janus.Models.ShiftSwapViewModel { shiftRequestID = b.shiftRequestID, managerSignOff = b.managerSignOff, requestor = b.requestor, requestorShift = b.requestorShift, requestWith = b.requestWith, requestWithShift = b.requestWithShift, requestConfirmed = b.requestConfirmed, requestStatus = b.requestStatus });
+            ViewBag.data = shiftSwitchData;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ApproveShift(int id)
+        {
+            var v = _context.shiftRequests.Where(a => a.shiftRequestID == id).FirstOrDefault();
+
+            return View(v);
+        }
+
+        [HttpPost]
+        public ActionResult ApproveShift(shiftRequests req)
+        {
+            bool status = false;
+            string requestor = "";
+            int userID = 0;
+
+            int secondUserID = 0;
+
+            string requestWith = "";
+            if (ModelState.IsValid)
+            {
+                using (_context)
+                {
+                    if (req.shiftRequestID > 0)
+                    {
+                        //Edit
+                        var v = _context.shiftRequests.Where(a => a.shiftRequestID == req.shiftRequestID).FirstOrDefault();
+                        if (v != null)
+                        {
+                            requestor = v.requestor;
+                            requestWith = v.requestWith;
+
+                            v.managerSignOff = ViewBag.username;
+                            v.requestStatus = "Approved";
+                        }
+                    }
+
+                    _context.SaveChanges();
+                    status = true;
+                }
+            }
+            return RedirectToAction("ShiftManagement", "AdminDashboard");
+        }
+
+        [HttpGet]
+        public ActionResult DenyShift(int id)
+        {
+            var v = _context.shiftRequests.Where(a => a.shiftRequestID == id).FirstOrDefault();
+            return View(v);
+        }
+
+        [HttpPost]
+        public ActionResult DenyShift(shiftRequests req)
+        {
+            bool status = false;
+            if (ModelState.IsValid)
+            {
+                using (_context)
+                {
+                    if (req.shiftRequestID > 0)
+                    {
+                        //Edit
+                        var v = _context.shiftRequests.Where(a => a.shiftRequestID == req.shiftRequestID).FirstOrDefault();
+                        if (v != null)
+                        {
+                            v.managerSignOff = ViewBag.username;
+                            v.requestStatus = "Declined";
+                        }
+                    }
+                    else
+
+                        _context.SaveChanges();
+                    status = true;
+                }
+            }
+            return RedirectToAction("ShiftManagement", "AdminDashboard");
         }
     }
 }

@@ -16,8 +16,10 @@ namespace Janus
     {
         public int shiftRequestID { get; set; }
         public string managerSignOff { get; set; }
-        public int requestor { get; set; }
-        public int requestWith { get; set; }
+        public string requestor { get; set; }
+        public int requestorShift { get; set; }
+        public string requestWith { get; set; }
+        public int requestWithShift { get; set; }
         public Nullable<bool> requestConfirmed { get; set; }
         public string requestStatus { get; set; }
     }

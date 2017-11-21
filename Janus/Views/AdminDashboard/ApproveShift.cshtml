@@ -1,0 +1,31 @@
+﻿@model Janus.shiftRequests
+
+<h2>Approve Request?</h2>
+@using (Html.BeginForm("approveshift", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.shiftRequestID > 0)
+    {
+        @Html.HiddenFor(a => a.shiftRequestID)
+    }
+
+    <div class="form-group">
+        <label>Requestor</label><br />
+        @Html.DisplayFor(a => a.requestor, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Shift</label><br />
+        @Html.DisplayFor(a => a.requestorShift, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Request With</label><br />
+        @Html.DisplayFor(a => a.requestWith, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Request With Shift</label><br />
+        @Html.DisplayFor(a => a.requestWithShift, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <input type="submit" value="Approve" />
+    </div>
+}

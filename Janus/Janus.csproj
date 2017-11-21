@@ -532,6 +532,7 @@
     </Compile>
     <Compile Include="Models\ClaimsVIewModel.cs" />
     <Compile Include="Models\EmployeeDetailViewModel.cs" />
+    <Compile Include="Models\ShiftSwapViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shiftRequests.cs">
       <DependentUpon>JanusModel.tt</DependentUpon>
@@ -589,6 +590,8 @@
     <Content Include="Views\AdminDashboard\Delete.cshtml" />
     <Content Include="Views\AdminDashboard\ApproveClaim.cshtml" />
     <Content Include="Views\AdminDashboard\DenyClaim.cshtml" />
+    <Content Include="Views\AdminDashboard\ApproveShift.cshtml" />
+    <Content Include="Views\AdminDashboard\DenyShift.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
