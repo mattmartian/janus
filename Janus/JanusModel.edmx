@@ -11,11 +11,11 @@
           </Key>
           <Property Name="claimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userID" Type="int" Nullable="false" />
-          <Property Name="startTime" Type="datetime" Nullable="false" />
-          <Property Name="endTime" Type="datetime" Nullable="false" />
+          <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="claimType" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="isApproved" Type="bit" Nullable="false" />
+          <Property Name="isApproved" Type="bit" />
         </EntityType>
         <EntityType Name="Availibility">
           <Key>
@@ -46,7 +46,7 @@
           <Property Name="managerSignOff" Type="nvarchar(max)" />
           <Property Name="requestor" Type="int" Nullable="false" />
           <Property Name="requestWith" Type="int" Nullable="false" />
-          <Property Name="requestConfirmed" Type="bit" Nullable="false" />
+          <Property Name="requestConfirmed" Type="bit" />
           <Property Name="requestStatus" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Shifts">
@@ -181,11 +181,11 @@
           </Key>
           <Property Name="claimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="startTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="endTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="startTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="endTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="claimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="isApproved" Type="Boolean" Nullable="false" />
+          <Property Name="isApproved" Type="Boolean" />
           <NavigationProperty Name="Users" Relationship="Self.FK_AbsenceClaims_userID" FromRole="AbsenceClaims" ToRole="Users" />
         </EntityType>
         <EntityType Name="Availibility">
@@ -220,7 +220,7 @@
           <Property Name="managerSignOff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="requestor" Type="Int32" Nullable="false" />
           <Property Name="requestWith" Type="Int32" Nullable="false" />
-          <Property Name="requestConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="requestConfirmed" Type="Boolean" />
           <Property Name="requestStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Shifts">

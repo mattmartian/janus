@@ -1,0 +1,35 @@
+﻿@model Janus.AbsenceClaims
+
+<h2>Save</h2>
+@using (Html.BeginForm("approveclaim", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.claimID > 0)
+    {
+        @Html.HiddenFor(a => a.claimID)
+    }
+
+    <div class="form-group">
+        <label>Emp#</label><br />
+        @Html.DisplayFor(a => a.userID, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Start Time</label><br />
+        @Html.DisplayFor(a => a.startTime, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>End Time</label><br />
+        @Html.DisplayFor(a => a.endTime, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Description</label><br />
+        @Html.DisplayFor(a => a.description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Claim Type</label><br />
+        @Html.DisplayFor(a => a.claimType, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <input type="submit" value="Approve" />
+    </div>
+}

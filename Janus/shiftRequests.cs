@@ -18,7 +18,7 @@ namespace Janus
         public string managerSignOff { get; set; }
         public int requestor { get; set; }
         public int requestWith { get; set; }
-        public bool requestConfirmed { get; set; }
+        public Nullable<bool> requestConfirmed { get; set; }
         public string requestStatus { get; set; }
     }
 }

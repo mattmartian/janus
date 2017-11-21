@@ -1,18 +1,18 @@
 ﻿@model Janus.Users
 
-    <h2>Save</h2>
-    @using (Html.BeginForm("save", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
+<h2>Edit Employee</h2>
+@using (Html.BeginForm("save", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.userID > 0)
     {
-        if (Model != null && Model.userID > 0)
-        {
-            @Html.HiddenFor(a => a.userID)
-        }
+        @Html.HiddenFor(a => a.userID)
+    }
 
-        <div class="form-group">
-            <label>First Name</label>
-            @Html.TextBoxFor(a => a.firstName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.firstName)
-        </div>
+    <div class="form-group">
+        <label>First Name</label>
+        @Html.TextBoxFor(a => a.firstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.firstName)
+    </div>
         <div class="form-group">
             <label>Last Name</label>
             @Html.TextBoxFor(a => a.lastName, new { @class = "form-control" })
@@ -32,4 +32,4 @@
         <div>
             <input type="submit" value="Save" />
         </div>
-    }
+}

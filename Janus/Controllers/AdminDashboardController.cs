@@ -110,7 +110,77 @@ namespace Janus.Controllers
 
         public ActionResult ManageRequests()
         {
+            var requestData = (from b in _context.AbsenceClaims where b.isApproved == null select new Janus.Models.ClaimsVIewModel { claimID = b.claimID, userID = b.userID, startTime = b.startTime, endTime = b.endTime, description = b.description, claimType = b.claimType, isApproved = b.isApproved });
+            ViewBag.data = requestData;
+
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ApproveClaim(int id)
+        {
+            var v = _context.AbsenceClaims.Where(a => a.claimID == id).FirstOrDefault();
+
+            return View(v);
+        }
+
+        [HttpPost]
+        public ActionResult ApproveClaim(AbsenceClaims claim)
+        {
+            bool status = false;
+            if (ModelState.IsValid)
+            {
+                using (_context)
+                {
+                    if (claim.claimID > 0)
+                    {
+                        //Edit
+                        var v = _context.AbsenceClaims.Where(a => a.claimID == claim.claimID).FirstOrDefault();
+                        if (v != null)
+                        {
+                            v.isApproved = true;
+                        }
+                    }
+                    else
+
+                        _context.SaveChanges();
+                    status = true;
+                }
+            }
+            return RedirectToAction("ManageEmployees", "AdminDashboard");
+        }
+
+        [HttpGet]
+        public ActionResult DenyClaim(int id)
+        {
+            var v = _context.AbsenceClaims.Where(a => a.claimID == id).FirstOrDefault();
+            return View(v);
+        }
+
+        [HttpPost]
+        public ActionResult DenyClaim(AbsenceClaims claim)
+        {
+            bool status = false;
+            if (ModelState.IsValid)
+            {
+                using (_context)
+                {
+                    if (claim.claimID > 0)
+                    {
+                        //Edit
+                        var v = _context.AbsenceClaims.Where(a => a.claimID == claim.claimID).FirstOrDefault();
+                        if (v != null)
+                        {
+                            v.isApproved = false;
+                        }
+                    }
+                    else
+
+                        _context.SaveChanges();
+                    status = true;
+                }
+            }
+            return RedirectToAction("ManageEmployees", "AdminDashboard");
         }
 
         public ActionResult MakeSchedule()

@@ -15,45 +15,7 @@ IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
 
 
--- --------------------------------------------------
--- PROCEDURES
--- --------------------------------------------------
---Select Employees
-CREATE PROCEDURE SelectEmployee
-as  
-Begin 
-Select * from Users; 
-End
-GO
---Insert and Update Employee
-CREATE PROCEDURE InsertUpdateEmployee
-( 
-@ID integer,
-@firstName nvarchar(50), 
-@lastName nvarchar(50), 
-@role nvarchar(50),  
-@departmentName nvarchar(50),  
-@Action varchar(10)
-) 
-As 
-Begin 
-if @Action='Update' 
-Begin 
- Update Users set firstName = @firstName, lastName = @lastName, [role] = @role, departmentName=@departmentName where userID=@ID; 
-End   
-End
-GO
 
---Delete Employee
-Create PROCEDURE DeleteEmployee
-( 
- @ID integer 
-) 
-as  
-Begin 
- Delete Users where userID =@ID; 
-End
-GO
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -260,11 +222,11 @@ GO
 CREATE TABLE [dbo].[AbsenceClaims] (
     [claimID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     userID int  NOT NULL,
-    [startTime] datetime  NOT NULL,
-    [endTime] datetime  NOT NULL,
+    [startTime] nvarchar(max)  NOT NULL,
+    [endTime] nvarchar(max)  NOT NULL,
     [description] nvarchar(max)  NOT NULL,
     [claimType] nvarchar(max)  NOT NULL,
-    [isApproved] bit  NOT NULL
+    [isApproved] bit  NULL
 );
 GO
 
@@ -272,9 +234,9 @@ GO
 CREATE TABLE [dbo].[shiftRequests] (
     [shiftRequestID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [managerSignOff] nvarchar(max)  NULL,
-    [requestor] int  NOT NULL,
-    [requestWith] int  NOT NULL,
-    [requestConfirmed] bit  NOT NULL,
+    [requestor] nvarchar(max)  NOT NULL,
+    [requestWith] nvarchar(max)  NOT NULL,
+    [requestConfirmed] bit  NULL,
     [requestStatus] nvarchar(max)  NOT NULL
 );
 GO
