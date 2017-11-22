@@ -207,8 +207,8 @@ GO
 CREATE TABLE [dbo].[Shifts] (
     [shiftID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [userID] int  NOT NULL,
-    [shiftStart] datetime  NOT NULL,
-    [shiftEnd] datetime  NOT NULL,
+    [shiftStart] int  NOT NULL,
+    [shiftEnd] int  NOT NULL,
     [position] nvarchar(max)  NOT NULL,
     [description] nvarchar(max)  NOT NULL,
     [status] nvarchar(max)  NOT NULL

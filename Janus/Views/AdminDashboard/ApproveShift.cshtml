@@ -10,19 +10,27 @@
 
     <div class="form-group">
         <label>Requestor</label><br />
-        @Html.DisplayFor(a => a.requestor, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.requestor, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Requestor ID</label><br />
+        @Html.TextBoxFor(a => a.requestorID, new { @class = "form-control" })
     </div>
     <div class="form-group">
         <label>Shift</label><br />
-        @Html.DisplayFor(a => a.requestorShift, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.requestorShift, new { @class = "form-control" })
     </div>
     <div class="form-group">
         <label>Request With</label><br />
-        @Html.DisplayFor(a => a.requestWith, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.requestWith, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Request With ID</label><br />
+        @Html.TextBoxFor(a => a.requestWithID, new { @class = "form-control" })
     </div>
     <div class="form-group">
         <label>Request With Shift</label><br />
-        @Html.DisplayFor(a => a.requestWithShift, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.requestWithShift, new { @class = "form-control" })
     </div>
 
     <div>

@@ -21,6 +21,7 @@ namespace Janus
             this.Availibility = new HashSet<Availibility>();
             this.Messages = new HashSet<Messages>();
             this.Messages1 = new HashSet<Messages>();
+            this.Shifts = new HashSet<Shifts>();
         }
     
         public int userID { get; set; }
@@ -48,5 +49,7 @@ namespace Janus
         public virtual ICollection<Messages> Messages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Messages> Messages1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Shifts> Shifts { get; set; }
     }
 }

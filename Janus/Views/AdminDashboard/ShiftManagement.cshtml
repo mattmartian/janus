@@ -94,7 +94,9 @@
                                     <tr>
                                         <th>Requestor</th>
                                         <th>Requestor shift</th>
+                                        <th>Requestor shift ID</th>
                                         <th>Requesting With</th>
+                                        <th>Requesting With ID</th>
                                         <th>Requesting With Shift</th>
                                     </tr>
                                 </thead>
@@ -107,10 +109,16 @@
                                             </td>
 
                                             <td>
+                                                @item.requestorID
+                                            </td>
+                                            <td>
                                                 @item.requestorShift
                                             </td>
                                             <td>
                                                 @item.requestWith
+                                            </td>
+                                            <td>
+                                                @item.requestWithID
                                             </td>
                                             <td>
                                                 @item.requestWithShift

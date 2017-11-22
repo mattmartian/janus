@@ -193,7 +193,7 @@ namespace Janus.Controllers
 
         public ActionResult ShiftManagement()
         {
-            var shiftSwitchData = (from b in _context.shiftRequests where b.requestStatus == "Pending Approval" select new Janus.Models.ShiftSwapViewModel { shiftRequestID = b.shiftRequestID, managerSignOff = b.managerSignOff, requestor = b.requestor, requestorShift = b.requestorShift, requestWith = b.requestWith, requestWithShift = b.requestWithShift, requestConfirmed = b.requestConfirmed, requestStatus = b.requestStatus });
+            var shiftSwitchData = (from b in _context.shiftRequests where b.requestStatus == "Pending Approval" select new Janus.Models.ShiftSwapViewModel { shiftRequestID = b.shiftRequestID, managerSignOff = b.managerSignOff, requestor = b.requestor, requestorShift = b.requestorShift, requestorID = b.requestorID, requestWith = b.requestWith, requestWithShift = b.requestWithShift, requestWithID = b.requestWithID, requestConfirmed = b.requestConfirmed, requestStatus = b.requestStatus });
             ViewBag.data = shiftSwitchData;
             return View();
         }
@@ -210,12 +210,7 @@ namespace Janus.Controllers
         public ActionResult ApproveShift(shiftRequests req)
         {
             bool status = false;
-            string requestor = "";
-            int userID = 0;
 
-            int secondUserID = 0;
-
-            string requestWith = "";
             if (ModelState.IsValid)
             {
                 using (_context)
@@ -226,11 +221,20 @@ namespace Janus.Controllers
                         var v = _context.shiftRequests.Where(a => a.shiftRequestID == req.shiftRequestID).FirstOrDefault();
                         if (v != null)
                         {
-                            requestor = v.requestor;
-                            requestWith = v.requestWith;
-
                             v.managerSignOff = ViewBag.username;
                             v.requestStatus = "Approved";
+                        }
+
+                        _context.SaveChanges();
+                        status = true;
+
+                        var shiftOne = _context.Shifts.Where(b => b.userID == req.requestorID).FirstOrDefault();
+                        var shiftTwo = _context.Shifts.Where(c => c.userID == req.requestWithID).FirstOrDefault();
+                        if (shiftOne != null && shiftTwo != null)
+                        {
+                            var temp = shiftOne.userID;
+                            shiftOne.userID = shiftTwo.userID;
+                            shiftTwo.userID = temp;
                         }
                     }
 
