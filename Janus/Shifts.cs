@@ -16,6 +16,7 @@ namespace Janus
     {
         public int shiftID { get; set; }
         public int userID { get; set; }
+        public string day { get; set; }
         public int shiftStart { get; set; }
         public int shiftEnd { get; set; }
         public string position { get; set; }

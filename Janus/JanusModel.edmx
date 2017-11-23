@@ -59,6 +59,7 @@
           </Key>
           <Property Name="shiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="day" Type="nvarchar(max)" Nullable="false" />
           <Property Name="shiftStart" Type="int" Nullable="false" />
           <Property Name="shiftEnd" Type="int" Nullable="false" />
           <Property Name="position" Type="nvarchar(max)" Nullable="false" />
@@ -237,6 +238,7 @@
           </Key>
           <Property Name="shiftID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="shiftStart" Type="Int32" Nullable="false" />
           <Property Name="shiftEnd" Type="Int32" Nullable="false" />
           <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -421,6 +423,7 @@
               <MappingFragment StoreEntitySet="Shifts">
                 <ScalarProperty Name="shiftID" ColumnName="shiftID" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="day" ColumnName="day" />
                 <ScalarProperty Name="shiftStart" ColumnName="shiftStart" />
                 <ScalarProperty Name="shiftEnd" ColumnName="shiftEnd" />
                 <ScalarProperty Name="position" ColumnName="position" />

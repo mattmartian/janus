@@ -183,7 +183,34 @@ namespace Janus.Controllers
 
         public ActionResult MakeSchedule()
         {
+            var employees = (from b in _context.Users select new Janus.Models.EmployeeDetailViewModel { userID = b.userID, firstName = b.firstName, lastName = b.lastName });
+            ViewBag.data = employees;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateSchedule()
+        {
+            int userID = Int32.Parse(Request["employees"]);
+            string day = Request["day"];
+            int start = Int32.Parse(Request["startTime"]);
+            int end = Int32.Parse(Request["endTime"]);
+            string position = Request["position"];
+            string description = Request["description"];
+
+            _context.Shifts.Add(new Shifts
+            {
+                userID = userID,
+                shiftStart = start,
+                shiftEnd = end,
+                day = day,
+                position = position,
+                description = description,
+                status = "Assigned",
+            });
+            _context.SaveChanges();
+
+            return RedirectToAction("MakeSchedule", "AdminDashboard");
         }
 
         public ActionResult DownloadSchedule()

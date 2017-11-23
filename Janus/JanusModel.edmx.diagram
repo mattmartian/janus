@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="be34eb7802754fbcb2200eebf4462783" Name="Diagram1">
-        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="9e63c61f1ec3484f9abf57bd6eb76f34" Name="Diagram1">
+        <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Availibility" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Messages" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.shiftRequests" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
