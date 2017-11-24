@@ -61,6 +61,9 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -380,6 +383,10 @@
       <DependentUpon>JanusModel.edmx</DependentUpon>
       <LastGenOutput>JanusModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
@@ -392,6 +399,8 @@
     <Content Include="JanusModel.edmx.diagram">
       <DependentUpon>JanusModel.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\JanusCapstone - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -469,7 +478,6 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
-    <Content Include="Scripts\Employee.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -532,6 +540,7 @@
     </Compile>
     <Compile Include="Models\ClaimsVIewModel.cs" />
     <Compile Include="Models\EmployeeDetailViewModel.cs" />
+    <Compile Include="Models\PrintSchedViewModel.cs" />
     <Compile Include="Models\ShiftSwapViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shiftRequests.cs">
@@ -592,6 +601,7 @@
     <Content Include="Views\AdminDashboard\DenyClaim.cshtml" />
     <Content Include="Views\AdminDashboard\ApproveShift.cshtml" />
     <Content Include="Views\AdminDashboard\DenyShift.cshtml" />
+    <Content Include="Views\AdminDashboard\SchedulePDF.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

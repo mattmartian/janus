@@ -189,7 +189,7 @@ namespace Janus.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateSchedule()
+        public ActionResult AddSchedule()
         {
             int userID = Int32.Parse(Request["employees"]);
             string day = Request["day"];
@@ -197,6 +197,31 @@ namespace Janus.Controllers
             int end = Int32.Parse(Request["endTime"]);
             string position = Request["position"];
             string description = Request["description"];
+
+            int startTime = 0;
+
+            int endTime = 0;
+
+            var query = from u in _context.Availibility
+                        where u.userID.Equals(userID)
+                        orderby u.userID
+                        select u;
+
+            foreach (var availibility in query)
+            {
+                startTime = (Int32)availibility.startTime;
+                endTime = (Int32)availibility.endTime;
+            }
+
+            if (start < startTime)
+            {
+                ViewBag.error = "" +
+                    " Employee Not Avalible At This Time";
+            }
+            if (end > endTime)
+            {
+                ViewBag.error = "Employee Not Avalible At This Time";
+            }
 
             _context.Shifts.Add(new Shifts
             {
@@ -215,7 +240,21 @@ namespace Janus.Controllers
 
         public ActionResult DownloadSchedule()
         {
+            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, day = b.day, position = b.position });
+            ViewBag.data = shiftData;
             return View();
+        }
+
+        public ActionResult SchedulePDF()
+        {
+            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, day = b.day, position = b.position });
+            ViewBag.data = shiftData;
+            return View();
+        }
+
+        public ActionResult GeneratePDF()
+        {
+            return new Rotativa.ActionAsPdf("SchedulePDF");
         }
 
         public ActionResult ShiftManagement()

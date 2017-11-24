@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "SchedulePDF";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+@model Janus.Models.PrintSchedViewModel
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(a => a.userID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(a => a.day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(a => a.shiftStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(a => a.shiftEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(a => a.position)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (Janus.Models.PrintSchedViewModel item in ViewBag.data)
+    {
+        <tr>
+            <td>
+                @item.userID
+            </td>
+            <td>
+                @item.day
+            </td>
+            <td>
+                @item.shiftStart
+            </td>
+            <td>
+                @item.shiftEnd
+            </td>
+            <td>
+                @item.position
+            </td>
+        </tr>
+    }
+</table>
+
+<a class="btn btn-default popup" href="/AdminDashboard/GeneratePDF">Print</a>
