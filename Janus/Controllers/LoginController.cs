@@ -112,8 +112,8 @@ namespace Janus.Controllers
 
             Session["userID"] = userID.ToString();
             Session["email"] = email;
-            Session["FirstName"] = userFirstName;
-            Session["LastName"] = userLastName;
+            Session["name"] = userFirstName + " " + userLastName;
+
             Session["accessLevel"] = userRole;
 
             return RedirectToAction("Welcome", "UserDashboard");

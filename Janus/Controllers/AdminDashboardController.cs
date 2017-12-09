@@ -192,7 +192,7 @@ namespace Janus.Controllers
         public ActionResult AddSchedule()
         {
             int userID = Int32.Parse(Request["employees"]);
-            string day = Request["day"];
+            string shiftDate = Request["shiftDate"];
             int start = Int32.Parse(Request["startTime"]);
             int end = Int32.Parse(Request["endTime"]);
             string position = Request["position"];
@@ -228,7 +228,7 @@ namespace Janus.Controllers
                 userID = userID,
                 shiftStart = start,
                 shiftEnd = end,
-                day = day,
+                shiftDate = shiftDate,
                 position = position,
                 description = description,
                 status = "Assigned",
@@ -240,14 +240,14 @@ namespace Janus.Controllers
 
         public ActionResult DownloadSchedule()
         {
-            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, day = b.day, position = b.position });
+            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
             return View();
         }
 
         public ActionResult SchedulePDF()
         {
-            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, day = b.day, position = b.position });
+            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
             return View();
         }

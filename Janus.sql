@@ -109,32 +109,13 @@ END
 IF OBJECT_ID('dbo.AbsenceClaims', 'U') IS NOT NULL 
   DROP TABLE dbo.AbsenceClaims; 
 
-IF OBJECT_ID('dbo.Addresses', 'U') IS NOT NULL 
-  DROP TABLE dbo.Addresses; 
 
 IF OBJECT_ID('dbo.Availibility', 'U') IS NOT NULL 
   DROP TABLE dbo.Availibility; 
 
-IF OBJECT_ID('dbo.Company', 'U') IS NOT NULL 
-  DROP TABLE dbo.Company; 
-
-IF OBJECT_ID('dbo.ContactInfo', 'U') IS NOT NULL 
-  DROP TABLE dbo.ContactInfo; 
-
-IF OBJECT_ID('dbo.Employees', 'U') IS NOT NULL 
-  DROP TABLE dbo.Employees;
-
-IF OBJECT_ID('dbo.Managers', 'U') IS NOT NULL 
-  DROP TABLE dbo.Managers; 
 
 IF OBJECT_ID('dbo.[Messages]', 'U') IS NOT NULL 
   DROP TABLE dbo.[Messages]; 
-
-IF OBJECT_ID('dbo.Questions', 'U') IS NOT NULL 
-  DROP TABLE dbo.Questions;
-  
-IF OBJECT_ID('dbo.Recoveries', 'U') IS NOT NULL 
-  DROP TABLE dbo.Recoveries;  
 
 IF OBJECT_ID('dbo.Roles', 'U') IS NOT NULL 
   DROP TABLE dbo.Roles; 
@@ -147,9 +128,6 @@ IF OBJECT_ID('dbo.Shifts', 'U') IS NOT NULL
 
 IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL 
   DROP TABLE dbo.Users; 
-
-IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL 
-  DROP TABLE dbo.Departments; 
 
 
 -- --------------------------------------------------
@@ -167,7 +145,6 @@ CREATE TABLE [dbo].[Messages] (
 
 );
 GO
-
 
 
 -- Creating table 'Availibilities'
@@ -207,7 +184,7 @@ GO
 CREATE TABLE [dbo].[Shifts] (
     [shiftID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [userID] int  NOT NULL,
-	[day]  nvarchar(max) NOT NULL,
+	[shiftDate]  nvarchar(max) NOT NULL,
     [shiftStart] int  NOT NULL,
     [shiftEnd] int  NOT NULL,
     [position] nvarchar(max)  NOT NULL,
@@ -237,9 +214,11 @@ CREATE TABLE [dbo].[shiftRequests] (
     [managerSignOff] nvarchar(max)  NULL,
     [requestor] nvarchar(max)  NOT NULL,
 	[requestorID] int  NOT NULL,
-	[requestorShift] int  NOT NULL,
+	[requestorShiftID] int  NOT NULL,
+	[requestorShift] nvarchar(max)  NOT NULL,
     [requestWith] nvarchar(max)  NOT NULL,
-	[requestWithShift] int  NOT NULL,
+	[requestWithShiftID] int  NOT NULL,
+	[requestWithShift] nvarchar(max)  NOT NULL,
 	[requestWithID] int NOT NULL,
     [requestConfirmed] bit  NULL,
     [requestStatus] nvarchar(max)  NOT NULL
@@ -269,10 +248,6 @@ REFERENCES Users(userID);
 ALTER TABLE [dbo].[Availibility]
 ADD CONSTRAINT [FK_Availibility_userID] FOREIGN KEY (userID)
 REFERENCES Users(userID);
-
-
-
-
 --Messages
 
 ALTER TABLE [dbo].[Messages]
@@ -288,21 +263,6 @@ REFERENCES Users(userID);
 ALTER TABLE [dbo].[Shifts]
 ADD CONSTRAINT [FK_Shifts_userID] FOREIGN KEY (userID)
 REFERENCES Users(userID);
-
-
-
-
-
-
-
-
-
-Use Janus
-EXEC dbo.SelectEmployee;
-GO
-
-
-
 
 
 -- --------------------------------------------------

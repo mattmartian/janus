@@ -46,9 +46,11 @@
           <Property Name="managerSignOff" Type="nvarchar(max)" />
           <Property Name="requestor" Type="nvarchar(max)" Nullable="false" />
           <Property Name="requestorID" Type="int" Nullable="false" />
-          <Property Name="requestorShift" Type="int" Nullable="false" />
+          <Property Name="requestorShiftID" Type="int" Nullable="false" />
+          <Property Name="requestorShift" Type="nvarchar(max)" Nullable="false" />
           <Property Name="requestWith" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="requestWithShift" Type="int" Nullable="false" />
+          <Property Name="requestWithShiftID" Type="int" Nullable="false" />
+          <Property Name="requestWithShift" Type="nvarchar(max)" Nullable="false" />
           <Property Name="requestWithID" Type="int" Nullable="false" />
           <Property Name="requestConfirmed" Type="bit" />
           <Property Name="requestStatus" Type="nvarchar(max)" Nullable="false" />
@@ -59,7 +61,7 @@
           </Key>
           <Property Name="shiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userID" Type="int" Nullable="false" />
-          <Property Name="day" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="shiftDate" Type="nvarchar(max)" Nullable="false" />
           <Property Name="shiftStart" Type="int" Nullable="false" />
           <Property Name="shiftEnd" Type="int" Nullable="false" />
           <Property Name="position" Type="nvarchar(max)" Nullable="false" />
@@ -225,9 +227,11 @@
           <Property Name="managerSignOff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="requestor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="requestorID" Type="Int32" Nullable="false" />
-          <Property Name="requestorShift" Type="Int32" Nullable="false" />
+          <Property Name="requestorShiftID" Type="Int32" Nullable="false" />
+          <Property Name="requestorShift" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="requestWith" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="requestWithShift" Type="Int32" Nullable="false" />
+          <Property Name="requestWithShiftID" Type="Int32" Nullable="false" />
+          <Property Name="requestWithShift" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="requestWithID" Type="Int32" Nullable="false" />
           <Property Name="requestConfirmed" Type="Boolean" />
           <Property Name="requestStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -238,7 +242,7 @@
           </Key>
           <Property Name="shiftID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shiftDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="shiftStart" Type="Int32" Nullable="false" />
           <Property Name="shiftEnd" Type="Int32" Nullable="false" />
           <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -409,8 +413,10 @@
                 <ScalarProperty Name="managerSignOff" ColumnName="managerSignOff" />
                 <ScalarProperty Name="requestor" ColumnName="requestor" />
                 <ScalarProperty Name="requestorID" ColumnName="requestorID" />
+                <ScalarProperty Name="requestorShiftID" ColumnName="requestorShiftID" />
                 <ScalarProperty Name="requestorShift" ColumnName="requestorShift" />
                 <ScalarProperty Name="requestWith" ColumnName="requestWith" />
+                <ScalarProperty Name="requestWithShiftID" ColumnName="requestWithShiftID" />
                 <ScalarProperty Name="requestWithShift" ColumnName="requestWithShift" />
                 <ScalarProperty Name="requestWithID" ColumnName="requestWithID" />
                 <ScalarProperty Name="requestConfirmed" ColumnName="requestConfirmed" />
@@ -423,7 +429,7 @@
               <MappingFragment StoreEntitySet="Shifts">
                 <ScalarProperty Name="shiftID" ColumnName="shiftID" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="shiftDate" ColumnName="shiftDate" />
                 <ScalarProperty Name="shiftStart" ColumnName="shiftStart" />
                 <ScalarProperty Name="shiftEnd" ColumnName="shiftEnd" />
                 <ScalarProperty Name="position" ColumnName="position" />

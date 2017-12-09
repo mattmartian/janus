@@ -13,7 +13,7 @@ namespace Janus.Models
 
         public int shiftEnd { get; set; }
 
-        public string day { get; set; }
+        public string shiftDate { get; set; }
 
         public string position { get; set; }
     }
