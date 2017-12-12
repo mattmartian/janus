@@ -8,6 +8,14 @@ namespace Janus.Controllers
 {
     public class UserDashboardController : Controller
     {
+        private readonly JanusEntities _context;
+        // GET: AdminDashboard
+
+        public UserDashboardController()
+        {
+            _context = new JanusEntities();
+        }
+
         // GET: UserDashboard
         public ActionResult Welcome()
         {
@@ -20,6 +28,9 @@ namespace Janus.Controllers
 
         public ActionResult Schedule()
         {
+            int identification = Int32.Parse(Session["userID"].ToString());
+            var shiftData = (from a in _context.Shifts where a.userID == identification select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
+            ViewBag.data = shiftData;
             return View();
         }
 

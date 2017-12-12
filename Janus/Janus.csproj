@@ -629,6 +629,7 @@
     <Compile Include="Models\ClaimsVIewModel.cs" />
     <Compile Include="Models\EmployeeDetailViewModel.cs" />
     <Compile Include="Models\PrintSchedViewModel.cs" />
+    <Compile Include="Models\ScheduleViewModel.cs" />
     <Compile Include="Models\ShiftSwapViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shiftRequests.cs">
