@@ -19,18 +19,25 @@ namespace Janus.Controllers
         // GET: UserDashboard
         public ActionResult Welcome()
         {
-            ViewBag.username = Session["FirstName"] + " " + Session["LastName"];
-            ViewBag.userID = Session["userID"];
-            ViewBag.userEmail = Session["email"];
-            ViewBag.access = Session["accessLevel"];
             return View();
         }
 
         public ActionResult Schedule()
         {
+            ViewBag.username = Session["FirstName"] + " " + Session["LastName"];
+            ViewBag.userID = Session["userID"];
+            ViewBag.userEmail = Session["email"];
+            ViewBag.access = Session["accessLevel"];
+
             int identification = Int32.Parse(Session["userID"].ToString());
             var shiftData = (from a in _context.Shifts where a.userID == identification select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
+            if (shiftData.Count() == 0) //?
+            {
+                ViewBag.noData = "No Shifts For This Week!";
+            }
+
             ViewBag.data = shiftData;
+
             return View();
         }
 

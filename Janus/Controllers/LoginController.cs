@@ -116,7 +116,7 @@ namespace Janus.Controllers
 
             Session["accessLevel"] = userRole;
 
-            return RedirectToAction("Welcome", "UserDashboard");
+            return RedirectToAction("Schedule", "UserDashboard");
         }
     }
 }
