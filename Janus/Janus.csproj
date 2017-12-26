@@ -302,8 +302,8 @@
     <Content Include="Content\Images\Iconset\time_off_request.png" />
     <Content Include="Content\Images\Janus-Avatar.png" />
     <Content Include="Content\Images\Janus-Favicon.png" />
-    <Content Include="Content\Images\Janus-Logo With Text.png" />
-    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logonotext.png" />
+    <Content Include="Content\Images\logotext.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />

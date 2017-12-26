@@ -20,7 +20,6 @@
     }
 
     #right {
-
         right: 0;
         top: 0;
         width: 50%;
@@ -32,7 +31,7 @@
         <div class="col-xs-4 col-md-4">
         </div>
         <div class="col-xs-4 col-md-12 col-lg-12 text-center">
-            <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 4em;" />
+            <img src="/Content/Images/logotext.png" height="225" width="250" style="margin-left: 4em;" />
 
             <div>
                 <p>@ViewBag.Error</p>
@@ -46,520 +45,513 @@
 
                     <h1>Create Account</h1>
 
+                    <fieldset>
+                        <legend><span class="number">1</span>Your Basic Info</legend>
+                        <table align="center">
+                            <tr>
+                                <td>
+                                    <label for="firstname">First Name:</label>
+                                    <input type="text" id="firstName" name="firstName" required />
+                                </td>
 
+                                <td>
+                                    <label for="lastname">Last Name:</label>
+                                    <input type="text" id="lastName" name="lastName" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="address">Street Address:</label>
+                                    <input type="text" id="streetAddress" name="streetAddress" required />
+                                </td>
+                                <td>
+                                    <label for="postal">Postal Code:</label>
+                                    <input type="text" id="postalCode" name="postalCode" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="phone">Phone:</label>
+                                    <input type="tel" id="phone" name="phone" required />
+                                </td>
+                                <td>
+                                    <label for="birthdate">Birth Date:</label>
+                                    <input type="text" id="birthDate" name="birthDate" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" name="password" required />
+                                </td>
+                                <td>
 
-                        <fieldset>
-                            <legend><span class="number">1</span>Your Basic Info</legend>
-                            <table align="center">
-                                <tr>
-                                    <td><label for="firstname">First Name:</label>
-                                    <input type="text" id="firstName" name="firstName" required /></td>
-                   
-                                    <td>
-                                        <label for="lastname">Last Name:</label>
-                                        <input type="text" id="lastName" name="lastName" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="address">Street Address:</label>
-                                        <input type="text" id="streetAddress" name="streetAddress" required />
-                                    </td>
-                                    <td>
-                                        <label for="postal">Postal Code:</label>
-                                        <input type="text" id="postalCode" name="postalCode" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="phone">Phone:</label>
-                                        <input type="tel" id="phone" name="phone" required />
-                                    </td>
-                                    <td>
-                                        <label for="birthdate">Birth Date:</label>
-                                        <input type="text" id="birthDate" name="birthDate" required />
-                                    </td>
-                                  
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="email">Email:</label>
-                                        <input type="email" id="email" name="email" required />
-
-                                    </td>
-                                   
-                                </tr>
-                                <tr> 
-                                    <td>
-                                        <label for="password">Password:</label>
-                                        <input type="password" id="password" name="password" required />
-                                    </td>
-                                        <td>
-                                           
-                                                <label for="confirmpassword">Confirm Password:</label>
-                                                <input type="password" id="confirmpassword" name="confirmpassword" required />  
-                                       
-                                                
-                                        </td>         
-                                </tr>
-                                <tr>
-                                    <td><label for="departmentList">Department:</label>
+                                    <label for="confirmpassword">Confirm Password:</label>
+                                    <input type="password" id="confirmpassword" name="confirmpassword" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="departmentList">Department:</label>
                                     <select id="departmentList" name="departmentList">
                                         <option value="Sales Floor" selected>Sales Floor</option>
                                         <option value="Music Lessons">Music Lessons</option>
-                                    </select></td>
-                                    <td>
-                                        <label for="Role">Role:</label>
-                                        <select id="roles" name="roles">
-                                            <option value="Employee" selected>Employee</option>
-                                            <option value="Manager">Manager</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="questionList">Security Question:</label>
-                                        <select name="questionList">
-                                            <option value="What was your favorite Elementary School Teacher's Name?" selected>What was your favorite Elementary School Teacher's Name?</option>
-                                            <option value="In What city did your mother and father meet?">In What city did your mother and father meet?</option>
-                                            <option value="What is your youngest sibling's birthday?">What is your youngest sibling's birthday?</option>
-                                            <option value="What is the first name of the boy or girl that you first kissed?">What is the first name of the boy or girl that you first kissed?</option>
-                                            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
-                                            <option value="What was your childhood nickname?">What was your childhood nickname?</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <label for="securityAnswer">Answer:</label>
-                                        <input placeholder="Security Answer" type="text" id="securityAnswer" name="securityAnswer" required />
-                                    </td>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label for="Role">Role:</label>
+                                    <select id="roles" name="roles">
+                                        <option value="Employee" selected>Employee</option>
+                                        <option value="Manager">Manager</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="questionList">Security Question:</label>
+                                    <select name="questionList">
+                                        <option value="What was your favorite Elementary School Teacher's Name?" selected>What was your favorite Elementary School Teacher's Name?</option>
+                                        <option value="In What city did your mother and father meet?">In What city did your mother and father meet?</option>
+                                        <option value="What is your youngest sibling's birthday?">What is your youngest sibling's birthday?</option>
+                                        <option value="What is the first name of the boy or girl that you first kissed?">What is the first name of the boy or girl that you first kissed?</option>
+                                        <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                                        <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label for="securityAnswer">Answer:</label>
+                                    <input placeholder="Security Answer" type="text" id="securityAnswer" name="securityAnswer" required />
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
 
-                                </tr>
-                               
-                                
-                            </table>
-                            
-                        </fieldset>
-                
-                        <fieldset>
-                            <legend><span class="number">2</span>Your Availibility</legend>
+                    <fieldset>
+                        <legend><span class="number">2</span>Your Availibility</legend>
 
-                            <table align="center">
-                                <tr>
-                                    <td><label for="sunday">Sunday</label></td>
-                                    <td>
-                                        <select name="sundayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="sundayTo">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="monday">Monday</label></td>
-                                    <td>
-                                        <select name="mondayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="mondayto">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="tuesday">Tuesday</label></td>
-                                    <td>
-                                        <select name="tuesdayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="tuesdayTo">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="wednesday">Wednesday</label></td>
-                                    <td>
-                                        <select name="wednesdayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
+                        <table align="center">
+                            <tr>
+                                <td><label for="sunday">Sunday</label></td>
+                                <td>
+                                    <select name="sundayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="sundayTo">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="monday">Monday</label></td>
+                                <td>
+                                    <select name="mondayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="mondayto">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="tuesday">Tuesday</label></td>
+                                <td>
+                                    <select name="tuesdayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="tuesdayTo">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="wednesday">Wednesday</label></td>
+                                <td>
+                                    <select name="wednesdayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
 
-                                    <td>
-                                        <select name="wednesdayTo">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="thursday">Thursday</label></td>
-                                    <td>
-                                        <select name="thursdayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="thursdayTo">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="friday">Friday</label></td>
-                                    <td>
-                                        <select name="fridayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="fridayTo">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="saturday">Saturday</label></td>
-                                    <td>
-                                        <select name="saturdayFrom">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="saturdayTo">
-                                            <option value="0" selected>12AM</option>
-                                            <option value="1">1AM</option>
-                                            <option value="2">2AM</option>
-                                            <option value="3">3AM</option>
-                                            <option value="4">4AM</option>
-                                            <option value="5">5AM</option>
-                                            <option value="6">6AM</option>
-                                            <option value="7">7AM</option>
-                                            <option value="8">8AM</option>
-                                            <option value="9">9AM</option>
-                                            <option value="10">10AM</option>
-                                            <option value="11">11AM</option>
-                                            <option value="12">12PM</option>
-                                            <option value="13">1PM</option>
-                                            <option value="14">2PM</option>
-                                            <option value="15">3PM</option>
-                                            <option value="16">4PM</option>
-                                            <option value="17">5PM</option>
-                                            <option value="18">6PM</option>
-                                            <option value="19">7PM</option>
-                                            <option value="20">8PM</option>
-                                            <option value="21">9PM</option>
-                                            <option value="22">10PM</option>
-                                            <option value="23">11PM</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
-                        </fieldset>
+                                <td>
+                                    <select name="wednesdayTo">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="thursday">Thursday</label></td>
+                                <td>
+                                    <select name="thursdayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="thursdayTo">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="friday">Friday</label></td>
+                                <td>
+                                    <select name="fridayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="fridayTo">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="saturday">Saturday</label></td>
+                                <td>
+                                    <select name="saturdayFrom">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="saturdayTo">
+                                        <option value="0" selected>12AM</option>
+                                        <option value="1">1AM</option>
+                                        <option value="2">2AM</option>
+                                        <option value="3">3AM</option>
+                                        <option value="4">4AM</option>
+                                        <option value="5">5AM</option>
+                                        <option value="6">6AM</option>
+                                        <option value="7">7AM</option>
+                                        <option value="8">8AM</option>
+                                        <option value="9">9AM</option>
+                                        <option value="10">10AM</option>
+                                        <option value="11">11AM</option>
+                                        <option value="12">12PM</option>
+                                        <option value="13">1PM</option>
+                                        <option value="14">2PM</option>
+                                        <option value="15">3PM</option>
+                                        <option value="16">4PM</option>
+                                        <option value="17">5PM</option>
+                                        <option value="18">6PM</option>
+                                        <option value="19">7PM</option>
+                                        <option value="20">8PM</option>
+                                        <option value="21">9PM</option>
+                                        <option value="22">10PM</option>
+                                        <option value="23">11PM</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
                     <button name="submit" type="submit" id="contact-submit">Create Account</button>
                 </form>
 
