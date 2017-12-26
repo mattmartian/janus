@@ -13,11 +13,13 @@ namespace Janus.Models
         public string mailFromUsername { get; set; }
 
         public int mailToUserID { get; set; }
-        public string mailtoUsername { get; set; }
+        public string mailToUsername { get; set; }
 
         public string subject { get; set; }
 
         public string body { get; set; }
+
+        public int? shiftRequestID { get; set; }
 
         public bool isRead { get; set; }
     }

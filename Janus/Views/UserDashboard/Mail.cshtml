@@ -10,6 +10,7 @@
             <th>From</th>
             <th>To</th>
             <th>Subject</th>
+            <th>Body</th>
         </tr>
     </thead>
     <tbody>
@@ -17,18 +18,22 @@
         {
             <tr>
                 <td>
-                    @item.mailFromUserID
+                    @item.mailFromUsername
                 </td>
 
                 <td>
-                    @item.mailToUserID
+                    @item.mailToUsername
                 </td>
                 <td>
                     @item.subject
                 </td>
+                <td>
+                    @item.body
+                </td>
 
                 <td>
-                    <a class="btn btn-default popup" href="/AdminDashboard/save/@item.messageID">View</a>
+                    <a class="btn btn-success popup" href="/UserDashboard/acceptmail/@item.shiftRequestID">Accept </a>
+                    <a class="btn btn-danger popup" href="/UserDashboard/denymail/@item.shiftRequestID">Deny</a>
                 </td>
             </tr>
         }

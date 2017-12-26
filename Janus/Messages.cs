@@ -21,6 +21,7 @@ namespace Janus
         public string mailToUsername { get; set; }
         public string subject { get; set; }
         public string body { get; set; }
+        public Nullable<int> shiftRequestID { get; set; }
         public bool isRead { get; set; }
     
         public virtual Users Users { get; set; }

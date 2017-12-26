@@ -38,6 +38,7 @@
           <Property Name="mailToUsername" Type="nvarchar(max)" Nullable="false" />
           <Property Name="subject" Type="nvarchar(max)" Nullable="false" />
           <Property Name="body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="shiftRequestID" Type="int" />
           <Property Name="isRead" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="shiftRequests">
@@ -219,6 +220,7 @@
           <Property Name="mailToUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shiftRequestID" Type="Int32" />
           <Property Name="isRead" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Messages_MailFromUserID" FromRole="Messages" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="Self.FK_Messages_MailToUserID" FromRole="Messages" ToRole="Users" />
@@ -408,6 +410,7 @@
                 <ScalarProperty Name="mailToUsername" ColumnName="mailToUsername" />
                 <ScalarProperty Name="subject" ColumnName="subject" />
                 <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="shiftRequestID" ColumnName="shiftRequestID" />
                 <ScalarProperty Name="isRead" ColumnName="isRead" />
               </MappingFragment>
             </EntityTypeMapping>

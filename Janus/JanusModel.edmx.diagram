@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="32d4c15760944ff99fe581fcc62558c1" Name="Diagram1">
+      <Diagram DiagramId="e475341e4da1464fb1ae143df51e1d0a" Name="Diagram1">
         <EntityTypeShape EntityType="JanusModel.AbsenceClaims" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Availibility" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.Messages" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JanusModel.shiftRequests" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Shifts" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="JanusModel.Users" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Shifts" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JanusModel.Users" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="JanusModel.FK_AbsenceClaims_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Availibility_userID" ManuallyRouted="false" />
         <AssociationConnector Association="JanusModel.FK_Messages_MailFromUserID" ManuallyRouted="false" />

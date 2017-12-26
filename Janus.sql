@@ -144,6 +144,7 @@ CREATE TABLE [dbo].[Messages] (
 	[mailToUsername] nvarchar(max) NOT NULL,
     [subject] nvarchar(max)  NOT NULL,
     [body] nvarchar(max)  NOT NULL,
+	shiftRequestID int NULL,
 	isRead bit NOT NULL
 
 );
