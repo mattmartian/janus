@@ -340,6 +340,26 @@
     <Content Include="Content\Images\arrow.png" />
     <Content Include="Content\Images\darkdenim3.png" />
     <Content Include="Content\Images\dark_leather.png" />
+    <Content Include="Content\Images\Iconset\absent_claim_request.png" />
+    <Content Include="Content\Images\Iconset\admin_panel.png" />
+    <Content Include="Content\Images\Iconset\build_schedule.png" />
+    <Content Include="Content\Images\Iconset\dashboard.png" />
+    <Content Include="Content\Images\Iconset\download_schedule.png" />
+    <Content Include="Content\Images\Iconset\log_out.png" />
+    <Content Include="Content\Images\Iconset\mailbox.png" />
+    <Content Include="Content\Images\Iconset\mail_notif.png" />
+    <Content Include="Content\Images\Iconset\make_request.png" />
+    <Content Include="Content\Images\Iconset\manage_employees.png" />
+    <Content Include="Content\Images\Iconset\manage_requests.png" />
+    <Content Include="Content\Images\Iconset\my_schedule.png" />
+    <Content Include="Content\Images\Iconset\profile.png" />
+    <Content Include="Content\Images\Iconset\shift_management.png" />
+    <Content Include="Content\Images\Iconset\shift_swap_request.png" />
+    <Content Include="Content\Images\Iconset\time_off_request.png" />
+    <Content Include="Content\Images\Janus-Avatar.png" />
+    <Content Include="Content\Images\Janus-Favicon.png" />
+    <Content Include="Content\Images\Janus-Logo Only.png" />
+    <Content Include="Content\Images\Janus-Logo With Text.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -383,6 +403,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="JanusModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -421,6 +442,7 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\Images\Iconset\.DS_Store" />
     <None Include="Properties\PublishProfiles\JanusCapstone - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -626,8 +648,10 @@
     <Compile Include="Messages.cs">
       <DependentUpon>JanusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\ClaimsVIewModel.cs" />
     <Compile Include="Models\EmployeeDetailViewModel.cs" />
+    <Compile Include="Models\MailViewModel.cs" />
     <Compile Include="Models\PrintSchedViewModel.cs" />
     <Compile Include="Models\ScheduleViewModel.cs" />
     <Compile Include="Models\ShiftSwapViewModel.cs" />
@@ -671,7 +695,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Recovery\SecurityQuestion.cshtml" />
     <Content Include="Views\Shared\_AccountFormLayout.cshtml" />
-    <Content Include="Views\UserDashboard\Welcome.cshtml" />
+    <Content Include="Views\UserDashboard\Account.cshtml" />
     <Content Include="Views\Register\ReigstrationConfirmed.cshtml" />
     <Content Include="Views\Recovery\PasswordChangedConfirmation.cshtml" />
     <Content Include="Views\Shared\_MainNavigationLayout.cshtml" />

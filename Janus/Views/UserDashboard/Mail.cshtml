@@ -1,8 +1,36 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Mail";
     Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
 }
 
 <h2>Mail</h2>
+<table>
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Subject</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Janus.Models.MailViewModel item in ViewBag.data)
+        {
+            <tr>
+                <td>
+                    @item.mailFromUserID
+                </td>
 
+                <td>
+                    @item.mailToUserID
+                </td>
+                <td>
+                    @item.subject
+                </td>
+
+                <td>
+                    <a class="btn btn-default popup" href="/AdminDashboard/save/@item.messageID">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

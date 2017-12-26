@@ -39,7 +39,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <p class="navbar-text navbar-left"><a href="#" class="navbar-link">@Session["name"]</a></p>
+                        <p class="navbar-text navbar-left"><a href="@Url.Action("Account", "UserDashboard")" class="navbar-link">@Session["name"]</a></p>
                         <p class="navbar-text navbar-right" style="padding-right:2em;"><a href="/Login/Logout/" class="navbar-link">Logout</a></p>
                     </ul>
                 </div><!-- /.navbar-collapse -->

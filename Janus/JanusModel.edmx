@@ -33,7 +33,9 @@
           </Key>
           <Property Name="messageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="mailFromUserID" Type="int" Nullable="false" />
+          <Property Name="mailFromUsername" Type="nvarchar(max)" Nullable="false" />
           <Property Name="mailToUserID" Type="int" Nullable="false" />
+          <Property Name="mailToUsername" Type="nvarchar(max)" Nullable="false" />
           <Property Name="subject" Type="nvarchar(max)" Nullable="false" />
           <Property Name="body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="isRead" Type="bit" Nullable="false" />
@@ -212,7 +214,9 @@
           </Key>
           <Property Name="messageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mailFromUserID" Type="Int32" Nullable="false" />
+          <Property Name="mailFromUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="mailToUserID" Type="Int32" Nullable="false" />
+          <Property Name="mailToUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="isRead" Type="Boolean" Nullable="false" />
@@ -399,7 +403,9 @@
               <MappingFragment StoreEntitySet="Messages">
                 <ScalarProperty Name="messageID" ColumnName="messageID" />
                 <ScalarProperty Name="mailFromUserID" ColumnName="mailFromUserID" />
+                <ScalarProperty Name="mailFromUsername" ColumnName="mailFromUsername" />
                 <ScalarProperty Name="mailToUserID" ColumnName="mailToUserID" />
+                <ScalarProperty Name="mailToUsername" ColumnName="mailToUsername" />
                 <ScalarProperty Name="subject" ColumnName="subject" />
                 <ScalarProperty Name="body" ColumnName="body" />
                 <ScalarProperty Name="isRead" ColumnName="isRead" />
