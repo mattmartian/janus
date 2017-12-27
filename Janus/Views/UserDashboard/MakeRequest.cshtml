@@ -3,8 +3,27 @@
     Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
 }
 
-<h2>Reuqest Forms</h2>
+<h2>Request Forms</h2>
 
-<a href="/Forms/BookOff">Book Time Off</a>
-<a href="/Forms/AbsenceClaim">File an Absence Claim</a>
-<a href="/Forms/SwitchShift">Switch a Shift</a>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-12 text-center">
+            <h4> <span style="padding-right:2em;"><img width="50" height="50" src="~/Content/Images/Iconset/time_off_request.png" /></span><span style="padding-right: 40em;">Book Time Off</span><a href="@Url.Action("BookOff", "Forms")" clas class="btn btn-default"><span>Select</span></a></h4>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 text-center">
+            <h4> <span style="padding-right:1em;"><img width="50" height="50" src="~/Content/Images/Iconset/absent_claim_request.png" /></span><span style="padding-right:35em;">File an Absence Claim</span><a href="@Url.Action("AbsenceClaim", "Forms")" class="btn btn-default"><span>Select</span></a></h4>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 text-center">
+            <h4> <span style="padding-right:2em;"><img width="50" height="50" src="~/Content/Images/Iconset/shift_swap_request.png" /></span><span style="padding-right: 40em;">Switch Shift</span><a href="@Url.Action("SelectEmployee", "Forms")" class="btn btn-default"><span>Select</span></a></h4>
+            <hr />
+        </div>
+    </div>
+</div>

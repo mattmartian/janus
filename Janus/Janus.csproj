@@ -598,6 +598,7 @@
     <Compile Include="Models\PrintSchedViewModel.cs" />
     <Compile Include="Models\ScheduleViewModel.cs" />
     <Compile Include="Models\ShiftSwapViewModel.cs" />
+    <Compile Include="Models\ShiftViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shiftRequests.cs">
       <DependentUpon>JanusModel.tt</DependentUpon>
@@ -650,6 +651,11 @@
     <Content Include="Views\AdminDashboard\SchedulePDF.cshtml" />
     <Content Include="Views\UserDashboard\AcceptMail.cshtml" />
     <Content Include="Views\UserDashboard\DenyMail.cshtml" />
+    <Content Include="Views\Forms\BookOff.cshtml" />
+    <Content Include="Views\Forms\SwitchShift.cshtml" />
+    <Content Include="Views\Forms\AbsenceClaim.cshtml" />
+    <Content Include="Views\Forms\SelectEmployee.cshtml" />
+    <Content Include="Views\Forms\RequestSubmitted.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -659,7 +665,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Forms\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

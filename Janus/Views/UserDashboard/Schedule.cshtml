@@ -158,30 +158,37 @@
 <div class="container">
     <div class="row">
         <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-
             <h3>Hi @Session["name"], Here is your Schedule For This Week:</h3><br />
-            <ul class="event-list">
+            <table>
+                <tr>
+                    <td>
 
-                <h3>@ViewBag.noData</h3>
-                @foreach (Janus.Models.ScheduleViewModel item in ViewBag.data)
-                {
+                        <ul class="event-list">
 
-                    <li>
-                        <time datetime="@item.shiftDate">
-                            <span class="month">@item.shiftDate</span>
-                        </time>
-                        <div class="info">
-                            <h2 class="title">Time: @item.shiftStart:00 - @item.shiftEnd:00</h2>
-                            <p class="desc">Position: @item.position</p>
-                            <ul>
-                                <li style="width:50%;"><a href="#website"><span class="fa fa-globe"></span>Switch Shift</a></li>
-                                <li style="width:50%;">Call In Sick</li>
-                            </ul>
-                        </div>
-                    </li>
+                            <h3>@ViewBag.noData</h3>
+                            @foreach (Janus.Models.ScheduleViewModel item in ViewBag.data)
+                            {
 
-                }
-            </ul>
+                                <li style="float:right;">
+                                    <time datetime="@item.shiftDate">
+                                        <span class="month">@item.shiftDate</span>
+                                    </time>
+                                    <div class="info">
+                                        <h2 class="title">Time: @item.shiftStart:00 - @item.shiftEnd:00</h2>
+                                        <p class="desc">Position: @item.position</p>
+                                        <ul>
+                                            <li style="width:50%;"><a href="#website"><span class="fa fa-globe"></span>Switch Shift</a></li>
+                                            <li style="width:50%;">Call In Sick</li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+          
         </div>
     </div>
 </div>

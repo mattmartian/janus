@@ -6,16 +6,11 @@
 <style>
     .left-half {
         float: left;
-        width:30%;
+        width: 30%;
     }
 
     .right-half {
         float: right;
-    }
-
-    img {
-        border-radius: 50%;
-        border: 1px solid black;
     }
 
     .event-list {
@@ -167,7 +162,8 @@
     <h1 style="text-align:center">My Account</h1>
     <div class="left-half">
         <article>
-            <img src="~/Content/Images/Janus-Avatar.png" width="200" height="200" /> <br /><br />
+            <img id="avatar " src="~/Content/Images/Janus-Avatar.png" width="200" height="200" style="border-radius: 50%;
+        border: 1px solid black;" /> <br /><br />
             <table>
                 @foreach (Janus.Models.AccountViewModel item in ViewBag.data)
                 {
@@ -204,7 +200,7 @@
             </table>
         </article>
     </div>
-    <div class="right-half"  style="width:70%;">
+    <div class="right-half" style="width:70%;">
         <article>
             <h1>Upcoming Shifts</h1> <br />
             <ul class="event-list">
@@ -213,7 +209,7 @@
                 @foreach (Janus.Models.ScheduleViewModel item in ViewBag.shiftData)
                 {
 
-                    <li >
+                    <li>
                         <time datetime="@item.shiftDate">
                             <span class="month">@item.shiftDate</span>
                         </time>

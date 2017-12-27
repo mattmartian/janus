@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "AbsenceClaim";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+
+@Styles.Render("~/Content/AccountForm.css")
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-12">
+
+            <div>
+                <p>@ViewBag.Error</p>
+            </div>
+
+            @using (Html.BeginForm("FileClaim", "Forms", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <form>
+
+                    <h1>Switch Shift</h1>
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <label for="requestor"> Requestor:</label>
+                                <input type="text" id="requestor" name="requestor" value="@Session["name"]" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="endTime">Request With:</label>
+                                <input type="text" id="requestor" name="requestor" value="@ViewBag.requestWith" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="requestorShift">Requestor Shift:</label>
+                                <select name="requestorShift">
+                                    @foreach (Janus.Models.ShiftViewModel item in ViewBag.requestorData)
+                                    {
+                                        <option value="@item.shiftID">@item.shiftDate (@item.shiftStart:00 - @item.shiftEnd:00)</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="requestWithShift">Request With Shift:</label>
+                                <select name="requestWithShift">
+                                    @foreach (Janus.Models.ShiftViewModel item in ViewBag.requestWithData)
+                                    {
+                                        <option value="@item.shiftID">@item.shiftDate (@item.shiftStart - @item.shiftEnd)</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <fieldset></fieldset>
+
+                    <button name="submit" type="submit" id="SubmitRequest">Submit Request</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>

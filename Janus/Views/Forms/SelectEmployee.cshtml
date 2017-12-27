@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "SelectEmployee";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+
+@Styles.Render("~/Content/AccountForm.css")
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-12">
+
+            <div>
+                <p>@ViewBag.Error</p>
+            </div>
+
+            @using (Html.BeginForm("EmployeeSelected", "Forms", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <form>
+
+                    <h1>Select Employee to Switch With</h1>
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <label for="endTime">Request With:</label>
+                                <select name="requestWith">
+                                    @foreach (Janus.Models.EmployeeDetailViewModel item in ViewBag.data)
+                                    {
+                                        <option value="@item.userID">@item.firstName @item.lastName</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <fieldset></fieldset>
+
+                    <button name="submit" type="submit" id="SubmitRequest">Submit Request</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>

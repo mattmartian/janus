@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "RequestSubmitted";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+
+<script>
+    window.setTimeout(function () {
+        window.location.href = "@Url.Action("Account", "UserDashboard")";
+    }, 4000);
+</script>
+
+<h2>Request Submitted!!</h2>

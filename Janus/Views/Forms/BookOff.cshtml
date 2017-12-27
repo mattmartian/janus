@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Book Off Time";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+
+@Styles.Render("~/Content/AccountForm.css")
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-xs-12 col-md-12">
+
+            <div>
+                <p>@ViewBag.Error</p>
+            </div>
+
+            @using (Html.BeginForm("TimeOffRequest", "Forms", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <form>
+
+                    <h1>Book Time Off</h1>
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <label for="startTime">Start Time:</label>
+                                <input type="date" id="startTime" name="startTime" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="endTime">End Time:</label>
+                                <input type="date" id="endTime" name="endTime" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="description">Reason:</label>
+                                <input type="text" id="description" name="description" required />
+                            </td>
+                        </tr>
+                    </table>
+                    <fieldset></fieldset>
+
+                    <button name="submit" type="submit" id="SubmitRequest">Submit Request</button>
+                </form>
+            }
+        </div>
+     
+    </div>
+</div>
