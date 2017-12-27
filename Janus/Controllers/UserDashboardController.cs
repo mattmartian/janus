@@ -20,11 +20,30 @@ namespace Janus.Controllers
         public ActionResult Account()
         {
             DateTime today = DateTime.Today;
-            DateTime upcoming = DateTime.Today.AddDays(3);
 
+            string data = "";
+            int dataID = 0;
             int identification = Int32.Parse(Session["userID"].ToString());
+            var q = (from a in _context.Shifts where a.userID == identification select a);
+
+            foreach (var shift in q)
+            {
+                data = shift.shiftDate;
+                dataID = shift.shiftID;
+            }
+
+            DateTime dt = Convert.ToDateTime(data);
+
+            if (today > dt)
+            {
+                var shift = _context.Shifts.Find(dataID);
+                _context.Shifts.Remove(shift);
+                _context.SaveChanges();
+            }
+
             var userInfo = (from a in _context.Users where a.userID == identification select new Janus.Models.AccountViewModel { userID = a.userID, firstName = a.firstName, lastName = a.lastName, birthDate = a.birthDate, phone = a.phone, email = a.email, streetAddress = a.streetAddress, postalCode = a.postalCode, role = a.role, departmentName = a.departmentName, hireDate = a.hireDate });
             var shiftData = (from a in _context.Shifts where a.userID == identification select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status }).Take(2);
+
             if (shiftData.Count() == 0) //?
             {
                 ViewBag.noData = "No Shifts For This Week!";
@@ -33,6 +52,40 @@ namespace Janus.Controllers
             ViewBag.shiftData = shiftData;
             ViewBag.data = userInfo;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult EditProfile(int id)
+        {
+            var v = _context.Users.Where(a => a.userID == id).FirstOrDefault();
+            return View(v);
+        }
+
+        [HttpPost]
+        public ActionResult ProfileChanges(Users emp)
+        {
+            bool status = false;
+            if (ModelState.IsValid)
+            {
+                using (_context)
+                {
+                    if (emp.userID > 0)
+                    {
+                        //Edit
+                        var v = _context.Users.Where(a => a.userID == emp.userID).FirstOrDefault();
+                        if (v != null)
+                        {
+                            v.phone = emp.phone;
+                            v.streetAddress = emp.streetAddress;
+                            v.postalCode = emp.postalCode;
+                        }
+                    }
+
+                    _context.SaveChanges();
+                    status = true;
+                }
+            }
+            return RedirectToAction("Account", "UserDashboard");
         }
 
         public ActionResult Schedule()

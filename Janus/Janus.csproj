@@ -656,6 +656,7 @@
     <Content Include="Views\Forms\AbsenceClaim.cshtml" />
     <Content Include="Views\Forms\SelectEmployee.cshtml" />
     <Content Include="Views\Forms\RequestSubmitted.cshtml" />
+    <Content Include="Views\UserDashboard\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

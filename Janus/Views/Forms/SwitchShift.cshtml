@@ -14,7 +14,7 @@
                 <p>@ViewBag.Error</p>
             </div>
 
-            @using (Html.BeginForm("FileClaim", "Forms", FormMethod.Post))
+            @using (Html.BeginForm("FileShiftChange", "Forms", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
@@ -22,18 +22,7 @@
 
                     <h1>Switch Shift</h1>
                     <table align="center">
-                        <tr>
-                            <td>
-                                <label for="requestor"> Requestor:</label>
-                                <input type="text" id="requestor" name="requestor" value="@Session["name"]" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="endTime">Request With:</label>
-                                <input type="text" id="requestor" name="requestor" value="@ViewBag.requestWith" required />
-                            </td>
-                        </tr>
+
                         <tr>
                             <td>
                                 <label for="requestorShift">Requestor Shift:</label>
