@@ -1,30 +1,35 @@
-﻿@model Janus.Users
-
-<h2>Edit Profile</h2>
-@using (Html.BeginForm("profilechanges", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
-{
-    if (Model != null && Model.userID > 0)
-    {
-        @Html.HiddenFor(a => a.userID)
-    }
-
-    <div class="form-group">
-        <label>Phone</label>
-        @Html.TextBoxFor(a => a.phone, new { @class = "form-control" })
-        @Html.ValidationMessageFor(a => a.phone)
-    </div>
-    <div class="form-group">
-        <label>Street Address</label>
-        @Html.TextBoxFor(a => a.streetAddress, new { @class = "form-control" })
-        @Html.ValidationMessageFor(a => a.streetAddress)
-    </div>
-    <div class="form-group">
-        <label>Postal Code</label>
-        @Html.TextBoxFor(a => a.postalCode, new { @class = "form-control" })
-        @Html.ValidationMessageFor(a => a.postalCode)
-    </div>
-
-    <div>
-        <input type="submit" value="Save" />
-    </div>
+﻿@{
+    ViewBag.Title = "Edit Profile";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
+@model Janus.Users
+<center>
+    <h2>Edit Profile</h2>
+    @using (Html.BeginForm("profilechanges", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
+    {
+        if (Model != null && Model.userID > 0)
+        {
+            @Html.HiddenFor(a => a.userID)
+        }
+
+        <div class="form-group">
+            <label>Phone</label>
+            @Html.TextBoxFor(a => a.phone, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.phone)
+        </div>
+        <div class="form-group">
+            <label>Street Address</label>
+            @Html.TextBoxFor(a => a.streetAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.streetAddress)
+        </div>
+        <div class="form-group">
+            <label>Postal Code</label>
+            @Html.TextBoxFor(a => a.postalCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.postalCode)
+        </div>
+
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    }
+</center>

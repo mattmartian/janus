@@ -3,46 +3,48 @@
     Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-4 col-md-4">
-        </div>
-        <div class="col-xs-4 col-md-4 text-center">
-            <img src="/Content/Images/logotext.png" height="225" width="250" />
-
-            <div>
-                <p>@ViewBag.Error</p>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-md-4">
             </div>
+            <div class="col-xs-4 col-md-4 text-center">
+                <img src="/Content/Images/logotext.png" height="225" width="250" />
 
-            @using (Html.BeginForm("LoginUser", "Login", FormMethod.Post))
+                <div>
+                    <p style="background-color:red;color:red;">@ViewBag.Error</p>
+                </div>
+
+                @using (Html.BeginForm("LoginUser", "Login", FormMethod.Post))
             {
-                @Html.AntiForgeryToken()
+                    @Html.AntiForgeryToken()
 
-                <form>
+                    <form>
 
-                    <h1>Login</h1>
+                        <h1>Login</h1>
 
-                    <fieldset>
+                        <fieldset>
 
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required />
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required />
 
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required />
-                    </fieldset>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required />
+                        </fieldset>
 
-                    <button name="submit" type="submit" id="login">Login</button>
-                    <a href="@Url.Action("VerifyAccount", "Recovery")">
-                        <span>Forgot Password?</span>
-                    </a>
-                    <br /><br /><br />
-                    <a href="@Url.Action("Register", "Register")">
-                        <span>I Need An Account</span>
-                    </a>
-                </form>
-            }
-        </div>
-        <div class="col-xs-4 col-md-4 text-right">
+                        <button name="submit" type="submit" id="login">Login</button><br />
+                        <a href="@Url.Action("VerifyAccount", "Recovery")">
+                            <span>Forgot Password?</span>
+                        </a>
+                        <br /><br /><br />
+                        <a href="@Url.Action("Register", "Register")">
+                            <span>I Need An Account</span>
+                        </a>
+                    </form>
+                }
+            </div>
+            <div class="col-xs-4 col-md-4 text-right">
+            </div>
         </div>
     </div>
-</div>
+    </body>

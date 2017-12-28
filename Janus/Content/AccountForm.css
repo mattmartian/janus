@@ -6,15 +6,18 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    color: #384047;
+    background-color: #63b1AC;
 }
 
 form {
     max-width: 600px;
     margin: 10px auto;
     padding: 10px 20px;
-    background: #f4f7f8;
+    background: #4D8982;
     border-radius: 8px;
+}
+a {
+    color: #E4E57C;
 }
 
 h1 {
@@ -61,14 +64,15 @@ select {
 
 button {
     padding: 19px 39px 18px 39px;
-    color: #FFF;
-    background-color: #4bc970;
+    color: #E4E57C;
+    background-color: #569876;
+    font-weight: bold;
     font-size: 18px;
     text-align: center;
     font-style: normal;
     border-radius: 5px;
-    width: 100%;
-    border: 1px solid #3ac162;
+    width: 80%;
+    border: 1px solid #4d8982;
     border-width: 1px 1px 3px;
     box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
     margin-bottom: 10px;

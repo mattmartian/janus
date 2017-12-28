@@ -1,33 +1,41 @@
-﻿@model Janus.shiftRequests
+﻿@{
+    ViewBag.Title = "Accept Message";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
+}
 
-<h2>Accept Message</h2>
-@using (Html.BeginForm("acceptmail", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
-{
-    if (Model != null && Model.shiftRequestID > 0)
+@model Janus.shiftRequests
+<center>
+
+
+    <h2>Accept Message</h2>
+    @using (Html.BeginForm("acceptmail", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
     {
-        @Html.HiddenFor(a => a.shiftRequestID)
-    }
+        if (Model != null && Model.shiftRequestID > 0)
+        {
+            @Html.HiddenFor(a => a.shiftRequestID)
+        }
 
-    <div class="form-group">
-        <label>Requestor</label><br />
-        @Html.DisplayFor(a => a.requestor, new { @class = "form-control" })
-    </div>
+        <div class="form-group">
+            <label>Requestor</label><br />
+            @Html.DisplayFor(a => a.requestor, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        <label>Shift</label><br />
-        @Html.DisplayFor(a => a.requestorShift, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Request With</label><br />
-        @Html.DisplayFor(a => a.requestWith, new { @class = "form-control" })
-    </div>
+        <div class="form-group">
+            <label>Shift</label><br />
+            @Html.DisplayFor(a => a.requestorShift, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Request With</label><br />
+            @Html.DisplayFor(a => a.requestWith, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        <label>Request With Shift</label><br />
-        @Html.DisplayFor(a => a.requestWithShift, new { @class = "form-control" })
-    </div>
+        <div class="form-group">
+            <label>Request With Shift</label><br />
+            @Html.DisplayFor(a => a.requestWithShift, new { @class = "form-control" })
+        </div>
 
         <div>
             <input type="submit" value="Accept" />
         </div>
-}
+    }
+</center>

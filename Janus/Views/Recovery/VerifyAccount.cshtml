@@ -5,10 +5,9 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-4 col-md-4">
-        </div>
-        <div class="col-xs-4 col-md-4 text-center">
-            <img src="/Content/Images/logo.png" height="225" width="250" style="margin-left: 6em;" />
+     
+        <div class="col-xs-12 col-md-12 text-center">
+            <img src="~/Content/Images/logotext.png" height="225" width="250" />
             @using (Html.BeginForm("VerifyEmail", "Recovery", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
@@ -26,7 +25,6 @@
                 </form>
             }
         </div>
-        <div class="col-xs-4 col-md-4 text-right">
-        </div>
+      
     </div>
 </div>

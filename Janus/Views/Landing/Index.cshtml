@@ -1,31 +1,25 @@
 ﻿@{
     ViewBag.Title = "Landing Page";
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-4 col-md-4">
-        </div>
-        <div class="col-xs-4 col-md-4 text-center">
-            <img src="/Content/Images/logotext.png" height="225" width="250" />
-            <a href="@Url.Action("Register", "Register")" class="btn btn-default">
-                <span>Create Account</span>
-            </a>
-            <a href="@Url.Action("Login", "Login")" class="btn btn-default">
-                <span>Login</span>
-            </a>
-        </div>
-        <div class="col-xs-4 col-md-4 text-right">
-        </div>
-    </div>
+<style>
+  
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-xs-12 col-md-12 text-center">
+                <img src="/Content/Images/logotext.png" height="225" width="250" /><br /><br />
 
-    <div class="row">
-        <div class="col-xs-4 col-md-4">
+                <button id="SubmitRequest" onclick="location.href='@Url.Action("Register", "Register")'">Register</button>
+                <button id="SubmitRequest" onclick="location.href='@Url.Action("Login", "Login")'">Log In</button>
+
+            </div>
+            <div class="col-xs-4 col-md-4 text-right">
+            </div>
         </div>
-        <div class="col-xs-4 col-md-4 text-center">
-        </div>
-        <div class="col-xs-4 col-md-4 text-right">
-        </div>
+
     </div>
-</div>
+</body>

@@ -25,14 +25,16 @@ namespace Janus.Controllers
             int dataID = 0;
             int identification = Int32.Parse(Session["userID"].ToString());
             var q = (from a in _context.Shifts where a.userID == identification select a);
-
+            DateTime dt = DateTime.Today;
             foreach (var shift in q)
             {
                 data = shift.shiftDate;
                 dataID = shift.shiftID;
             }
-
-            DateTime dt = Convert.ToDateTime(data);
+            if (data.Count() > 0)
+            {
+                dt = Convert.ToDateTime(data);
+            }
 
             if (today > dt)
             {

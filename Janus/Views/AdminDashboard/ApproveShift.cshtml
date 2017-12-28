@@ -1,39 +1,48 @@
-﻿@model Janus.shiftRequests
-
-<h2>Approve Request?</h2>
-@using (Html.BeginForm("approveshift", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
-{
-    if (Model != null && Model.shiftRequestID > 0)
-    {
-        @Html.HiddenFor(a => a.shiftRequestID)
-    }
-
-    <div class="form-group">
-        <label>Requestor</label><br />
-        @Html.TextBoxFor(a => a.requestor, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Requestor ID</label><br />
-        @Html.TextBoxFor(a => a.requestorID, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Shift</label><br />
-        @Html.TextBoxFor(a => a.requestorShift, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Request With</label><br />
-        @Html.TextBoxFor(a => a.requestWith, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Request With ID</label><br />
-        @Html.TextBoxFor(a => a.requestWithID, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Request With Shift</label><br />
-        @Html.TextBoxFor(a => a.requestWithShift, new { @class = "form-control" })
-    </div>
-
-    <div>
-        <input type="submit" value="Approve" />
-    </div>
+﻿@{
+    ViewBag.Title = "Approve Shift Transfer";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
+
+@model Janus.shiftRequests
+
+<center>
+
+
+    <h2>Approve Request?</h2>
+    @using (Html.BeginForm("approveshift", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
+    {
+        if (Model != null && Model.shiftRequestID > 0)
+        {
+            @Html.HiddenFor(a => a.shiftRequestID)
+        }
+
+        <div class="form-group">
+            <label>Requestor</label><br />
+            @Html.TextBoxFor(a => a.requestor, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Requestor ID</label><br />
+            @Html.TextBoxFor(a => a.requestorID, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Shift</label><br />
+            @Html.TextBoxFor(a => a.requestorShift, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Request With</label><br />
+            @Html.TextBoxFor(a => a.requestWith, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Request With ID</label><br />
+            @Html.TextBoxFor(a => a.requestWithID, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Request With Shift</label><br />
+            @Html.TextBoxFor(a => a.requestWithShift, new { @class = "form-control" })
+        </div>
+
+        <div>
+            <input type="submit" value="Approve" />
+        </div>
+    }
+</center>

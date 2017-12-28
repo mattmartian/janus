@@ -281,6 +281,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Images\accountcreated.png" />
     <Content Include="Content\Images\arrow.png" />
     <Content Include="Content\Images\darkdenim3.png" />
     <Content Include="Content\Images\dark_leather.png" />
