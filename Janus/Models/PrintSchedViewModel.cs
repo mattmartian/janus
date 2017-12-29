@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Janus.Models
+﻿namespace Janus.Models
 {
     public class PrintSchedViewModel
     {
-        public int userID { get; set; }
+        public string firstName { get; set; }
+
+        public string lastName { get; set; }
 
         public int shiftStart { get; set; }
 

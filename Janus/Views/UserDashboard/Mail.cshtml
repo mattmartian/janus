@@ -2,17 +2,26 @@
     ViewBag.Title = "Mail";
     Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
 }
-
-<h2>Mail</h2>
+<h1 class="alert-danger">@ViewBag.error</h1>
+<h1><span class="title">Inb</span>ox</h1>
 <table>
-    <thead>
-        <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Subject</th>
-            <th>Body</th>
-        </tr>
-    </thead>
+    @if (ViewBag.messageCount != null)
+    {
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Subject</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+    }
+
+    @if (ViewBag.messageCount == null)
+    {
+        <h1 style="text-align:center;"> No Messages!</h1>
+    }
+
     <tbody>
         @foreach (Janus.Models.MailViewModel item in ViewBag.data)
         {

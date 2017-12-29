@@ -1,17 +1,36 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Malar" rel="stylesheet">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Janus</title>
     @Styles.Render("../Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            background-color: #39AF6F !important;
+        }
+
+        h1,h2,p{
+            font-family: 'Mukta Malar', sans-serif;
+        }
+
+        .font {
+            font-family: 'Mukta Malar', sans-serif;
+        }
+        
+
+        .title {
+            text-decoration: underline;
+            text-decoration-color: #008982;
+        }
+    </style>
 </head>
 <body style="background-color:#63b1AC;">
 
-    <div class="container body-content" >
-        <nav class="navbar navbar-default" >
+    <div class="container body-content">
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -25,22 +44,22 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-top:1em; ">
-                    <ul class="nav navbar-nav" >
+                    <ul class="nav navbar-nav">
 
-                        <li style="background: url(../Content/Images/Iconset/my_schedule.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("My Schedule", "Schedule", "UserDashboard", null, null)</li>
-                        <li style="background: url(../Content/Images/Iconset/make_request.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Make Request", "MakeRequest", "UserDashboard", null, null)</li>
-                        <li style="background: url(../Content/Images/Iconset/mailbox.png) left center no-repeat; background-size:30px 25px; padding-left:20px;">@Html.ActionLink("Mailbox", "Mail", "UserDashboard", null, null)</li>
+                        <li style="background: url(../Content/Images/Iconset/my_schedule.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("My Schedule", "Schedule", "UserDashboard", null, new { @class = "font" })</li>
+                        <li style="background: url(../Content/Images/Iconset/make_request.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Make Request", "MakeRequest", "UserDashboard", null, new { @class = "font" })</li>
+                        <li style="background: url(../Content/Images/Iconset/mailbox.png) left center no-repeat; background-size:30px 25px; padding-left:20px;">@Html.ActionLink("Mailbox", "Mail", "UserDashboard", null, new { @class = "font" })</li>
 
                         @if (@Session["accessLevel"].ToString() == "Manager")
                         {
 
-                            <li style="background: url(../Content/Images/Iconset/admin_panel.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Admin Panel", "AdminDashboard", "AdminDashboard", null, null)</li>
+                            <li style="background: url(../Content/Images/Iconset/admin_panel.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Admin Panel", "AdminDashboard", "AdminDashboard", null, new { @class = "font" })</li>
                         }
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <p class="navbar-text navbar-left"><img src="~/Content/Images/Iconset/profile.png" width="25" height="25"/><a href="@Url.Action("Account", "UserDashboard")" class="navbar-link">      @Session["name"]</a></p>
-                        <p class="navbar-text navbar-right" style="padding-right:2em;"><img src="~/Content/Images/Iconset/log_out.png" width="25" height="25" /><a href="/Login/Logout/" class="navbar-link">Logout</a></p>
+                        <p class="navbar-text navbar-left"><img src="~/Content/Images/Iconset/profile.png" width="25" height="25" /><a href="@Url.Action("Account", "UserDashboard")" class="navbar-link">     <span class="font">@Session["name"]</span></a></p>
+                        <p class="navbar-text navbar-right" style="padding-right:2em;"><img src="~/Content/Images/Iconset/log_out.png" width="25" height="25" /><a href="/Login/Logout/" class="navbar-link"><span class="font">Logout</span></a></p>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

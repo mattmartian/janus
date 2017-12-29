@@ -2,234 +2,107 @@
     ViewBag.Title = "My Account";
     Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
 }
-
+<link rel="stylesheet"
+      type="text/css"
+      href="~/Content/account.css" />
 <style>
-    .left-half {
-        float: left;
-        width: 30%;
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        background-color: #00B2AD;
     }
 
-    .right-half {
-        float: right;
+    .position {
+        color: #E4E575;
+        font-size: 18px;
     }
 
-    .event-list {
-        list-style: none;
-        font-family: 'Lato', sans-serif;
-        margin: 0px;
-        padding: 0px;
-    }
-
-        .event-list > li {
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0px 0px 5px rgb(51, 51, 51);
-            box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
-            padding: 0px;
-            margin: 0px 0px 20px;
-        }
-
-            .event-list > li > time {
-                display: inline-block;
-                width: 100%;
-                color: rgb(255, 255, 255);
-                background-color: #e4e57c;
-                padding: 5px;
-                text-align: center;
-                text-transform: uppercase;
-            }
-
-            .event-list > li:nth-child(even) > time {
-                background-color: #569876;
-            }
-
-            .event-list > li > time > span {
-                display: none;
-            }
-
-            .event-list > li > time > .day {
-                display: block;
-                font-size: 56pt;
-                font-weight: 100;
-                line-height: 1;
-            }
-
-            .event-list > li time > .month {
-                display: block;
-                font-size: 24pt;
-                font-weight: 900;
-                line-height: 1;
-            }
-
-            .event-list > li > img {
-                width: 100%;
-            }
-
-            .event-list > li > .info {
-                padding-top: 5px;
-                text-align: center;
-            }
-
-                .event-list > li > .info > .title {
-                    font-size: 17pt;
-                    font-weight: 700;
-                    margin: 0px;
-                }
-
-                .event-list > li > .info > .desc {
-                    font-size: 13pt;
-                    font-weight: 300;
-                    margin: 0px;
-                }
-
-                .event-list > li > .info > ul,
-                .event-list > li > .social > ul {
-                    display: table;
-                    list-style: none;
-                    margin: 10px 0px 0px;
-                    padding: 0px;
-                    width: 100%;
-                    text-align: center;
-                }
-
-            .event-list > li > .social > ul {
-                margin: 0px;
-            }
-
-                .event-list > li > .info > ul > li,
-                .event-list > li > .social > ul > li {
-                    display: table-cell;
-                    cursor: pointer;
-                    color: rgb(30, 30, 30);
-                    font-size: 11pt;
-                    font-weight: 300;
-                    padding: 3px 0px;
-                }
-
-                    .event-list > li > .info > ul > li > a {
-                        display: block;
-                        width: 100%;
-                        color: rgb(30, 30, 30);
-                        text-decoration: none;
-                    }
-
-                .event-list > li > .social > ul > li {
-                    padding: 0px;
-                }
-
-                    .event-list > li > .social > ul > li > a {
-                        padding: 3px 0px;
-                    }
-
-                    .event-list > li > .info > ul > li:hover,
-                    .event-list > li > .social > ul > li:hover {
-                        color: rgb(30, 30, 30);
-                        background-color: rgb(200, 200, 200);
-                    }
-
-    .facebook a,
-    .twitter a,
-    .google-plus a {
-        display: block;
+    button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
         width: 100%;
-        color: rgb(75, 110, 168) !important;
+        font-size: 18px;
     }
 
-    .twitter a {
-        color: rgb(79, 213, 248) !important;
-    }
+   
 
-    .google-plus a {
-        color: rgb(221, 75, 57) !important;
-    }
-
-    .facebook:hover a {
-        color: rgb(255, 255, 255) !important;
-        background-color: rgb(75, 110, 168) !important;
-    }
-
-    .twitter:hover a {
-        color: rgb(255, 255, 255) !important;
-        background-color: rgb(79, 213, 248) !important;
-    }
-
-    .google-plus:hover a {
-        color: rgb(255, 255, 255) !important;
-        background-color: rgb(221, 75, 57) !important;
-    }
+        button:hover, a:hover {
+            opacity: 0.7;
+        }
 </style>
+<body>
 
-<section class="container">
-    <h1 style="text-align:center">My Account</h1>
-    <div class="left-half">
-        <article>
-            <img id="avatar " src="~/Content/Images/Janus-Avatar.png" width="200" height="200" style="border-radius: 50%;
-        border: 1px solid black;" /> <br /><br />
-            <table>
-                @foreach (Janus.Models.AccountViewModel item in ViewBag.data)
+    <h1 class="alert-danger">@ViewBag.error</h1>
+
+    <section class="container">
+
+        <h1 style="text-align:center"><span class="title">My Acc</span>ount</h1>
+        <div class="left-half">
+            <article>
+
+                <div class="card">
+                    
+                    <img src="~/Content/Images/Janus-Avatar.png" alt="John" style="width:100%">
+                   @foreach (Janus.Models.AccountViewModel item in ViewBag.data)
+                    {
+                    <h1>@item.firstName @item.lastName</h1>
+                    <p class="position">@item.role</p>
+                    <p>Birth Date:  @item.birthDate</p>
+                    <p>Phone:  @item.phone</p>
+                    <p>Email:  @item.email</p>
+                    <p>Address:  @item.streetAddress</p>
+                    <p>Postal Code:  @item.postalCode</p>
+                    <p>Department:  @item.departmentName</p>
+                    <p>Hire Date:  @item.hireDate</p>
+                    <p><a class="btn btn-default popup" href="/UserDashboard/editprofile/@item.userID">Edit Profile</a></p><br />
+                   }
+                   
+                </div>
+            </article>
+        </div>
+        <div class="right-half" style="width:70%;">
+            <article>
+                @if (ViewBag.shiftCount == null)
                 {
-
-                    <tr>
-                        <td>Name:  @item.firstName @item.lastName</td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth: @item.birthDate</td>
-                    </tr>
-                    <tr>
-                        <td>Phone: @item.phone</td>
-                    </tr>
-                    <tr>
-                        <td>Email Address: @item.email</td>
-                    </tr>
-                    <tr>
-                        <td>Address: @item.streetAddress</td>
-                    </tr>
-                    <tr>
-                        <td>Postal Code: @item.postalCode</td>
-                    </tr>
-                    <tr>
-                        <td>Role: @item.role</td>
-                    </tr>
-                    <tr>
-                        <td>Department: @item.departmentName</td>
-                    </tr>
-                    <tr>
-                        <td>Hire Date: @item.hireDate</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a class="btn btn-danger popup" href="/UserDashboard/editprofile/@item.userID">Edit Profile</a>
-                        </td>
-                    </tr>
+                    <h1 style="text-align:center;">@ViewBag.noData</h1>
 
                 }
-            </table>
-        </article>
-    </div>
-    <div class="right-half" style="width:70%;">
-        <article>
-            <h1 style="text-align:center;">Upcoming Shifts</h1> <br />
-            <ul class="event-list">
-
-                <h3>@ViewBag.noData</h3>
-                @foreach (Janus.Models.ScheduleViewModel item in ViewBag.shiftData)
+                @if (ViewBag.shiftCount != null)
                 {
-
-                    <li>
-                        <time datetime="@item.shiftDate">
-                            <span class="month">@item.shiftDate</span>
-                        </time>
-                        <div class="info">
-                            <h2 class="title">Time: @item.shiftStart:00 - @item.shiftEnd:00</h2>
-                            <p class="desc">Position: @item.position</p>
-                            <ul>
-                                <li style="width:50%;"><a href="#website"><span class="fa fa-globe"></span>Switch Shift</a></li>
-                                <li style="width:50%;">Call In Sick</li>
-                            </ul>
-                        </div>
-                    </li>
-
+                    <h1 style="text-align:center;">Upcoming Shifts</h1> <br />
                 }
-            </ul>
-        </article>
-    </div>
-</section>
+
+                <ul class="event-list">
+
+                    @foreach (Janus.Models.ScheduleViewModel item in ViewBag.shiftData)
+                    {
+
+                        <li>
+                            <time datetime="@Convert.ToDateTime(item.shiftDate).ToString("d MMM yyyy")">
+                                <span class="month">@Convert.ToDateTime(item.shiftDate).ToString("d MMM yyyy")</span>
+                            </time>
+                            <div class="info">
+                                <h2 class="title">Time: @item.shiftStart:00 - @item.shiftEnd:00</h2>
+                                <p class="desc">Position: @item.position</p>
+                                <ul>
+                                    <li style="width:50%;"><a href="@Url.Action("SelectEmployee", "Forms")"><spa><span class="fa fa-globe"></span>Switch Shift</a></li>
+                                    <li style="width:50%;"><a href="@Url.Action("AbsenceClaim", "Forms")"><sp><span class="fa fa-globe"></span>Call In Sick</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    }
+                </ul>
+            </article>
+        </div>
+    </section>
+</body>

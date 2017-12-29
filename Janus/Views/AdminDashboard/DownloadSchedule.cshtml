@@ -71,11 +71,11 @@
                         <a href="/AdminDashboard/AdminDashboard" class="list-group-item active main-color-bg">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                         </a>
-                        <a href="@Url.Action("ManageEmployees", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Manage Employees </a>
-                        <a href="@Url.Action("MakeSchedule", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Make Schedule </a>
-                        <a href="@Url.Action("ManageRequests", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Manage Requests </a>
-                        <a href="@Url.Action("ShiftManagement", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Shift Management </a>
-                        <a href="@Url.Action("DownloadSchedule", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> View/Download Schedule </a>
+                        <a href="@Url.Action("ManageEmployees", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/manage_employees.png" width="25" height="25"></img> Manage Employees </a>
+                        <a href="@Url.Action("MakeSchedule", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/build_schedule.png" width="25" height="25"></img> Make Schedule </a>
+                        <a href="@Url.Action("ManageRequests", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/manage_requests.png" width="25" height="25"></img> Manage Requests </a>
+                        <a href="@Url.Action("ShiftManagement", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/shift_management.png" width="25" height="25"></img>Shift Management </a>
+                        <a href="@Url.Action("DownloadSchedule", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/download_schedule.png" width="25" height="25"></img> View/Download Schedule </a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -92,39 +92,30 @@
                                 <h2>Download This Week Schedule</h2>
 
                                 <table class="table">
-                                    <tr>
-                                        <th>
-                                            @Html.DisplayNameFor(a => a.userID)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(a => a.shiftDate)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(a => a.shiftStart)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(a => a.shiftEnd)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(a => a.position)
-                                        </th>
-                                        <th></th>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Shift Date</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                            <th>Position</th>
+                                        </tr>
+                                    </thead>
 
                                     @foreach (Janus.Models.PrintSchedViewModel item in ViewBag.data)
                                     {
                                         <tr>
                                             <td>
-                                                @item.userID
+                                                @item.lastName,@item.firstName
                                             </td>
                                             <td>
-                                                @item.day
+                                                @item.shiftDate
                                             </td>
                                             <td>
-                                                @item.shiftStart
+                                                @item.shiftStart:00
                                             </td>
                                             <td>
-                                                @item.shiftEnd
+                                                @item.shiftEnd:00
                                             </td>
                                             <td>
                                                 @item.position

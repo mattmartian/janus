@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Janus.Controllers
@@ -24,6 +22,7 @@ namespace Janus.Controllers
 
         public ActionResult Logout()
         {
+            //Clear out all the session data and redirect the user to the login page
             Session["userID"] = "";
             Session["email"] = "";
             Session["FirstName"] = "";
@@ -38,7 +37,6 @@ namespace Janus.Controllers
             //For login password https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
 
             string email = Request["email"];
-
             string password = Request["password"];
             string userFirstName = "";
             string userLastName = "";
@@ -53,12 +51,13 @@ namespace Janus.Controllers
                         orderby u.email
                         select u;
 
+            //retrieve the user data from the credentials entered
             foreach (var user in query)
             {
                 retrievedEmail = user.email;
                 retrievedPassword = user.password;
             }
-
+            //Validation
             if (string.IsNullOrEmpty(retrievedEmail))
             {
                 ViewBag.Error = "Cannot Find an Account with email: " + email;
@@ -96,7 +95,7 @@ namespace Janus.Controllers
                 ViewBag.Error = "Email is Incorrect";
                 return View("Login");
             }
-
+            //grab the users details from the database
             var details = from u in _context.Users
                           where u.email.Contains(email)
                           orderby u.userID
@@ -110,6 +109,7 @@ namespace Janus.Controllers
                 userRole = user.role;
             }
 
+            //store the users information into session data
             Session["userID"] = userID.ToString();
             Session["email"] = email;
             Session["name"] = userFirstName + " " + userLastName;

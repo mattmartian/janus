@@ -69,11 +69,26 @@
                         <a href="/AdminDashboard/AdminDashboard" class="list-group-item active main-color-bg">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                         </a>
-                        <a href="@Url.Action("ManageEmployees", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Manage Employees </a>
-                        <a href="@Url.Action("MakeSchedule", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Make Schedule </a>
-                        <a href="@Url.Action("ManageRequests", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Manage Requests </a>
-                        <a href="@Url.Action("ShiftManagement", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Shift Management </a>
-                        <a href="@Url.Action("DownloadSchedule", "AdminDashboard")" class="list-group-item"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> View/Download Schedule </a>
+                        <a href="@Url.Action("ManageEmployees", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/manage_employees.png" width="25" height="25"></img> Manage Employees </a>
+                        <a href="@Url.Action("MakeSchedule", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/build_schedule.png" width="25" height="25"></img> Make Schedule </a>
+                        <a href="@Url.Action("ManageRequests", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/manage_requests.png" width="25" height="25"></img> Manage Requests </a>
+                        <a href="@Url.Action("ShiftManagement", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/shift_management.png" width="25" height="25"></img>Shift Management </a>
+                        <a href="@Url.Action("DownloadSchedule", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/download_schedule.png" width="25" height="25"></img> View/Download Schedule </a>
+                    </div>
+
+                    <div class="well">
+                        <h4>Disk Space Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                60%
+                            </div>
+                        </div>
+                        <h4>Bandwidth Used </h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                                40%
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-9">

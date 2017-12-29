@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\account.css" />
     <Content Include="Content\AccountForm.css" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -305,6 +306,7 @@
     <Content Include="Content\Images\Janus-Favicon.png" />
     <Content Include="Content\Images\logonotext.png" />
     <Content Include="Content\Images\logotext.png" />
+    <Content Include="Content\schedule.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -637,7 +639,6 @@
     <Content Include="Views\UserDashboard\Schedule.cshtml" />
     <Content Include="Views\UserDashboard\MakeRequest.cshtml" />
     <Content Include="Views\UserDashboard\Mail.cshtml" />
-    <Content Include="Views\AdminDashboard\AdminDashboard.cshtml" />
     <Content Include="Views\AdminDashboard\ManageEmployees.cshtml" />
     <Content Include="Views\AdminDashboard\MakeSchedule.cshtml" />
     <Content Include="Views\AdminDashboard\ManageRequests.cshtml" />

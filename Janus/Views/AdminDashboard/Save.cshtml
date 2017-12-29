@@ -1,6 +1,9 @@
 ﻿@model Janus.Users
-
-<h2>Edit Employee</h2>
+@{
+    ViewBag.Title = "Edit Employee";
+    Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
+}
+<h1>Edit Employee</h1>
 @using (Html.BeginForm("save", "AdminDashboard", FormMethod.Post, new { id = "popupForm" }))
 {
     if (Model != null && Model.userID > 0)

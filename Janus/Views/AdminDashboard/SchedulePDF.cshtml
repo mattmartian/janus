@@ -1,13 +1,10 @@
-﻿@{
-    ViewBag.Title = "SchedulePDF";
-    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
-}
+﻿
 @model Janus.Models.PrintSchedViewModel
 
 <table class="table">
     <tr>
         <th>
-            User ID
+            Name
         </th>
         <th>
             Day
@@ -28,16 +25,16 @@
     {
         <tr>
             <td>
-                @item.userID
+                @item.lastName,@item.firstName
             </td>
             <td>
-                @item.day
+                @item.shiftDate
             </td>
             <td>
-                @item.shiftStart
+                @item.shiftStart:00
             </td>
             <td>
-                @item.shiftEnd
+                @item.shiftEnd:00
             </td>
             <td>
                 @item.position

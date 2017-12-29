@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Janus.Controllers
@@ -24,11 +22,13 @@ namespace Janus.Controllers
         [HttpPost]
         public ActionResult TimeOffRequest()
         {
+            //Collect the data entered into the form
             int user = Int32.Parse(Session["userID"].ToString());
             string start = Request["startTime"];
             string end = Request["endTime"];
             string desc = Request["description"];
 
+            //Add the request into the database for the manager to review
             _context.AbsenceClaims.Add(new AbsenceClaims
             {
                 userID = user,
@@ -50,12 +50,14 @@ namespace Janus.Controllers
         [HttpPost]
         public ActionResult FileClaim()
         {
+            //Collect form data entered
             int user = Int32.Parse(Session["userID"].ToString());
             string start = Request["startTime"];
             string end = Request["endTime"];
             string desc = Request["description"];
             string absType = Request["claimType"];
 
+            //Add the request into the database for the manager to review
             _context.AbsenceClaims.Add(new AbsenceClaims
             {
                 userID = user,
@@ -70,6 +72,7 @@ namespace Janus.Controllers
 
         public ActionResult SelectEmployee()
         {
+            //grab all of the names of the employees
             var employees = (from b in _context.Users select new Janus.Models.EmployeeDetailViewModel { userID = b.userID, firstName = b.firstName, lastName = b.lastName });
             ViewBag.data = employees;
 
@@ -79,6 +82,7 @@ namespace Janus.Controllers
         [HttpPost]
         public ActionResult EmployeeSelected()
         {
+            //grab the employee selected by the user
             string requestWith = Request["requestWith"];
 
             TempData["requestWith"] = requestWith;
@@ -88,6 +92,7 @@ namespace Janus.Controllers
 
         public ActionResult SwitchShift()
         {
+            //Grab the info from the requestore and requestee and start the claim
             int userID = Int32.Parse(@Session["userID"].ToString());
             int requestedWith = Int32.Parse(TempData["requestWith"].ToString());
             var employees = (from b in _context.Users select new Janus.Models.EmployeeDetailViewModel { userID = b.userID, firstName = b.firstName, lastName = b.lastName });
@@ -103,6 +108,7 @@ namespace Janus.Controllers
         [HttpPost]
         public ActionResult FileShiftChange()
         {
+            //collect form data
             int userid = Int32.Parse(@Session["userID"].ToString());
             string requestor = @Session["name"].ToString();
             int requestWith = Int32.Parse(TempData["reqWith"].ToString());
@@ -152,7 +158,7 @@ namespace Janus.Controllers
             {
                 retrievedName = user.firstName + " " + user.lastName;
             }
-
+            //Add the request into the database for the manager to review
             _context.shiftRequests.Add(new shiftRequests
             {
                 managerSignOff = null,
@@ -169,6 +175,7 @@ namespace Janus.Controllers
             });
             _context.SaveChanges();
 
+            //Send the user a notification of the request
             _context.Messages.Add(new Messages
             {
                 mailFromUserID = userid,

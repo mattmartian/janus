@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Janus.Controllers
@@ -240,14 +237,14 @@ namespace Janus.Controllers
 
         public ActionResult DownloadSchedule()
         {
-            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
+            var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
             return View();
         }
 
         public ActionResult SchedulePDF()
         {
-            var shiftData = (from b in _context.Shifts select new Janus.Models.PrintSchedViewModel { userID = b.userID, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
+            var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
             return View();
         }

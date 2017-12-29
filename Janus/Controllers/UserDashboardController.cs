@@ -13,6 +13,7 @@ namespace Janus.Controllers
 
         public UserDashboardController()
         {
+            //initialize the database context to be used in all controller actions
             _context = new JanusEntities();
         }
 
@@ -20,12 +21,13 @@ namespace Janus.Controllers
         public ActionResult Account()
         {
             DateTime today = DateTime.Today;
-
+            DateTime dt = DateTime.Today;
             string data = "";
             int dataID = 0;
             int identification = Int32.Parse(Session["userID"].ToString());
+
+            //Collect the users shifts
             var q = (from a in _context.Shifts where a.userID == identification select a);
-            DateTime dt = DateTime.Today;
             foreach (var shift in q)
             {
                 data = shift.shiftDate;
@@ -36,6 +38,8 @@ namespace Janus.Controllers
                 dt = Convert.ToDateTime(data);
             }
 
+            //if any of the users shifts are before today remove them
+            //Note: Unfortunatley this was the way i had to do this, apparrently my tier of azure subscription did not give me the capability of scheduling a job in my sql server
             if (today > dt)
             {
                 var shift = _context.Shifts.Find(dataID);
@@ -49,6 +53,11 @@ namespace Janus.Controllers
             if (shiftData.Count() == 0) //?
             {
                 ViewBag.noData = "No Shifts For This Week!";
+                ViewBag.shiftCount = null;
+            }
+            else
+            {
+                ViewBag.shiftCount = shiftData.Count();
             }
 
             ViewBag.shiftData = shiftData;
@@ -59,6 +68,7 @@ namespace Janus.Controllers
         [HttpGet]
         public ActionResult EditProfile(int id)
         {
+            // collect the users profile data
             var v = _context.Users.Where(a => a.userID == id).FirstOrDefault();
             return View(v);
         }
@@ -66,37 +76,43 @@ namespace Janus.Controllers
         [HttpPost]
         public ActionResult ProfileChanges(Users emp)
         {
-            bool status = false;
-            if (ModelState.IsValid)
+            try
             {
-                using (_context)
+                bool status = false;
+                if (ModelState.IsValid)
                 {
-                    if (emp.userID > 0)
+                    using (_context)
                     {
-                        //Edit
-                        var v = _context.Users.Where(a => a.userID == emp.userID).FirstOrDefault();
-                        if (v != null)
+                        if (emp.userID > 0)
                         {
-                            v.phone = emp.phone;
-                            v.streetAddress = emp.streetAddress;
-                            v.postalCode = emp.postalCode;
+                            //Update the users profile data
+                            var v = _context.Users.Where(a => a.userID == emp.userID).FirstOrDefault();
+                            if (v != null)
+                            {
+                                v.phone = emp.phone;
+                                v.streetAddress = emp.streetAddress;
+                                v.postalCode = emp.postalCode;
+                            }
                         }
-                    }
 
-                    _context.SaveChanges();
-                    status = true;
+                        _context.SaveChanges();
+                        status = true;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                ViewBag.error = "Could Not Change Profile Details";
+            }
+
             return RedirectToAction("Account", "UserDashboard");
         }
 
         public ActionResult Schedule()
         {
-            ViewBag.username = Session["FirstName"] + " " + Session["LastName"];
-            ViewBag.userID = Session["userID"];
-            ViewBag.userEmail = Session["email"];
-            ViewBag.access = Session["accessLevel"];
-
+            /**
+             * Collect all of the users shifts
+             * */
             int identification = Int32.Parse(Session["userID"].ToString());
             var shiftData = (from a in _context.Shifts where a.userID == identification select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
             if (shiftData.Count() == 0) //?
@@ -116,9 +132,17 @@ namespace Janus.Controllers
 
         public ActionResult Mail()
         {
+            //Collect all of the messages addressed to the user that is signed in
             int identification = Int32.Parse(Session["userID"].ToString());
             var messages = (from a in _context.Messages where a.mailToUserID == identification && a.isRead == false select new Janus.Models.MailViewModel { messageID = a.messageID, mailFromUserID = a.mailFromUserID, mailFromUsername = a.mailFromUsername, mailToUserID = a.mailToUserID, mailToUsername = a.mailToUsername, subject = a.subject, body = a.body, shiftRequestID = a.shiftRequestID, isRead = a.isRead });
-
+            if (messages.Count() == 0)
+            {
+                ViewBag.messageCount = null;
+            }
+            if (messages.Count() > 0)
+            {
+                ViewBag.messageCount = messages.Count();
+            }
             ViewBag.data = messages;
             return View();
         }
@@ -126,74 +150,110 @@ namespace Janus.Controllers
         [HttpGet]
         public ActionResult AcceptMail(int id)
         {
+            //Get the details of the message selected and mark the message as read
             var v = _context.shiftRequests.Where(a => a.shiftRequestID == id).FirstOrDefault();
             var y = _context.Messages.Where(a => a.messageID == id).FirstOrDefault();
-            if (y != null)
+            try
             {
-                y.isRead = true;
+                if (y != null)
+                {
+                    y.isRead = true;
+                }
             }
+            catch (Exception e)
+            {
+                ViewBag.error = "Could not get Message Request!";
+            }
+
             return View(v);
         }
 
         [HttpPost]
         public ActionResult AcceptMail(shiftRequests sr)
         {
-            bool status = false;
-            if (ModelState.IsValid)
+            try
             {
-                using (_context)
+                bool status = false;
+                if (ModelState.IsValid)
                 {
-                    if (sr.shiftRequestID > 0)
+                    using (_context)
                     {
-                        //Edit
-                        var v = _context.shiftRequests.Where(a => a.shiftRequestID == sr.shiftRequestID).FirstOrDefault();
-                        if (v != null)
+                        if (sr.shiftRequestID > 0)
                         {
-                            v.requestConfirmed = true;
+                            //Edit
+                            var v = _context.shiftRequests.Where(a => a.shiftRequestID == sr.shiftRequestID).FirstOrDefault();
+                            if (v != null)
+                            {
+                                v.requestConfirmed = true;
+                            }
                         }
-                    }
 
-                    _context.SaveChanges();
-                    status = true;
+                        _context.SaveChanges();
+                        status = true;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                ViewBag.error = "Could not Accept Message Request!";
+            }
+            //Mark that the recipient accepts the request and send it off to the manager for approval
+
             return RedirectToAction("Mail", "UserDashboard");
         }
 
         [HttpGet]
         public ActionResult DenyMail(int id)
         {
+            //Get the message details
             var v = _context.shiftRequests.Where(a => a.shiftRequestID == id).FirstOrDefault();
             var y = _context.Messages.Where(a => a.messageID == id).FirstOrDefault();
-            if (y != null)
+            try
             {
-                y.isRead = true;
+                if (y != null)
+                {
+                    y.isRead = true;
+                }
             }
+            catch (Exception e)
+            {
+                ViewBag.error = "Could not get Message Request!";
+            }
+
             return View(v);
         }
 
         [HttpPost]
         public ActionResult DenyMail(shiftRequests sr)
         {
-            bool status = false;
-            if (ModelState.IsValid)
+            try
             {
-                using (_context)
+                bool status = false;
+                if (ModelState.IsValid)
                 {
-                    if (sr.shiftRequestID > 0)
+                    using (_context)
                     {
-                        //Edit
-                        var v = _context.shiftRequests.Where(a => a.shiftRequestID == sr.shiftRequestID).FirstOrDefault();
-                        if (v != null)
+                        if (sr.shiftRequestID > 0)
                         {
-                            v.requestConfirmed = false;
+                            //Edit
+                            var v = _context.shiftRequests.Where(a => a.shiftRequestID == sr.shiftRequestID).FirstOrDefault();
+                            if (v != null)
+                            {
+                                v.requestConfirmed = false;
+                            }
                         }
-                    }
 
-                    _context.SaveChanges();
-                    status = true;
+                        _context.SaveChanges();
+                        status = true;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                ViewBag.error = "Could not Deny Message Request!";
+            }
+            //Decline the request from the sender
+
             return RedirectToAction("Mail", "UserDashboard");
         }
     }

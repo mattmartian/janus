@@ -12,7 +12,7 @@
                 <img src="/Content/Images/logotext.png" height="225" width="250" />
 
                 <div>
-                    <p style="background-color:red;color:red;">@ViewBag.Error</p>
+                    <p style="background-color:red;color:white;">@ViewBag.Error</p>
                 </div>
 
                 @using (Html.BeginForm("LoginUser", "Login", FormMethod.Post))
@@ -20,8 +20,9 @@
                     @Html.AntiForgeryToken()
 
                     <form>
-
-                        <h1>Login</h1>
+                        <div style="background-color:#008982;">
+                            <h1 style="color:white; padding-bottom:10px; padding-top:10px;">Login</h1>
+                        </div>
 
                         <fieldset>
 
@@ -47,4 +48,4 @@
             </div>
         </div>
     </div>
-    </body>
+</body>

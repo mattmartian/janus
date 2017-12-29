@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Janus.Models
+﻿namespace Janus.Models
 {
     public class MailViewModel
     {

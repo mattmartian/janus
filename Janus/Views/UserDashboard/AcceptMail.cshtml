@@ -5,7 +5,7 @@
 
 @model Janus.shiftRequests
 <center>
-
+    <h1 class="alert-danger">@ViewBag.error</h1>
 
     <h2>Accept Message</h2>
     @using (Html.BeginForm("acceptmail", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
