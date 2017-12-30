@@ -20,6 +20,10 @@ namespace Janus.Controllers
         // GET: UserDashboard
         public ActionResult Account()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             DateTime today = DateTime.Today;
             DateTime dt = DateTime.Today;
             string data = "";
@@ -110,6 +114,10 @@ namespace Janus.Controllers
 
         public ActionResult Schedule()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             /**
              * Collect all of the users shifts
              * */
@@ -127,11 +135,19 @@ namespace Janus.Controllers
 
         public ActionResult MakeRequest()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
 
         public ActionResult Mail()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             //Collect all of the messages addressed to the user that is signed in
             int identification = Int32.Parse(Session["userID"].ToString());
             var messages = (from a in _context.Messages where a.mailToUserID == identification && a.isRead == false select new Janus.Models.MailViewModel { messageID = a.messageID, mailFromUserID = a.mailFromUserID, mailFromUsername = a.mailFromUsername, mailToUserID = a.mailToUserID, mailToUsername = a.mailToUsername, subject = a.subject, body = a.body, shiftRequestID = a.shiftRequestID, isRead = a.isRead });
@@ -255,6 +271,23 @@ namespace Janus.Controllers
             //Decline the request from the sender
 
             return RedirectToAction("Mail", "UserDashboard");
+        }
+
+        public bool isLoggedIn()
+        {
+            bool loggedIn = false;
+            try
+            {
+                if (Session["accesslevel"].ToString() != "")
+                {
+                    loggedIn = true;
+                }
+            }
+            catch (NullReferenceException)
+            {
+            }
+
+            return loggedIn;
         }
     }
 }

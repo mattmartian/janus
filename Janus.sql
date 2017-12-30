@@ -270,12 +270,13 @@ REFERENCES Users(userID);
 
 
 -- --------------------------------------------------
+-- Sample Data Population
+-- --------------------------------------------------
+
+
+
+-- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------
 
-SELECT * FROM Shifts
-SELECT * FROM Users
-
-INSERT INTO Users VALUES ('Alex','Ridha','1996/01/03','alex','289-345-6789','alex@bnr.com','123 Anywhere Street','L6C8Y5','Employee','Sales Floor',CURRENT_TIMESTAMP,NULL,'Active','What Was Your Childhood Nickname','BNR')
-INSERT INTO Users VALUES ('Brandi','Michaels','1990/12/24','brz','289-452-0987','brandi@hotmail.com','45 Alexa Drive','l8I 7Y3','Employee','Sales Floor',CURRENT_TIMESTAMP,NULL,'Active','What Was Your Childhood Nickname','bran')
 

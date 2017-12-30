@@ -23,11 +23,19 @@ namespace Janus.Controllers
 
         public ActionResult AdminDashboard()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return RedirectToAction("ManageEmployees", "AdminDashboard");
         }
 
         public ActionResult ManageEmployees()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var employeeData = (from a in _context.Users select new Janus.Models.EmployeeDetailViewModel { firstName = a.firstName, lastName = a.lastName, role = a.role, departmentName = a.departmentName, userID = a.userID });
             ViewBag.data = employeeData;
             GatherStats();
@@ -112,6 +120,10 @@ namespace Janus.Controllers
 
         public ActionResult ManageRequests()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var requestData = (from b in _context.AbsenceClaims join c in _context.Users on b.userID equals c.userID select new Janus.Models.ClaimsVIewModel { claimID = b.claimID, firstName = c.firstName, lastName = c.lastName, startTime = b.startTime, endTime = b.endTime, description = b.description, claimType = b.claimType, isApproved = b.isApproved });
 
             ViewBag.data = requestData;
@@ -186,6 +198,10 @@ namespace Janus.Controllers
 
         public ActionResult MakeSchedule()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var employees = (from b in _context.Users select new Janus.Models.EmployeeDetailViewModel { userID = b.userID, firstName = b.firstName, lastName = b.lastName });
             ViewBag.data = employees;
             GatherStats();
@@ -244,6 +260,10 @@ namespace Janus.Controllers
 
         public ActionResult DownloadSchedule()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
             return View();
@@ -251,6 +271,10 @@ namespace Janus.Controllers
 
         public ActionResult SchedulePDF()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
             GatherStats();
@@ -264,6 +288,10 @@ namespace Janus.Controllers
 
         public ActionResult ShiftManagement()
         {
+            if (!isLoggedIn())
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var shiftSwitchData = (from b in _context.shiftRequests where b.requestStatus == "Pending Approval" select new Janus.Models.ShiftSwapViewModel { shiftRequestID = b.shiftRequestID, managerSignOff = b.managerSignOff, requestor = b.requestor, requestorShift = b.requestorShift, requestorID = b.requestorID, requestWith = b.requestWith, requestWithShift = b.requestWithShift, requestWithID = b.requestWithID, requestConfirmed = b.requestConfirmed, requestStatus = b.requestStatus });
             ViewBag.data = shiftSwitchData;
             GatherStats();
@@ -357,6 +385,23 @@ namespace Janus.Controllers
             ViewBag.illnessCount = illnessCount;
             ViewBag.claimCount = claimCount;
             ViewBag.bookOffCount = bookOffCount;
+        }
+
+        public bool isLoggedIn()
+        {
+            bool loggedIn = true;
+            try
+            {
+                if (Session["accesslevel"].ToString() == "")
+                {
+                    loggedIn = false;
+                }
+            }
+            catch (NullReferenceException)
+            {
+            }
+
+            return loggedIn;
         }
     }
 }
