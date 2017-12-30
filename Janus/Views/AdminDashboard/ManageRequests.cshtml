@@ -65,6 +65,7 @@
     }
 </style>
 <body>
+    <h1 style="text-align:left"><span class="title">Admin Da</span>shboard</h1>
     <section id="main">
         <div class="container">
             <div class="row">
@@ -79,6 +80,24 @@
                         <a href="@Url.Action("ShiftManagement", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/shift_management.png" width="25" height="25"></img>Shift Management </a>
                         <a href="@Url.Action("DownloadSchedule", "AdminDashboard")" class="list-group-item"><img src="~/Content/Images/Iconset/download_schedule.png" width="25" height="25"></img> View/Download Schedule </a>
                     </div>
+
+                    <div class="well">
+                        <h4>Absence Statistics</h4>
+                        <table>
+                            <tr>
+                                <td>Total Absences: </td>
+                                <td>@ViewBag.claimCount</td>
+                            </tr>
+                            <tr>
+                                <td>Total Illnesses: </td>
+                                <td>@ViewBag.illnessCount</td>
+                            </tr>
+                            <tr>
+                                <td>Total Book Offs: </td>
+                                <td>@ViewBag.bookOffCount</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-md-9">
                     <!-- Website Overview -->
@@ -92,7 +111,7 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Emp#</th>
+                                        <th>Employee</th>
                                         <th>Start Time</th>
                                         <th>End Time</th>
                                         <th>Description</th>
@@ -104,7 +123,7 @@
                                     {
                                         <tr>
                                             <td>
-                                                @item.userID
+                                                @item.lastName,@item.firstName
                                             </td>
 
                                             <td>

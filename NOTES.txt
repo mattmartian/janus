@@ -1,1 +1,0 @@
-sign up screen then pick role screen if manager picked type in authorization code somehow add to role table?

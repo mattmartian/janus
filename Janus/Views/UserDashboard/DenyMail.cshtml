@@ -3,11 +3,7 @@
     Layout = "~/Views/Shared/_AccountFormLayout.cshtml";
 }
 @model Janus.shiftRequests
-<div class="alert alert-danger">
-    <center>
-        <h1 style=" padding-top:8em; padding-bottom:8em;">@ViewBag.error</h1>
-    </center>
-</div>
+<h1 class="alert-danger">@ViewBag.error</h1>   
 <center>
     <h2>Deny Message</h2>
     @using (Html.BeginForm("denymail", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))

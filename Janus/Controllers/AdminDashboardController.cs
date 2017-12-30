@@ -7,11 +7,18 @@ namespace Janus.Controllers
     public class AdminDashboardController : Controller
     {
         private readonly JanusEntities _context;
+        public int claimCount;
+        public int illnessCount;
+        public int bookOffCount;
+
         // GET: AdminDashboard
 
         public AdminDashboardController()
         {
             _context = new JanusEntities();
+            claimCount = _context.AbsenceClaims.Count();
+            illnessCount = _context.AbsenceClaims.Count(a => a.claimType == "Illness");
+            bookOffCount = _context.AbsenceClaims.Count(a => a.claimType == "Book Off");
         }
 
         public ActionResult AdminDashboard()
@@ -23,7 +30,7 @@ namespace Janus.Controllers
         {
             var employeeData = (from a in _context.Users select new Janus.Models.EmployeeDetailViewModel { firstName = a.firstName, lastName = a.lastName, role = a.role, departmentName = a.departmentName, userID = a.userID });
             ViewBag.data = employeeData;
-
+            GatherStats();
             return View();
         }
 
@@ -94,9 +101,7 @@ namespace Janus.Controllers
                 var c = _context.Availibility.Where(a => a.userID == id).FirstOrDefault();
                 if (v != null)
                 {
-                    _context.Availibility.Remove(c);
-                    _context.SaveChanges();
-                    _context.Users.Remove(v);
+                    v.employmentStatus = "Inactive";
                     _context.SaveChanges();
 
                     status = true;
@@ -107,9 +112,10 @@ namespace Janus.Controllers
 
         public ActionResult ManageRequests()
         {
-            var requestData = (from b in _context.AbsenceClaims where b.isApproved == null select new Janus.Models.ClaimsVIewModel { claimID = b.claimID, userID = b.userID, startTime = b.startTime, endTime = b.endTime, description = b.description, claimType = b.claimType, isApproved = b.isApproved });
-            ViewBag.data = requestData;
+            var requestData = (from b in _context.AbsenceClaims join c in _context.Users on b.userID equals c.userID select new Janus.Models.ClaimsVIewModel { claimID = b.claimID, firstName = c.firstName, lastName = c.lastName, startTime = b.startTime, endTime = b.endTime, description = b.description, claimType = b.claimType, isApproved = b.isApproved });
 
+            ViewBag.data = requestData;
+            GatherStats();
             return View();
         }
 
@@ -182,6 +188,7 @@ namespace Janus.Controllers
         {
             var employees = (from b in _context.Users select new Janus.Models.EmployeeDetailViewModel { userID = b.userID, firstName = b.firstName, lastName = b.lastName });
             ViewBag.data = employees;
+            GatherStats();
             return View();
         }
 
@@ -246,6 +253,7 @@ namespace Janus.Controllers
         {
             var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
             ViewBag.data = shiftData;
+            GatherStats();
             return View();
         }
 
@@ -258,6 +266,7 @@ namespace Janus.Controllers
         {
             var shiftSwitchData = (from b in _context.shiftRequests where b.requestStatus == "Pending Approval" select new Janus.Models.ShiftSwapViewModel { shiftRequestID = b.shiftRequestID, managerSignOff = b.managerSignOff, requestor = b.requestor, requestorShift = b.requestorShift, requestorID = b.requestorID, requestWith = b.requestWith, requestWithShift = b.requestWithShift, requestWithID = b.requestWithID, requestConfirmed = b.requestConfirmed, requestStatus = b.requestStatus });
             ViewBag.data = shiftSwitchData;
+            GatherStats();
             return View();
         }
 
@@ -340,6 +349,14 @@ namespace Janus.Controllers
                 }
             }
             return RedirectToAction("ShiftManagement", "AdminDashboard");
+        }
+
+        [NonAction]
+        private void GatherStats()
+        {
+            ViewBag.illnessCount = illnessCount;
+            ViewBag.claimCount = claimCount;
+            ViewBag.bookOffCount = bookOffCount;
         }
     }
 }

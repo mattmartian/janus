@@ -91,14 +91,7 @@ namespace Janus.Controllers
                 formValidationErrors += "\n Phone is Invalid";
                 formHasErrors = true;
             }
-            string birthdayRegex = @"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$";
-            var birthdayMatch = Regex.Match(bday, birthdayRegex, RegexOptions.IgnoreCase);
-            if (!birthdayMatch.Success)
-            {
-                formValidationErrors += "\n Birthday is not in format dd/mm/yyyy";
 
-                formHasErrors = true;
-            }
             if (formHasErrors == true)
             {
                 ViewBag.Error = formValidationErrors;
@@ -147,66 +140,23 @@ namespace Janus.Controllers
                     retrievedID = user.userID;
                 }
 
+                string[] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+                string[] startTime = { sundayFrom, mondayFrom, tuesdayFrom, wendnesdayFrom, thursdayFrom, fridayFrom, saturdayFrom };
+                string[] endTime = { sundayTo, mondayTo, tuesdayTo, wednesdayTo, thursdayTo, fridayTo, saturdayTo };
                 //Add Availibility of the User to the database
-
-                _context.Availibility.Add(new Availibility
+                for (int i = 0; i < 7; i++)
                 {
-                    userID = retrievedID,
-                    day = "Sunday",
-                    startTime = Int32.Parse(sundayFrom),
-                    endTime = Int32.Parse(sundayTo),
-                });
-                _context.SaveChanges();
-
-                _context.Availibility.Add(new Availibility
-                {
-                    userID = retrievedID,
-                    day = "Monday",
-                    startTime = Int32.Parse(mondayFrom),
-                    endTime = Int32.Parse(mondayTo),
-                });
-                _context.SaveChanges();
-                _context.Availibility.Add(new Availibility
-                {
-                    userID = retrievedID,
-                    day = "Tuesday",
-                    startTime = Int32.Parse(tuesdayFrom),
-                    endTime = Int32.Parse(tuesdayTo),
-                });
-                _context.SaveChanges();
-                _context.Availibility.Add(new Availibility
-                {
-                    userID = retrievedID,
-                    day = "Wednesday",
-                    startTime = Int32.Parse(wendnesdayFrom),
-                    endTime = Int32.Parse(wednesdayTo),
-                });
-                _context.SaveChanges();
-                _context.Availibility.Add(new Availibility
-                {
-                    userID = retrievedID,
-                    day = "Thursday",
-                    startTime = Int32.Parse(thursdayFrom),
-                    endTime = Int32.Parse(thursdayTo),
-                });
-                _context.SaveChanges();
-                _context.Availibility.Add(new Availibility
-                {
-                    userID = retrievedID,
-                    day = "Friday",
-                    startTime = Int32.Parse(fridayFrom),
-                    endTime = Int32.Parse(fridayTo),
-                });
-                _context.SaveChanges();
-                _context.Availibility.Add(new Availibility
-                {
-                    userID = retrievedID,
-                    day = "Saturday",
-                    startTime = Int32.Parse(saturdayFrom),
-                    endTime = Int32.Parse(saturdayTo),
-                });
-                _context.SaveChanges();
+                    _context.Availibility.Add(new Availibility
+                    {
+                        userID = retrievedID,
+                        day = days[i],
+                        startTime = Int32.Parse(startTime[i]),
+                        endTime = Int32.Parse(endTime[i]),
+                    });
+                    _context.SaveChanges();
+                }
             }
+
             return RedirectToAction("ReigstrationConfirmed", "Register");
         }
     }

@@ -12,14 +12,13 @@
             background-color: #39AF6F !important;
         }
 
-        h1,h2,p{
+        h1, h2, p {
             font-family: 'Mukta Malar', sans-serif;
         }
 
         .font {
             font-family: 'Mukta Malar', sans-serif;
         }
-        
 
         .title {
             text-decoration: underline;
@@ -48,7 +47,20 @@
 
                         <li style="background: url(../Content/Images/Iconset/my_schedule.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("My Schedule", "Schedule", "UserDashboard", null, new { @class = "font" })</li>
                         <li style="background: url(../Content/Images/Iconset/make_request.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Make Request", "MakeRequest", "UserDashboard", null, new { @class = "font" })</li>
-                        <li style="background: url(../Content/Images/Iconset/mailbox.png) left center no-repeat; background-size:30px 25px; padding-left:20px;">@Html.ActionLink("Mailbox", "Mail", "UserDashboard", null, new { @class = "font" })</li>
+                        @{
+                            JanusEntities _context = new JanusEntities();
+                            int identification = Int32.Parse(Session["userID"].ToString());
+                            var q = from a in _context.Messages where a.mailToUserID == identification && a.isRead == false select a;
+                            int newMessages = q.Count();
+                        }
+                        @if (newMessages > 0)
+                        {
+                            <li style="background: url(../Content/Images/Iconset/mail_notif.png) left center no-repeat; background-size:30px 25px; padding-left:20px;">@Html.ActionLink("Mailbox", "Mail", "UserDashboard", null, new { @class = "font" })</li>
+                        }
+                        @if (newMessages == 0)
+                        {
+                            <li style="background: url(../Content/Images/Iconset/mailbox.png) left center no-repeat; background-size:30px 25px; padding-left:20px;">@Html.ActionLink("Mailbox", "Mail", "UserDashboard", null, new { @class = "font" })</li>
+                        }
 
                         @if (@Session["accessLevel"].ToString() == "Manager")
                         {

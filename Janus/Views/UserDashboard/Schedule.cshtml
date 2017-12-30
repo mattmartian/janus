@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-            <h3>Hi @Session["name"], Here is your Schedule For This Week:</h3><br />
+            <h3>Hi @Session["name"], Here is your Schedule </h3><br />
             <table>
                 <tr>
                     <td>
@@ -19,8 +19,10 @@
                         <ul class="event-list">
 
                             <h3>@ViewBag.noData</h3>
+                           
                             @foreach (Janus.Models.ScheduleViewModel item in ViewBag.data)
                             {
+                           
 
                                 <li style="float:right;">
                                     <time datetime="@Convert.ToDateTime(item.shiftDate).ToString("d MMM yyyy")">
@@ -35,6 +37,7 @@
                                         </ul>
                                     </div>
                                 </li>
+                                
 
                             }
                         </ul>

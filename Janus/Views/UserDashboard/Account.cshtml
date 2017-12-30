@@ -73,7 +73,12 @@
             <article>
                 @if (ViewBag.shiftCount == null)
                 {
-                    <h1 style="text-align:center;">@ViewBag.noData</h1>
+                    <div class="alert alert-warning">
+                        <center>
+                            <h1 style=" padding-top:8em; padding-bottom:8em;">@ViewBag.noData</h1>
+                        </center>
+                    </div>
+                    <!--<h1 style="text-align:center;"></h1>-->
 
                 }
                 @if (ViewBag.shiftCount != null)
