@@ -57,6 +57,7 @@ namespace Janus.Controllers
             string retrievedEmail = "";
             string retrievedPassword = "";
             string retrievedEmpStatus = "";
+            string retrievedDepartment = "";
             var query = from u in _context.Users
                         where u.email.Contains(email)
                         orderby u.email
@@ -125,12 +126,14 @@ namespace Janus.Controllers
                 userFirstName = user.firstName;
                 userLastName = user.lastName;
                 userRole = user.role;
+                retrievedDepartment = user.departmentName;
             }
 
             //store the users information into session data
             Session["userID"] = userID.ToString();
             Session["email"] = email;
             Session["name"] = userFirstName + " " + userLastName;
+            Session["department"] = retrievedDepartment;
 
             Session["accessLevel"] = userRole;
 

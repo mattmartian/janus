@@ -39,12 +39,13 @@ namespace Janus.Controllers
         /// <returns>The Manage Employees Dashboard View</returns>
         public ActionResult ManageEmployees()
         {
+            string departmentName = Session["department"].ToString();
             //Make sure the user is logged in
             if (!isLoggedIn())
             {
                 return RedirectToAction("Login", "Login");
             }
-            var employeeData = (from a in _context.Users where a.employmentStatus == "Active" select new Janus.Models.EmployeeDetailViewModel { firstName = a.firstName, lastName = a.lastName, role = a.role, departmentName = a.departmentName, userID = a.userID });
+            var employeeData = (from a in _context.Users where a.employmentStatus == "Active" && a.departmentName == departmentName select new Janus.Models.EmployeeDetailViewModel { firstName = a.firstName, lastName = a.lastName, role = a.role, departmentName = a.departmentName, userID = a.userID });
             ViewBag.data = employeeData;
             if (employeeData.Count() > 0)
             {
