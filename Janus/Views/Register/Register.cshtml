@@ -25,6 +25,25 @@
         width: 50%;
     }
 </style>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#roles").on("change", function () {
+                console.log("I HAVE BEEN SELECTED");
+
+                if ($("#roles").val() == "Manager") {
+                    console.log("MANAGER SELECTED");
+                    $("#confirmLabel").show();
+                    $("#confirmManager").show();
+                } else {
+                    $("#confirmManager").hide();
+                    $("#confirmLabel").hide();
+                }
+            });
+            $("#roles").trigger("change");
+        });
+    </script>
+}
 
 <body>
     <div class="container">
@@ -39,7 +58,7 @@
                 </div>
 
                 @using (Html.BeginForm("CreateUser", "Register", FormMethod.Post))
-            {
+                {
                     @Html.AntiForgeryToken()
 
                     <form>
@@ -105,10 +124,9 @@
                                             <option value="Music Lessons">Music Lessons</option>
                                         </select>
                                     </td>
-                                   
                                 </tr>
                                 <tr>
-                                    
+
                                     <td>
                                         <label for="Role">Role:</label>
                                         <select id="roles" name="roles">
@@ -117,8 +135,8 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <label id="confirmLabel"for="confirmManager">Manager Code:</label>
-                                        <input type="text" id="confirmManager" name="confirmManager" required />
+                                        <label id="confirmLabel" for="confirmManager">Manager Code:</label>
+                                        <input type="text" id="confirmManager" name="confirmManager"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -571,22 +589,3 @@
         </div>
     </div>
 </body>
-@section Scripts {
-    <script>
-        $(function () {
-            $("#roles").on("change", function () {
-                console.log("I HAVE BEEN SELECTED");
-               
-                if ($("#roles").val() == "Manager") {
-                    console.log("MANAGER SELECTED");
-                    $("#confirmLabel").show();
-                    $("#confirmManager").show();
-                } else {
-                    $("#confirmManager").hide();
-                    $("#confirmLabel").hide();
-                }
-            });
-            $("#roles").trigger("change");
-        });
-    </script>
-}
