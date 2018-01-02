@@ -5,37 +5,62 @@
 <h1 class="alert-danger">@ViewBag.error</h1>
 <h1><span class="title">Inb</span>ox</h1>
 <table class="table table-striped table-hover">
-    <thead>
+    @if (ViewBag.messageCount == null)
+    {
         <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Subject</th>
-            <th>Body</th>
+            <td>No New Messages!</td>
         </tr>
-    </thead>
-    <tbody>
-        @foreach (Janus.Models.MailViewModel item in ViewBag.data)
-        {
+    }
+    @if (ViewBag.messageCount != null)
+    {
+        <thead>
             <tr>
-                <td>
-                    @item.mailFromUsername
-                </td>
-
-                <td>
-                    @item.mailToUsername
-                </td>
-                <td>
-                    @item.subject
-                </td>
-                <td>
-                    @item.body
-                </td>
-
-                <td>
-                    <a class="btn btn-success popup" href="/UserDashboard/acceptmail/@item.shiftRequestID">Accept </a>
-                    <a class="btn btn-danger popup" href="/UserDashboard/denymail/@item.shiftRequestID">Deny</a>
-                </td>
+                <th>From</th>
+                <th>To</th>
+                <th>Subject</th>
+                <th>Body</th>
             </tr>
-        }
-    </tbody>
+        </thead>
+        <tbody>
+            @foreach (Janus.Models.MailViewModel item in ViewBag.data)
+            {
+                <tr>
+                    <td>
+                        @item.mailFromUsername
+                    </td>
+
+                    <td>
+                        @item.mailToUsername
+                    </td>
+                    <td>
+                        @item.subject
+                    </td>
+                    <td>
+                        @item.body
+                    </td>
+
+                    @if (item.subject == "Update To Your Recent Claim")
+                    {
+                        <td>
+                            <a class="btn btn-success popup" href="/UserDashboard/viewmessage/@item.messageID">View </a>
+                        </td>
+
+                    }
+                    @if (item.subject == "Update To Your Recent Request")
+                    {
+                        <td>
+                            <a class="btn btn-success popup" href="/UserDashboard/viewmessage/@item.messageID">View </a>
+                        </td>
+                    }
+                    @if (item.subject != "Update To Your Recent Request" && item.subject != "Update To Your Recent Claim")
+                    {
+                        <td>
+                            <a class="btn btn-success popup" href="/UserDashboard/acceptmail/@item.shiftRequestID">Accept </a>
+                            <a class="btn btn-danger popup" href="/UserDashboard/denymail/@item.shiftRequestID">Deny</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    }
 </table>

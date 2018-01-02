@@ -7,19 +7,24 @@ namespace Janus.Controllers
 {
     public class LoginController : Controller
     {
+        //Make the database context global
         private readonly JanusEntities _context;
-        // GET: Login
 
         public LoginController()
         {
             _context = new JanusEntities();
         }
 
+        //Return the view for the user to login
         public ActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// the logout action will clear all of the session variables thus logging the user out and redirecting them to the login page
+        /// </summary>
+        /// <returns>The login page</returns>
         public ActionResult Logout()
         {
             //Clear out all the session data and redirect the user to the login page
@@ -32,6 +37,11 @@ namespace Janus.Controllers
             return RedirectToAction("Login", "Login");
         }
 
+        /// <summary>
+        /// The login action will take the details the user has entered, and match it up with the correct credentials in the database.
+        /// if the user exists, some data will be held in the session and they will be logged in
+        /// </summary>
+        /// <returns>The users account page</returns>
         public ActionResult LoginUser()
         {
             //For login password https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
@@ -46,6 +56,7 @@ namespace Janus.Controllers
             string result = "";
             string retrievedEmail = "";
             string retrievedPassword = "";
+            string retrievedEmpStatus = "";
             var query = from u in _context.Users
                         where u.email.Contains(email)
                         orderby u.email
@@ -56,11 +67,18 @@ namespace Janus.Controllers
             {
                 retrievedEmail = user.email;
                 retrievedPassword = user.password;
+                retrievedEmpStatus = user.employmentStatus;
             }
+
             //Validation
             if (string.IsNullOrEmpty(retrievedEmail))
             {
                 ViewBag.Error = "Cannot Find an Account with email: " + email;
+                return View("Login");
+            }
+            if (retrievedEmpStatus == "Inactive")
+            {
+                ViewBag.Error = "Sorry, your account has been disabled by Management";
                 return View("Login");
             }
 

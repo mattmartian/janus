@@ -40,7 +40,7 @@
                                 <select name="requestWithShift">
                                     @foreach (Janus.Models.ShiftViewModel item in ViewBag.requestWithData)
                                     {
-                                        <option value="@item.shiftID">@item.shiftDate (@item.shiftStart - @item.shiftEnd)</option>
+                                        <option value="@item.shiftID">@item.shiftDate (@item.shiftStart:00 - @item.shiftEnd:00)</option>
                                     }
                                 </select>
                             </td>

@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "View Message";
+
+}
+<style>
+    body{
+        width:100%;
+    }
+</style>
+@model Janus.Messages
+    <body>
+        <center>
+            <h1 class="alert-danger">@ViewBag.error</h1>
+            <h2>View Message</h2>
+            @using (Html.BeginForm("removemessage", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
+            {
+                if (Model != null && Model.messageID > 0)
+                {
+                    @Html.HiddenFor(a => a.messageID)
+                }
+
+                <div class="form-group">
+                    <label>From</label><br />
+                    @Html.DisplayFor(a => a.mailFromUsername, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label>To</label><br />
+                    @Html.DisplayFor(a => a.mailToUsername, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Subject</label><br />
+                    @Html.DisplayFor(a => a.subject, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label>Body</label><br />
+                    @Html.TextAreaFor(a => a.body, new { @class = "form-control", disabled = true, rows = "10", cols = "90", @style = "resize: none;" })
+                </div>
+
+                <div>
+                    <input type="submit" value="Remove" />
+                </div>
+            }
+        </center>
+    </body>

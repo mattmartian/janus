@@ -650,7 +650,6 @@
     <Content Include="Views\AdminDashboard\DenyClaim.cshtml" />
     <Content Include="Views\AdminDashboard\ApproveShift.cshtml" />
     <Content Include="Views\AdminDashboard\DenyShift.cshtml" />
-    <Content Include="Views\AdminDashboard\SchedulePDF.cshtml" />
     <Content Include="Views\UserDashboard\AcceptMail.cshtml" />
     <Content Include="Views\UserDashboard\DenyMail.cshtml" />
     <Content Include="Views\Forms\BookOff.cshtml" />
@@ -659,6 +658,7 @@
     <Content Include="Views\Forms\SelectEmployee.cshtml" />
     <Content Include="Views\Forms\RequestSubmitted.cshtml" />
     <Content Include="Views\UserDashboard\EditProfile.cshtml" />
+    <Content Include="Views\UserDashboard\ViewMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

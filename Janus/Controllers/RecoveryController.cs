@@ -5,6 +5,9 @@ using System.Web.Mvc;
 
 namespace Janus.Controllers
 {
+    /// <summary>
+    /// The RevoveryController is responsible for resetting the users password if they have forgotten it
+    /// </summary>
     public class RecoveryController : Controller
     {
         private readonly JanusEntities _context;
@@ -15,17 +18,19 @@ namespace Janus.Controllers
             _context = new JanusEntities();
         }
 
-        // GET: Recovery
+        //Return the view to verify the user has an account
         public ActionResult VerifyAccount()
         {
             return View();
         }
 
+        //Return the view to let the user know their password has been successfully reset
         public ActionResult PasswordChangedConfirmation()
         {
             return View();
         }
 
+        //Display the users security question and await their asnwer before resetting the password
         public ActionResult SecurityQuestion()
         {
             //Collect the security question and answer for the user requesting a password reset
@@ -53,11 +58,16 @@ namespace Janus.Controllers
             return View();
         }
 
+        //Display the form for the user to enter in their new password
         public ActionResult ResetPassword()
         {
             return View();
         }
 
+        /// <summary>
+        /// Verify that the user has an account with the email they have entered
+        /// </summary>
+        /// <returns>Return the users security question and wait for their answer</returns>
         [HttpPost]
         public ActionResult VerifyEmail()
         {
@@ -99,6 +109,10 @@ namespace Janus.Controllers
             return RedirectToAction("SecurityQuestion");
         }
 
+        /// <summary>
+        /// The VerifyAnswer action will check if the users answer to the security question matches the one they had initally set on sign up
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult VerifyAnswer()
         {
@@ -116,6 +130,10 @@ namespace Janus.Controllers
             return RedirectToAction("ResetPassword");
         }
 
+        /// <summary>
+        ///The PasswordReset action will collect the users new entered password, hash it and store it inside the database
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult PasswordReset()
         {

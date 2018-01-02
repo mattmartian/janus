@@ -17,7 +17,10 @@ namespace Janus.Controllers
             _context = new JanusEntities();
         }
 
-        // GET: UserDashboard
+        /// <summary>
+        ///The account action will display all of the users details that are signed in as well as upcoming shifts they may have
+        /// </summary>
+        /// <returns>Account Page</returns>
         public ActionResult Account()
         {
             if (!isLoggedIn())
@@ -69,6 +72,7 @@ namespace Janus.Controllers
             return View();
         }
 
+        //Get the users data that is signed in for editing
         [HttpGet]
         public ActionResult EditProfile(int id)
         {
@@ -77,6 +81,7 @@ namespace Janus.Controllers
             return View(v);
         }
 
+        //Update the users detials with the new data inputted into the form
         [HttpPost]
         public ActionResult ProfileChanges(Users emp)
         {
@@ -112,6 +117,10 @@ namespace Janus.Controllers
             return RedirectToAction("Account", "UserDashboard");
         }
 
+        /// <summary>
+        ///The Schedule action will display all of the users signed in  shifts that have been assigned to them
+        /// </summary>
+        /// <returns>Schedule Page</returns>
         public ActionResult Schedule()
         {
             if (!isLoggedIn())
@@ -133,6 +142,10 @@ namespace Janus.Controllers
             return View();
         }
 
+        /// <summary>
+        /// The MakeRequest action will display a list of forms to the user to select which claim they want to file
+        /// </summary>
+        /// <returns>MakeRequest Page</returns>
         public ActionResult MakeRequest()
         {
             if (!isLoggedIn())
@@ -142,6 +155,10 @@ namespace Janus.Controllers
             return View();
         }
 
+        /// <summary>
+        /// The Mail controller will display all of the users messages for them to read and accept or deny
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Mail()
         {
             if (!isLoggedIn())
@@ -151,6 +168,7 @@ namespace Janus.Controllers
             //Collect all of the messages addressed to the user that is signed in
             int identification = Int32.Parse(Session["userID"].ToString());
             var messages = (from a in _context.Messages where a.mailToUserID == identification && a.isRead == false select new Janus.Models.MailViewModel { messageID = a.messageID, mailFromUserID = a.mailFromUserID, mailFromUsername = a.mailFromUsername, mailToUserID = a.mailToUserID, mailToUsername = a.mailToUsername, subject = a.subject, body = a.body, shiftRequestID = a.shiftRequestID, isRead = a.isRead });
+
             if (messages.Count() == 0)
             {
                 ViewBag.messageCount = null;
@@ -164,6 +182,48 @@ namespace Janus.Controllers
         }
 
         [HttpGet]
+        public ActionResult ViewMessage(int id)
+        {
+            //Get the details of the message selected and mark the message as read
+            var y = _context.Messages.Where(a => a.messageID == id).FirstOrDefault();
+
+            return View(y);
+        }
+
+        [HttpPost]
+        public ActionResult RemoveMessage(Messages msg)
+        {
+            try
+            {
+                bool status = false;
+                if (ModelState.IsValid)
+                {
+                    using (_context)
+                    {
+                        if (msg.messageID > 0)
+                        {
+                            //Edit
+                            var v = _context.Messages.Where(a => a.messageID == msg.messageID).FirstOrDefault();
+                            if (v != null)
+                            {
+                                v.isRead = true;
+                            }
+                        }
+
+                        _context.SaveChanges();
+                        status = true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.error = "Could not Deny Message Request!";
+            }
+            return RedirectToAction("Mail", "UserDashboard");
+        }
+
+        //Get all the details inside the message to show the user
+        [HttpGet]
         public ActionResult AcceptMail(int id)
         {
             //Get the details of the message selected and mark the message as read
@@ -175,6 +235,7 @@ namespace Janus.Controllers
                 {
                     y.isRead = true;
                 }
+                _context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -184,6 +245,7 @@ namespace Janus.Controllers
             return View(v);
         }
 
+        //Mark the message as accepted and send it off to the manager for review
         [HttpPost]
         public ActionResult AcceptMail(shiftRequests sr)
         {
@@ -201,6 +263,7 @@ namespace Janus.Controllers
                             if (v != null)
                             {
                                 v.requestConfirmed = true;
+                                v.requestStatus = "Awaiting Manager Approval";
                             }
                         }
 
@@ -218,6 +281,7 @@ namespace Janus.Controllers
             return RedirectToAction("Mail", "UserDashboard");
         }
 
+        //Get all the details inside the message to show the user
         [HttpGet]
         public ActionResult DenyMail(int id)
         {
@@ -239,6 +303,7 @@ namespace Janus.Controllers
             return View(v);
         }
 
+        //Mark the message as denied and do not continue
         [HttpPost]
         public ActionResult DenyMail(shiftRequests sr)
         {
@@ -273,6 +338,7 @@ namespace Janus.Controllers
             return RedirectToAction("Mail", "UserDashboard");
         }
 
+        //verify that the user is logged in before they can access the pages
         public bool isLoggedIn()
         {
             bool loggedIn = false;

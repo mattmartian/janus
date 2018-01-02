@@ -6,27 +6,37 @@ using System.Web.Mvc;
 
 namespace Janus.Controllers
 {
+    /// <summary>
+    /// The Register Controller will take care of all the functinality regarding creating a user
+    /// </summary>
     public class RegisterController : Controller
     {
-        // GET: Register
-
+        //Set the database context globally
         private readonly JanusEntities _context;
 
+        //Constructor for controller
         public RegisterController()
         {
             _context = new JanusEntities();
         }
 
+        //Return the Register View
         public ActionResult Register()
         {
             return View();
         }
 
+        //Confirm that the User has registered successfully
         public ActionResult ReigstrationConfirmed()
         {
             return View();
         }
 
+        /// <summary>
+        ///This create user action will take care of all the grunt work. it will collect all of the data the user has entereed about themself, create them as a user and
+        ///store the users info and availibility inside the database
+        /// </summary>
+        /// <returns>A View to confirm that the user has registered successfully</returns>
         [HttpPost]
         public ActionResult CreateUser()
         {
@@ -34,6 +44,7 @@ namespace Janus.Controllers
             string formValidationErrors = "";
             Boolean formHasErrors = false;
             int retrievedID = 0;
+
             string firstName = Request["firstName"];
             string lastName = Request["lastName"];
             string streetAddress = Request["streetAddress"];
@@ -64,15 +75,28 @@ namespace Janus.Controllers
             string saturdayFrom = Request["saturdayFrom"];
             string saturdayTo = Request["saturdayTo"];
 
+            /*
+             * Check if the user already exists
+             *
+             * **/
+
+            var getUser = (from a in _context.Users where a.email == email select a);
+            var userCount = getUser.Count();
+            if (userCount > 0)
+            {
+                formValidationErrors += "\n Already Registered";
+                formHasErrors = true;
+            }
+
             //validate the users inputs
             if (!unhasedConfirmedPass.Equals(unhashedPass))
             {
-                formValidationErrors += "/nPasswords Do Not Match";
+                formValidationErrors += "\n Passwords Do Not Match";
                 formHasErrors = true;
             }
             if (!email.Contains("@"))
             {
-                formValidationErrors += "/nEmail is Invalid";
+                formValidationErrors += "\n Email is Invalid";
 
                 formHasErrors = true;
             }

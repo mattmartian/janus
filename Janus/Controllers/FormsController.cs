@@ -8,17 +8,22 @@ namespace Janus.Controllers
     {
         private readonly JanusEntities _context;
 
+        //Set up database context globally
         public FormsController()
         {
             _context = new JanusEntities();
         }
 
-        // GET: Forms
+        // Return the book off form
         public ActionResult BookOff()
         {
             return View();
         }
 
+        /// <summary>
+        /// Collect the data entered by the user and file a claim to book time off for the sender of the form
+        /// </summary>
+        /// <returns>Confirmation that the claim was filed</returns>
         [HttpPost]
         public ActionResult TimeOffRequest()
         {
@@ -42,11 +47,16 @@ namespace Janus.Controllers
             return RedirectToAction("RequestSubmitted", "Forms");
         }
 
+        //Return the absence claim form
         public ActionResult AbsenceClaim()
         {
             return View();
         }
 
+        /// <summary>
+        /// This Action will be responsible for gathering the user enterd data and filing an absence claim on behalf of the user
+        /// </summary>
+        /// <returns>Confirmation that the claim was filed</returns>
         [HttpPost]
         public ActionResult FileClaim()
         {
@@ -70,6 +80,10 @@ namespace Janus.Controllers
             return RedirectToAction("RequestSubmitted", "Forms");
         }
 
+        /// <summary>
+        /// Load the list of all employees for the user to select to switch a shift with
+        /// </summary>
+        /// <returns>The form for the user to select an employee</returns>
         public ActionResult SelectEmployee()
         {
             //grab all of the names of the employees
@@ -79,6 +93,10 @@ namespace Janus.Controllers
             return View();
         }
 
+        /// <summary>
+        /// When the employee is selected the user will be redirected to switch a shift with that user
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult EmployeeSelected()
         {
@@ -90,6 +108,10 @@ namespace Janus.Controllers
             return RedirectToAction("SwitchShift", "Forms");
         }
 
+        /// <summary>
+        /// This action is responsible for sending a form for the user to pick a shift to switch
+        /// </summary>
+        /// <returns>The form to switch a shift</returns>
         public ActionResult SwitchShift()
         {
             //Grab the info from the requestore and requestee and start the claim
@@ -105,6 +127,10 @@ namespace Janus.Controllers
             return View();
         }
 
+        /// <summary>
+        ///  This action is responsible for sending the request to the employee that the user would like to swap shifts with for their confirmation
+        /// </summary>
+        /// <returns>Confrimation that the request was submitted</returns>
         [HttpPost]
         public ActionResult FileShiftChange()
         {
@@ -148,7 +174,7 @@ namespace Janus.Controllers
                 retStart = shft.shiftStart;
                 retEnd = shft.shiftEnd;
             }
-            string requestWithShiftString = retDate.ToString() + " " + retStart.ToString() + " " + retEnd.ToString();
+            string requestWithShiftString = retDate.ToString() + " " + retStart.ToString() + ":00" + " " + retEnd.ToString() + ":00";
 
             var requestWithUserName = from u in _context.Users
                                       where u.userID == requestWith
@@ -175,6 +201,7 @@ namespace Janus.Controllers
             });
             _context.SaveChanges();
 
+            int requestCount = _context.shiftRequests.Count();
             //Send the user a notification of the request
             _context.Messages.Add(new Messages
             {
@@ -184,13 +211,16 @@ namespace Janus.Controllers
                 mailToUsername = retrievedName,
                 subject = "Shift Swap Request",
                 body = requestor + " Would Like To Switch Shifts With You!",
+                shiftRequestID = requestCount,
                 isRead = false
             });
+
             _context.SaveChanges();
 
             return RedirectToAction("RequestSubmitted", "Forms");
         }
 
+        //Return the confirmation view
         public ActionResult RequestSubmitted()
         {
             return View();
