@@ -90,11 +90,15 @@ namespace Janus.Controllers
             }
 
             //validate the users inputs
-            if (!managerCode.Equals(verification))
+            if (!managerCode.Equals(""))
             {
-                formValidationErrors += "\n Wrong Manager Verification";
-                formHasErrors = true;
+                if (!managerCode.Equals(verification))
+                {
+                    formValidationErrors += "\n Wrong Manager Verification";
+                    formHasErrors = true;
+                }
             }
+
             if (!unhasedConfirmedPass.Equals(unhashedPass))
             {
                 formValidationErrors += "\n Passwords Do Not Match";
