@@ -118,8 +118,8 @@ namespace Janus.Controllers
             int userID = Int32.Parse(@Session["userID"].ToString());
             int requestedWith = Int32.Parse(TempData["requestWith"].ToString());
             var employees = (from b in _context.Users select new Janus.Models.EmployeeDetailViewModel { userID = b.userID, firstName = b.firstName, lastName = b.lastName });
-            var requestorShift = (from a in _context.Shifts where a.userID == userID select new Janus.Models.ShiftViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
-            var requestWithShift = (from a in _context.Shifts where a.userID == requestedWith select new Janus.Models.ShiftViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
+            var requestorShift = (from a in _context.Shifts where a.userID == userID && a.status == "Assigned" select new Janus.Models.ShiftViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
+            var requestWithShift = (from a in _context.Shifts where a.userID == requestedWith && a.status == "Assigned" select new Janus.Models.ShiftViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
             ViewBag.data = employees;
             TempData["reqWith"] = requestedWith;
             ViewBag.requestorData = requestorShift;

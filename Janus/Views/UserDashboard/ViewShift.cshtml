@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "View Shift";
+
+}
+<style>
+    body {
+        width: 100%;
+    }
+</style>
+@model Janus.Shifts
+<body>
+    <center>
+        <h1 class="alert-danger">@ViewBag.error</h1>
+        <h2>View Message</h2>
+        @using (Html.BeginForm("takeshift", "UserDashboard", FormMethod.Post, new { id = "popupForm" }))
+            {
+                if (Model != null && Model.shiftID > 0)
+                {
+                @Html.HiddenFor(a => a.shiftID)
+            }
+
+            <div class="form-group">
+                <label>Shift Date</label><br />
+                @Html.DisplayFor(a => a.shiftDate, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Shift Start</label><br />
+                @Html.DisplayFor(a => a.shiftStart, new { @class = "form-control" })
+            </div>
+                <div class="form-group">
+                    <label>Shift End</label><br />
+                    @Html.DisplayFor(a => a.shiftEnd, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label>Position</label><br />
+                    @Html.DisplayFor(a => a.position, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label><br />
+                    @Html.DisplayFor(a => a.description, new { @class = "form-control" })
+                </div>
+
+                <div>
+                    <input type="submit" value="Take Shift" />
+                </div>
+        }
+    </center>
+</body>

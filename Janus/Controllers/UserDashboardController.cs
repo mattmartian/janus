@@ -50,12 +50,12 @@ namespace Janus.Controllers
             if (today > dt)
             {
                 var shift = _context.Shifts.Find(dataID);
-                _context.Shifts.Remove(shift);
+                shift.status = "Completed";
                 _context.SaveChanges();
             }
 
             var userInfo = (from a in _context.Users where a.userID == identification select new Janus.Models.AccountViewModel { userID = a.userID, firstName = a.firstName, lastName = a.lastName, birthDate = a.birthDate, phone = a.phone, email = a.email, streetAddress = a.streetAddress, postalCode = a.postalCode, role = a.role, departmentName = a.departmentName, hireDate = a.hireDate });
-            var shiftData = (from a in _context.Shifts where a.userID == identification select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status }).Take(4);
+            var shiftData = (from a in _context.Shifts where a.userID == identification && a.status == "Assigned" select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status }).Take(4);
 
             if (shiftData.Count() == 0) //?
             {
@@ -69,6 +69,92 @@ namespace Janus.Controllers
 
             ViewBag.shiftData = shiftData;
             ViewBag.data = userInfo;
+            return View();
+        }
+
+        //Display all the open shifts to the user
+        public ActionResult OpenShifts()
+        {
+            var openData = (from a in _context.Shifts where a.status == "Open" select new Janus.Models.OpenShiftViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description });
+            ViewBag.openData = openData;
+            return View();
+        }
+
+        //Get the open shift details
+        [HttpGet]
+        public ActionResult ViewShift(int id)
+        {
+            //Get the details of the message selected and mark the message as read
+            var y = _context.Shifts.Where(a => a.shiftID == id).FirstOrDefault();
+
+            return View(y);
+        }
+
+        //Assign the shift to the user that has offered to take it
+        [HttpPost]
+        public ActionResult TakeShift(Shifts shift)
+        {
+            string retrievedName = "";
+            int managerID = 0;
+            int userid = Int32.Parse(@Session["userID"].ToString());
+            string shiftDetails = "";
+            try
+            {
+                bool status = false;
+                if (ModelState.IsValid)
+                {
+                    using (_context)
+                    {
+                        if (shift.shiftID > 0)
+                        {
+                            //Update the users profile data
+                            var v = _context.Shifts.Where(a => a.shiftID == shift.shiftID).FirstOrDefault();
+
+                            var managers = (from u in _context.Users
+                                            where u.role == "Manager" && u.departmentName == Session["department"].ToString()
+                                            orderby u.userID
+                                            select u).Take(1);
+                            foreach (var manager in managers)
+                            {
+                                managerID = manager.userID;
+                                retrievedName = manager.firstName + " " + manager.lastName;
+                            }
+
+                            shiftDetails = v.shiftDate + " " + v.shiftStart + ":00" + v.shiftEnd + ":00";
+
+                            _context.Messages.Add(new Messages
+                            {
+                                mailFromUserID = userid,
+                                mailFromUsername = Session["name"].ToString(),
+                                mailToUserID = managerID,
+                                mailToUsername = retrievedName,
+                                subject = "Open Shift Update",
+                                body = Session["name"].ToString() + " Has Taken the following open shift" + "\n" + " Shift Details:  " + shiftDetails,
+                                isRead = false
+                            });
+                            _context.SaveChanges();
+                            if (v != null)
+                            {
+                                v.userID = userid;
+                                v.status = "Assigned";
+                            }
+                        }
+
+                        _context.SaveChanges();
+                        status = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = "Could Not Take Shift";
+            }
+
+            return RedirectToAction("ShiftTaken", "UserDashboard");
+        }
+
+        public ActionResult ShiftTaken()
+        {
             return View();
         }
 
@@ -131,7 +217,7 @@ namespace Janus.Controllers
              * Collect all of the users shifts
              * */
             int identification = Int32.Parse(Session["userID"].ToString());
-            var shiftData = (from a in _context.Shifts where a.userID == identification select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
+            var shiftData = (from a in _context.Shifts where a.userID == identification && a.status == "Assigned" select new Janus.Models.ScheduleViewModel { shiftID = a.shiftID, userID = a.userID, shiftDate = a.shiftDate, shiftStart = a.shiftStart, shiftEnd = a.shiftEnd, position = a.position, description = a.description, status = a.status });
             if (shiftData.Count() == 0) //?
             {
                 ViewBag.noData = "No Shifts For This Week!";

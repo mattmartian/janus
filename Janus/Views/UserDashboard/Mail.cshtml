@@ -46,13 +46,21 @@
                         </td>
 
                     }
+                    @if (item.subject == "Open Shift Update")
+                    {
+                        <td>
+                            <a class="btn btn-success popup" href="/UserDashboard/viewmessage/@item.messageID">View </a>
+                        </td>
+
+                    }
+
                     @if (item.subject == "Update To Your Recent Request")
                     {
                         <td>
                             <a class="btn btn-success popup" href="/UserDashboard/viewmessage/@item.messageID">View </a>
                         </td>
                     }
-                    @if (item.subject != "Update To Your Recent Request" && item.subject != "Update To Your Recent Claim")
+                    @if (item.subject != "Update To Your Recent Request" && item.subject != "Update To Your Recent Claim" && item.subject != "Open Shift Update")
                     {
                         <td>
                             <a class="btn btn-success popup" href="/UserDashboard/acceptmail/@item.shiftRequestID">Accept </a>

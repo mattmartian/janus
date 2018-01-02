@@ -61,11 +61,12 @@
                         {
                             <li style="background: url(../Content/Images/Iconset/mailbox.png) left center no-repeat; background-size:30px 25px; padding-left:20px;">@Html.ActionLink("Mailbox", "Mail", "UserDashboard", null, new { @class = "font" })</li>
                         }
+                        <li style="background: url(../Content/Images/Iconset/admin_panel.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Open Shifts", "OpenShifts", "UserDashboard", null, new { @class = "font" })</li>
 
                         @if (@Session["accessLevel"].ToString() == "Manager")
                         {
 
-                            <li style="background: url(../Content/Images/Iconset/admin_panel.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Admin Panel", "AdminDashboard", "AdminDashboard", null, new { @class = "font" })</li>
+                            <li style="background: url(../Content/Images/Iconset/dashboard.png) left center no-repeat; background-size:25px 25px; padding-left:20px;">@Html.ActionLink("Admin Panel", "AdminDashboard", "AdminDashboard", null, new { @class = "font" })</li>
                         }
                     </ul>
 

@@ -598,6 +598,7 @@
     <Compile Include="Models\ClaimsVIewModel.cs" />
     <Compile Include="Models\EmployeeDetailViewModel.cs" />
     <Compile Include="Models\MailViewModel.cs" />
+    <Compile Include="Models\OpenShiftViewModel.cs" />
     <Compile Include="Models\PrintSchedViewModel.cs" />
     <Compile Include="Models\ScheduleViewModel.cs" />
     <Compile Include="Models\ShiftSwapViewModel.cs" />
@@ -659,6 +660,9 @@
     <Content Include="Views\Forms\RequestSubmitted.cshtml" />
     <Content Include="Views\UserDashboard\EditProfile.cshtml" />
     <Content Include="Views\UserDashboard\ViewMessage.cshtml" />
+    <Content Include="Views\UserDashboard\OpenShifts.cshtml" />
+    <Content Include="Views\UserDashboard\ViewShift.cshtml" />
+    <Content Include="Views\UserDashboard\ShiftTaken.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

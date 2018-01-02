@@ -274,6 +274,118 @@ REFERENCES Users(userID);
 -- --------------------------------------------------
 
 
+--Insert a weeks worth of shifts for every employee
+INSERT INTO Shifts VALUES('2','2018-02-04','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('2','2018-02-05','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('2','2018-02-06','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('2','2018-02-07','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('2','2018-02-08','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('2','2018-02-09','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('2','2018-02-10','9','17','Manager','Supervise Employees in your department','Assigned')
+
+INSERT INTO Shifts VALUES('3','2018-02-04','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('3','2018-02-05','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('3','2018-02-06','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('3','2018-02-07','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('3','2018-02-08','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('3','2018-02-09','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('3','2018-02-10','8','16','Sales Associate','Assist Customers in finding items','Assigned')
+
+INSERT INTO Shifts VALUES('4','2018-02-04','9','17','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('4','2018-02-05','9','17','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('4','2018-02-06','9','17','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('4','2018-02-07','9','17','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('4','2018-02-08','9','17','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('4','2018-02-09','9','17','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('4','2018-02-10','9','17','Cashier','Cash Customers Out','Assigned')
+
+INSERT INTO Shifts VALUES('5','2018-02-04','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('5','2018-02-05','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('5','2018-02-06','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('5','2018-02-07','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('5','2018-02-08','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('5','2018-02-09','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('5','2018-02-10','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+
+INSERT INTO Shifts VALUES('6','2018-02-04','17','23','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('6','2018-02-05','17','23','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('6','2018-02-06','17','23','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('6','2018-02-07','17','23','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('6','2018-02-08','17','23','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('6','2018-02-09','17','23','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('6','2018-02-10','17','23','Cashier','Cash Customers Out','Assigned')
+
+INSERT INTO Shifts VALUES('7','2018-02-04','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('7','2018-02-05','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('7','2018-02-06','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('7','2018-02-07','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('7','2018-02-08','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('7','2018-02-09','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('7','2018-02-10','8','16','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+
+INSERT INTO Shifts VALUES('8','2018-02-04','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('8','2018-02-05','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('8','2018-02-06','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('8','2018-02-07','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('8','2018-02-08','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('8','2018-02-09','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('8','2018-02-10','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+
+INSERT INTO Shifts VALUES('9','2018-02-04','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('9','2018-02-05','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('9','2018-02-06','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('9','2018-02-07','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('9','2018-02-08','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('9','2018-02-09','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+INSERT INTO Shifts VALUES('9','2018-02-10','9','17','Music Instructor','Gives Music Lessons on a Desired Instrument','Assigned')
+
+INSERT INTO Shifts VALUES('10','2018-02-04','16','23','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('10','2018-02-05','16','23','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('10','2018-02-06','16','23','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('10','2018-02-07','16','23','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('10','2018-02-08','16','23','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('10','2018-02-09','16','23','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('10','2018-02-10','16','23','Manager','Supervise Employees in your department','Assigned')
+
+INSERT INTO Shifts VALUES('11','2018-02-04','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('11','2018-02-05','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('11','2018-02-06','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('11','2018-02-07','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('11','2018-02-08','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('11','2018-02-09','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+INSERT INTO Shifts VALUES('11','2018-02-10','16','23','Sales Associate','Assist Customers in finding items','Assigned')
+
+INSERT INTO Shifts VALUES('12','2018-02-04','15','22','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('12','2018-02-05','15','22','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('12','2018-02-06','15','22','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('12','2018-02-07','15','22','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('12','2018-02-08','15','22','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('12','2018-02-09','15','22','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('12','2018-02-10','15','22','Cashier','Cash Customers Out','Assigned')
+
+INSERT INTO Shifts VALUES('13','2018-02-04','10','18','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('13','2018-02-05','10','18','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('13','2018-02-06','10','18','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('13','2018-02-07','10','18','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('13','2018-02-08','10','18','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('13','2018-02-09','10','18','Cashier','Cash Customers Out','Assigned')
+INSERT INTO Shifts VALUES('13','2018-02-10','10','18','Cashier','Cash Customers Out','Assigned')
+
+INSERT INTO Shifts VALUES('14','2018-02-04','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+INSERT INTO Shifts VALUES('14','2018-02-05','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+INSERT INTO Shifts VALUES('14','2018-02-06','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+INSERT INTO Shifts VALUES('14','2018-02-07','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+INSERT INTO Shifts VALUES('14','2018-02-08','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+INSERT INTO Shifts VALUES('14','2018-02-09','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+INSERT INTO Shifts VALUES('14','2018-02-10','8','16','Music Lessons Secretary','Sign Customers Up to Music Lessons','Assigned')
+
+
+INSERT INTO AbsenceClaims VALUES('3','2018-02-04','2018-03-06','Wedding','Book Off',NULL)
+INSERT INTO AbsenceClaims VALUES('6','2018-02-07','2018-03-08','Not Feeling Well','Illness',NULL)
+INSERT INTO AbsenceClaims VALUES('13','2018-02-08','2018-03-10','Death Of Family Member','Bereavement',NULL)
+INSERT INTO AbsenceClaims VALUES('4','2018-02-04','2018-03-05','Snowed In','Natural Disaster',NULL)
+INSERT INTO AbsenceClaims VALUES('12','2018-02-10','2019-02-10','Maternity Leave','Leave Of Absence',NULL)
+
 
 -- --------------------------------------------------
 -- Script has ended

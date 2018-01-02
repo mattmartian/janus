@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Open Shifts";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+<h1 class="alert-danger">@ViewBag.error</h1>
+<h1><span class="title">Open Shi</span>fts</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Shift Date</th>
+            <th>Shift Start</th>
+            <th>Position</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Janus.Models.OpenShiftViewModel item in ViewBag.openData)
+        {
+            <tr>
+                <td>@item.shiftDate</td>
+                <td>@item.shiftStart</td>
+                <td>@item.shiftEnd</td>
+                <td>@item.position</td>
+                <td>@item.description</td>
+
+                <td>
+                    <a class="btn btn-success popup" href="/UserDashboard/viewshift/@item.shiftID">Take </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -44,7 +44,7 @@ namespace Janus.Controllers
             string formValidationErrors = "";
             Boolean formHasErrors = false;
             int retrievedID = 0;
-
+            string verification = "987651";
             string firstName = Request["firstName"];
             string lastName = Request["lastName"];
             string streetAddress = Request["streetAddress"];
@@ -58,6 +58,7 @@ namespace Janus.Controllers
             string role = Request["roles"];
             string userQuestion = Request["questionList"];
             string userAnswer = Request["securityAnswer"];
+            string managerCode = Request["confirmManager"];
 
             //Collect Availibility
             string sundayFrom = Request["sundayFrom"];
@@ -89,6 +90,11 @@ namespace Janus.Controllers
             }
 
             //validate the users inputs
+            if (!managerCode.Equals(verification))
+            {
+                formValidationErrors += "\n Wrong Manager Verification";
+                formHasErrors = true;
+            }
             if (!unhasedConfirmedPass.Equals(unhashedPass))
             {
                 formValidationErrors += "\n Passwords Do Not Match";

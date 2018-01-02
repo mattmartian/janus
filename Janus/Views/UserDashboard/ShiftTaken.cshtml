@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Shift Taken";
+    Layout = "~/Views/Shared/_MainNavigationLayout.cshtml";
+}
+
+<script>
+    window.setTimeout(function () {
+        window.location.href = "@Url.Action("Account", "UserDashboard")";
+    }, 4000);
+</script>
+<body>
+    <div class="alert alert-success">
+        <center>
+            <h1 style=" padding-top:8em; padding-bottom:8em;">Thank you for taking the open shift!!</h1>
+        </center>
+    </div>
+</body>

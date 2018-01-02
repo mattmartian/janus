@@ -39,13 +39,14 @@ namespace Janus.Controllers
         /// <returns>The Manage Employees Dashboard View</returns>
         public ActionResult ManageEmployees()
         {
+            int userid = Int32.Parse(@Session["userID"].ToString());
             string departmentName = Session["department"].ToString();
             //Make sure the user is logged in
             if (!isLoggedIn())
             {
                 return RedirectToAction("Login", "Login");
             }
-            var employeeData = (from a in _context.Users where a.employmentStatus == "Active" && a.departmentName == departmentName select new Janus.Models.EmployeeDetailViewModel { firstName = a.firstName, lastName = a.lastName, role = a.role, departmentName = a.departmentName, userID = a.userID });
+            var employeeData = (from a in _context.Users where a.employmentStatus == "Active" && a.userID != userid select new Janus.Models.EmployeeDetailViewModel { firstName = a.firstName, lastName = a.lastName, role = a.role, departmentName = a.departmentName, userID = a.userID });
             ViewBag.data = employeeData;
             if (employeeData.Count() > 0)
             {
@@ -178,6 +179,7 @@ namespace Janus.Controllers
             int userid = Int32.Parse(@Session["userID"].ToString());
             string claimDetails = "";
             bool status = false;
+
             if (ModelState.IsValid)
             {
                 using (_context)
@@ -186,7 +188,9 @@ namespace Janus.Controllers
                     {
                         //Edit
                         var v = _context.AbsenceClaims.Where(a => a.claimID == claim.claimID).FirstOrDefault();
+
                         claimDetails = "Claim Type: " + v.claimType + "Claim Date : " + v.startTime + " - " + v.endTime;
+
                         var senderUsername = from u in _context.Users
                                              where u.userID == v.userID
                                              orderby u.userID
@@ -195,6 +199,7 @@ namespace Janus.Controllers
                         {
                             retrievedName = user.firstName + " " + user.lastName;
                         }
+
                         _context.Messages.Add(new Messages
                         {
                             mailFromUserID = userid,
@@ -207,13 +212,27 @@ namespace Janus.Controllers
                         });
                         _context.SaveChanges();
 
-                        if (v != null)
+                        //Make all of the shifts betweeen the dates specified on the absence open for other employees to take
+                        DateTime start = Convert.ToDateTime(v.startTime);
+                        DateTime end = Convert.ToDateTime(v.endTime);
+                        var query = (from a in _context.Shifts where a.userID == userid select a).ToList();
+                        foreach (var item in query)
                         {
-                            v.isApproved = true;
-                        }
-                    }
+                            DateTime shift = Convert.ToDateTime(item.shiftDate);
+                            if (shift >= start && shift <= end)
+                            {
+                                item.status = "Open";
+                                _context.SaveChanges();
+                            }
 
-                    _context.SaveChanges();
+                            if (v != null)
+                            {
+                                v.isApproved = true;
+                            }
+                        }
+
+                        _context.SaveChanges();
+                    }
                     status = true;
                 }
             }
