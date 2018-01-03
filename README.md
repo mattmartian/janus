@@ -3,7 +3,7 @@ This is a shift scheduling application for my Capstone that allows users to sche
 
 
 ## Running the Database
-Open the Janus.sql file and run the script to get all of the data
+If not using the demo, open the Janus.sql file and run the script to get all of the data
 
 ## Registering
 
