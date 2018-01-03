@@ -27,3 +27,6 @@ Password: mohawkcollege
 Email: sloan@admin.com
 Password: sudo
     
+## Demo
+
+To view a working copy visit http://januscapstone.azurewebsites.net
