@@ -387,7 +387,7 @@ namespace Janus.Controllers
             DateTime today = DateTime.Today;
             string todayString = today.ToString("yyyy-MM-dd");
 
-            var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID where b.shiftDate == todayString select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position });
+            var shiftData = (from b in _context.Shifts select b.shiftDate).Distinct();
             GatherStats();
             ViewBag.data = shiftData;
             return View();
@@ -397,9 +397,12 @@ namespace Janus.Controllers
         /// The GenerateCSV action will export todays schedule to a csv for the manager to have on hand
         /// </summary>
         /// <returns>a csv file that will be automatically downloaded</returns>
+        ///
+        [HttpPost]
         public ActionResult GenerateCSV()
         {
-            var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position }).ToList();
+            string day = Request["day"];
+            var shiftData = (from b in _context.Shifts join c in _context.Users on b.userID equals c.userID where b.shiftDate == day select new Janus.Models.PrintSchedViewModel { firstName = c.firstName, lastName = c.lastName, shiftStart = b.shiftStart, shiftEnd = b.shiftEnd, shiftDate = b.shiftDate, position = b.position }).ToList();
             ViewBag.data = shiftData;
             var csv = string.Concat("Last Name" + "," + "First Name" + "," + "Shift Date" + "," + "Start Time" + "," + "End Time" + "," + "Position" + "\n");
             csv += string.Concat(shiftData.Select(re => re.lastName + "," + re.firstName + "," + re.shiftDate + "," + re.shiftStart + ":00" + "," + re.shiftEnd + ":00" + "," + re.position + "\n"));
