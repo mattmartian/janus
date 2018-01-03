@@ -314,7 +314,7 @@ namespace Janus.Controllers
         {
             //Get the details of the message selected and mark the message as read
             var v = _context.shiftRequests.Where(a => a.shiftRequestID == id).FirstOrDefault();
-            var y = _context.Messages.Where(a => a.messageID == id).FirstOrDefault();
+            var y = _context.Messages.Where(a => a.shiftRequestID == id).FirstOrDefault();
             try
             {
                 if (y != null)

@@ -275,6 +275,15 @@ REFERENCES Users(userID);
 
 
 --Insert a weeks worth of shifts for every employee
+
+INSERT INTO Shifts VALUES('1','2018-02-04','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('1','2018-02-05','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('1','2018-02-06','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('1','2018-02-07','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('1','2018-02-08','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('1','2018-02-09','9','17','Manager','Supervise Employees in your department','Assigned')
+INSERT INTO Shifts VALUES('1','2018-02-10','9','17','Manager','Supervise Employees in your department','Assigned')
+
 INSERT INTO Shifts VALUES('2','2018-02-04','9','17','Manager','Supervise Employees in your department','Assigned')
 INSERT INTO Shifts VALUES('2','2018-02-05','9','17','Manager','Supervise Employees in your department','Assigned')
 INSERT INTO Shifts VALUES('2','2018-02-06','9','17','Manager','Supervise Employees in your department','Assigned')
